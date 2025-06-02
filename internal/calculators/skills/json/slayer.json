@@ -1,0 +1,102 @@
+{
+	"skillNameCanonical": "slayer",
+	"skillNameDisplay": "Slayer",
+	"description": "Receive assignments from Slayer Masters to kill specific monsters, earning Slayer XP and access to unique drops.",
+	"trainingMethods": [
+		{
+			"id": "turael_boosting",
+			"name": "Turael Boosting (Point Boosting)",
+			"levelReq": 1,
+			"xpRate": 5000,
+			"location": "Turael (Burthorpe) / Spria (Draynor)",
+			"notes": "Used to quickly complete tasks for Slayer points, typically every 9 tasks before a milestone task from a higher master.",
+			"tags": [
+				"points",
+				"boosting",
+				"low_xp"
+			],
+			"type": "Slayer Master"
+		},
+		{
+			"id": "konar_tasks",
+			"name": "Konar quo Maten Tasks",
+			"levelReq": 75,
+			"xpRate": 25000,
+			"location": "Mount Karuulm (assignments are location-specific)",
+			"notes": "Awards Brimstone Keys for extra loot. Tasks can be challenging due to location restrictions.",
+			"tags": [
+				"brimstone_keys",
+				"location_specific",
+				"boss_tasks_possible"
+			],
+			"type": "Slayer Master"
+		},
+		{
+			"id": "duradel_tasks",
+			"name": "Duradel Tasks",
+			"levelReq": 100,
+			"xpRate": 40000,
+			"location": "Shilo Village",
+			"questsRequired": [
+				"Shilo Village"
+			],
+			"notes": "Highest Slayer Master, assigns high-level monsters and bosses. Good for XP and profit.",
+			"tags": [
+				"best_xp",
+				"best_profit",
+				"boss_tasks",
+				"high_level"
+			],
+			"type": "Slayer Master"
+		},
+		{
+			"id": "barraging_dust_devils",
+			"name": "Barraging Dust Devils (Task)",
+			"levelReq": 65,
+			"xpRate": 150000,
+			"location": "Smoke Dungeon, Catacombs of Kourend",
+			"itemsRequired": [
+				"Slayer helmet (i) / Facemask",
+				"Ancient Magicks (Ice Barrage)"
+			],
+			"notes": "Excellent Magic and Slayer XP when on task. Requires multi-target setup.",
+			"tags": [
+				"aoe",
+				"magic_xp",
+				"on_task"
+			],
+			"type": "Specific Task Method",
+			"alternativeXpRate": [
+				{
+					"type": "Magic",
+					"rate": 150000
+				}
+			]
+		},
+		{
+			"id": "bursting_nechryaels",
+			"name": "Bursting Nechryaels (Task)",
+			"levelReq": 80,
+			"xpRate": 180000,
+			"location": "Slayer Tower, Catacombs of Kourend",
+			"itemsRequired": [
+				"Slayer helmet (i) / Earmuffs",
+				"Ancient Magicks (Ice Burst/Barrage)"
+			],
+			"notes": "Great Magic and Slayer XP, good loot from superior Nechryarch.",
+			"tags": [
+				"aoe",
+				"magic_xp",
+				"on_task",
+				"superior_monster"
+			],
+			"type": "Specific Task Method",
+			"alternativeXpRate": [
+				{
+					"type": "Magic",
+					"rate": 180000
+				}
+			]
+		}
+	]
+}

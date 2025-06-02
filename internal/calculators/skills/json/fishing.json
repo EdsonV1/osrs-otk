@@ -1,0 +1,126 @@
+{
+	"skillNameCanonical": "fishing",
+	"skillNameDisplay": "Fishing",
+	"description": "Catch a variety of fish from different bodies of water, used for Cooking, training, or profit.",
+	"trainingMethods": [
+		{
+			"id": "shrimp_anchovies",
+			"name": "Shrimp/Anchovies (Net)",
+			"levelReq": 1,
+			"xpRate": 3000,
+			"xpPerAction": 10,
+			"actionName": "fish",
+			"location": "Lumbridge Swamp, Draynor Village",
+			"itemsRequired": [
+				"Small fishing net"
+			],
+			"notes": "Starting method.",
+			"tags": [
+				"beginner",
+				"f2p"
+			],
+			"type": "Net Fishing"
+		},
+		{
+			"id": "fly_fishing_trout_salmon",
+			"name": "Fly Fishing (Trout/Salmon)",
+			"levelReq": 20,
+			"xpRate": 25000,
+			"xpPerAction": 50,
+			"actionName": "fish",
+			"location": "Barbarian Village, Shilo Village",
+			"itemsRequired": [
+				"Fly fishing rod",
+				"Feathers"
+			],
+			"notes": "Fast XP, requires dropping fish (powerfishing) or banking.",
+			"tags": [
+				"fast_xp",
+				"f2p (Barb Village)",
+				"p2p (Shilo)"
+			],
+			"type": "Fly Fishing"
+		},
+		{
+			"id": "barbarian_fishing",
+			"name": "Barbarian Fishing (Leaping Trout/Salmon/Sturgeon)",
+			"levelReq": 48,
+			"xpRate": 65000,
+			"xpPerAction": 80,
+			"actionName": "fish",
+			"location": "Otto's Grotto",
+			"itemsRequired": [
+				"Barbarian rod",
+				"Fishing bait/Feathers (depends on catch)"
+			],
+			"questsRequired": [
+				"Barbarian Training (Fishing part)"
+			],
+			"notes": "Good XP, also trains Agility and Strength passively. Requires dropping fish.",
+			"tags": [
+				"fast_xp",
+				"multi_skill",
+				"p2p",
+				"tick_manipulation_possible"
+			],
+			"type": "Barbarian Fishing",
+			"alternativeXpRate": [
+				{
+					"type": "Agility",
+					"rate": 7000
+				},
+				{
+					"type": "Strength",
+					"rate": 7000
+				}
+			]
+		},
+		{
+			"id": "karambwans",
+			"name": "Karambwans",
+			"levelReq": 65,
+			"xpRate": 35000,
+			"xpPerAction": 50,
+			"actionName": "karambwan",
+			"location": "Tai Bwo Wannai (requires Karamja gloves 1 for deposit box access)",
+			"itemsRequired": [
+				"Karambwan vessel",
+				"Raw karambwanji (bait)"
+			],
+			"questsRequired": [
+				"Tai Bwo Wannai Trio"
+			],
+			"notes": "Fast fishing, good food, can be profitable. Very AFK once set up.",
+			"tags": [
+				"afk",
+				"profitable",
+				"p2p",
+				"good_food"
+			],
+			"type": "Specialty Fishing"
+		},
+		{
+			"id": "infernal_eels",
+			"name": "Infernal Eels",
+			"levelReq": 80,
+			"xpRate": 30000,
+			"xpPerAction": 95,
+			"actionName": "eel",
+			"location": "Mor Ul Rek (requires Fire Cape)",
+			"itemsRequired": [
+				"Oily fishing rod",
+				"Fishing bait",
+				"Ice gloves",
+				"Hammer"
+			],
+			"notes": "AFK, gives onyx bolt tips, lava scale shards. No banking needed.",
+			"tags": [
+				"afk",
+				"p2p",
+				"high_level",
+				"no_banking"
+			],
+			"type": "Specialty Fishing"
+		}
+	]
+}

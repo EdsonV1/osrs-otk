@@ -1,0 +1,150 @@
+{
+	"skillNameCanonical": "magic",
+	"skillNameDisplay": "Magic",
+	"description": "Harness the power of runes to cast a wide array of spells for combat, utility, and teleportation.",
+	"trainingMethods": [
+		{
+			"id": "magic_strike_spells_cows",
+			"name": "Strike Spells (e.g., Fire Strike on Cows)",
+			"levelReq": 13,
+			"xpRate": 15000,
+			"xpPerAction": 11.5,
+			"actionName": "cast",
+			"location": "Lumbridge Cow Pen",
+			"itemsRequired": [
+				"Runes for Fire Strike (Mind, Fire, Air)"
+			],
+			"notes": "Early combat magic training.",
+			"tags": [
+				"beginner",
+				"f2p",
+				"combat"
+			],
+			"type": "Combat Spellcasting",
+			"alternativeXpRate": [
+				{
+					"type": "Hitpoints",
+					"rate": 5000
+				}
+			]
+		},
+		{
+			"id": "magic_curse_alkharid_warriors",
+			"name": "Curse Alching (Al Kharid Warriors)",
+			"levelReq": 19,
+			"xpRate": 25000,
+			"location": "Al Kharid Palace",
+			"itemsRequired": [
+				"Runes for Curse",
+				"Staff of water (or water/body runes)"
+			],
+			"notes": "Very AFK, low cost. Click warrior, cast curse, wait. Not for drops.",
+			"tags": [
+				"afk",
+				"f2p",
+				"low_cost"
+			],
+			"type": "Non-combat Spellcasting"
+		},
+		{
+			"id": "magic_high_alchemy",
+			"name": "High Level Alchemy",
+			"levelReq": 55,
+			"xpRate": 78000,
+			"xpPerAction": 65,
+			"actionName": "alch",
+			"itemsRequired": [
+				"Nature runes",
+				"Fire runes (or staff)",
+				"Alchable items (e.g., Yew Longbows)"
+			],
+			"notes": "Classic money-making or cost-neutral training method. Can be done anywhere.",
+			"tags": [
+				"utility_spell",
+				"p2p",
+				"money_making_sometimes",
+				"afk_ish"
+			],
+			"type": "Utility Spellcasting"
+		},
+		{
+			"id": "magic_bursting_dust_devils_nechryaels",
+			"name": "Bursting/Barraging (Dust Devils/Nechryaels on Slayer Task)",
+			"levelReq": 70,
+			"xpRate": 180000,
+			"location": "Smoke Dungeon, Catacombs of Kourend, Slayer Tower",
+			"itemsRequired": [
+				"Ancient Magicks spellbook",
+				"Runes for Burst/Barrage",
+				"Slayer task items"
+			],
+			"notes": "Fastest Magic XP, especially on task. Expensive but effective.",
+			"tags": [
+				"fastest_xp",
+				"aoe",
+				"p2p",
+				"slayer",
+				"expensive"
+			],
+			"type": "Combat Spellcasting (AoE)",
+			"alternativeXpRate": [
+				{
+					"type": "Hitpoints",
+					"rate": 60000
+				},
+				{
+					"type": "Slayer",
+					"rate": 50000
+				}
+			]
+		},
+		{
+			"id": "magic_plank_make",
+			"name": "Plank Make (Lunar Spellbook)",
+			"levelReq": 86,
+			"xpRate": 90000,
+			"xpPerAction": 90,
+			"actionName": "plank made",
+			"itemsRequired": [
+				"Lunar spellbook",
+				"Astral runes",
+				"Nature runes",
+				"Earth runes",
+				"Logs (e.g., Mahogany)"
+			],
+			"questsRequired": [
+				"Lunar Diplomacy"
+			],
+			"notes": "Makes planks cheaper than sawmill but slower. Good for ironmen or profit.",
+			"tags": [
+				"utility_spell",
+				"p2p",
+				"lunar_magic",
+				"profitable_sometimes",
+				"ironman"
+			],
+			"type": "Utility Spellcasting"
+		},
+		{
+			"id": "magic_stun_alching",
+			"name": "Stun-Alching",
+			"levelReq": 80,
+			"xpRate": 150000,
+			"xpPerAction": 65,
+			"actionName": "alch",
+			"location": "Anywhere (often done on defensive monsters)",
+			"itemsRequired": [
+				"Runes for Stun",
+				"Runes for High Alchemy",
+				"Alchable items"
+			],
+			"notes": "Click-intensive method combining Stun and High Alchemy for faster casting.",
+			"tags": [
+				"high_intensity",
+				"p2p",
+				"fast_xp_methods"
+			],
+			"type": "Utility/Combat Hybrid"
+		}
+	]
+}

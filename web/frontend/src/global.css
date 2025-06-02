@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    @apply h-full bg-gray-900;
+}
+
+body {
+    @apply h-full bg-gray-900 text-white;
+}
+
+:root {
+    scrollbar-color: hsl(220 23% 31%) transparent;
+}
+
+::-webkit-scrollbar {
+    @apply h-2.5 w-2.5 bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply rounded bg-gray-400;
+}
+
+/* body ::-webkit-scrollbar, */
+.custom-scroll::-webkit-scrollbar {
+    @apply h-1 w-1 md:h-1.5 md:w-1.5;
+}
+
+/* body ::-webkit-scrollbar-track, */
+.custom-scroll::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+/* body ::-webkit-scrollbar-thumb, */
+.custom-scroll::-webkit-scrollbar-thumb {
+    @apply rounded bg-gray-400;
+}
+
+/* body ::-webkit-scrollbar-thumb:hover, */
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+}

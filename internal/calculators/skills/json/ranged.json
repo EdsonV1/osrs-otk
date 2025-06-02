@@ -1,0 +1,140 @@
+{
+	"skillNameCanonical": "ranged",
+	"skillNameDisplay": "Ranged",
+	"description": "Master the use of bows, crossbows, throwing weapons, and other ranged equipment to attack from a distance.",
+	"trainingMethods": [
+		{
+			"id": "ranged_cows_shortbow",
+			"name": "Cows (Shortbow & Bronze Arrows)",
+			"levelReq": 1,
+			"xpRate": 4000,
+			"location": "Lumbridge Cow Pen",
+			"itemsRequired": [
+				"Shortbow",
+				"Bronze arrows"
+			],
+			"notes": "Basic ranged training.",
+			"tags": [
+				"beginner",
+				"f2p",
+				"combat"
+			],
+			"type": "Monster Combat",
+			"alternativeXpRate": [
+				{
+					"type": "Hitpoints",
+					"rate": 1300
+				}
+			]
+		},
+		{
+			"id": "ranged_sand_crabs_darts",
+			"name": "Sand Crabs/Ammonite Crabs (Darts)",
+			"levelReq": 1,
+			"xpRate": 50000,
+			"location": "Hosidius Beach (Sand Crabs), Fossil Island (Ammonite Crabs)",
+			"itemsRequired": [
+				"Darts (e.g., Steel, Mithril)",
+				"Ranged gear (optional for low levels)"
+			],
+			"notes": "Very AFK ranged training. Darts are fast.",
+			"tags": [
+				"afk",
+				"combat",
+				"p2p"
+			],
+			"type": "Monster Combat",
+			"alternativeXpRate": [
+				{
+					"type": "Hitpoints",
+					"rate": 16000
+				}
+			]
+		},
+		{
+			"id": "ranged_cannon_slayer",
+			"name": "Dwarf Multicannon (Slayer Tasks)",
+			"levelReq": 1,
+			"xpRate": 30000,
+			"location": "Various, per task (multi-combat areas best)",
+			"itemsRequired": [
+				"Dwarf multicannon",
+				"Cannonballs"
+			],
+			"notes": "Adds significant passive Ranged XP during Slayer tasks. Expensive.",
+			"tags": [
+				"slayer",
+				"combat",
+				"p2p",
+				"expensive",
+				"passive_xp"
+			],
+			"type": "Tool-assisted Combat",
+			"alternativeXpRate": [
+				{
+					"type": "Hitpoints",
+					"rate": 10000
+				}
+			]
+		},
+		{
+			"id": "ranged_chinchompas_mm2_tunnels",
+			"name": "Chinchompas (Monkey Madness II Tunnels)",
+			"levelReq": 55,
+			"xpRate": 400000,
+			"location": "Monkey Madness II Tunnels (Ape Atoll)",
+			"itemsRequired": [
+				"Red/Black chinchompas",
+				"Prayer potions",
+				"Ranged Potion",
+				"Best ranged void/armour"
+			],
+			"questsRequired": [
+				"Monkey Madness II"
+			],
+			"notes": "Fastest Ranged XP in the game. Expensive and click-intensive. Stack maniacal monkeys.",
+			"tags": [
+				"fastest_xp",
+				"combat",
+				"p2p",
+				"expensive",
+				"aoe",
+				"high_intensity"
+			],
+			"type": "Monster Combat (AoE)",
+			"alternativeXpRate": [
+				{
+					"type": "Hitpoints",
+					"rate": 130000
+				}
+			]
+		},
+		{
+			"id": "ranged_twisted_bow_raids",
+			"name": "Twisted Bow (Raids/Bossing)",
+			"levelReq": 75,
+			"xpRate": 80000,
+			"location": "Chambers of Xeric, Theatre of Blood, various bosses",
+			"itemsRequired": [
+				"Twisted bow",
+				"Best ranged gear",
+				"Amethyst arrows (or better)"
+			],
+			"notes": "Best-in-slot ranged weapon for many high-level encounters. XP is a byproduct of bossing.",
+			"tags": [
+				"combat",
+				"p2p",
+				"bossing",
+				"best_in_slot",
+				"very_expensive"
+			],
+			"type": "Monster Combat (Bossing)",
+			"alternativeXpRate": [
+				{
+					"type": "Hitpoints",
+					"rate": 26000
+				}
+			]
+		}
+	]
+}

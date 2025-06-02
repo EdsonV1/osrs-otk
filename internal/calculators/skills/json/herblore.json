@@ -1,0 +1,105 @@
+{
+	"skillNameCanonical": "herblore",
+	"skillNameDisplay": "Herblore",
+	"description": "Clean grimy herbs and combine them with secondary ingredients to create a wide variety of potions.",
+	"trainingMethods": [
+		{
+			"id": "attack_potions",
+			"name": "Attack Potions",
+			"levelReq": 3,
+			"xpRate": 50000,
+			"xpPerAction": 25,
+			"actionName": "potion",
+			"itemsRequired": [
+				"Grimy Guam Leaf",
+				"Eye of Newt",
+				"Vial of Water"
+			],
+			"notes": "Early level potion. Guam leaves are cleaned first (2.5 XP).",
+			"tags": [
+				"beginner",
+				"potion"
+			],
+			"type": "Potion Making"
+		},
+		{
+			"id": "prayer_potions",
+			"name": "Prayer Potions",
+			"levelReq": 38,
+			"xpRate": 150000,
+			"xpPerAction": 87.5,
+			"actionName": "potion",
+			"itemsRequired": [
+				"Grimy Ranarr Weed",
+				"Snape Grass",
+				"Vial of Water"
+			],
+			"notes": "Highly useful and often profitable potion.",
+			"tags": [
+				"profitable",
+				"potion",
+				"utility"
+			],
+			"type": "Potion Making"
+		},
+		{
+			"id": "super_restore_potions",
+			"name": "Super Restore Potions",
+			"levelReq": 63,
+			"xpRate": 250000,
+			"xpPerAction": 142.5,
+			"actionName": "potion",
+			"itemsRequired": [
+				"Grimy Snapdragon",
+				"Red Spiders' Eggs",
+				"Vial of Water"
+			],
+			"notes": "Restores all stats including Prayer.",
+			"tags": [
+				"potion",
+				"utility",
+				"high_level"
+			],
+			"type": "Potion Making"
+		},
+		{
+			"id": "stamina_potions",
+			"name": "Stamina Potions",
+			"levelReq": 77,
+			"xpRate": 200000,
+			"xpPerAction": 102,
+			"actionName": "potion",
+			"itemsRequired": [
+				"Super Energy (3)",
+				"Amylase Crystal (4 per dose)"
+			],
+			"notes": "Very useful potion, often profitable. Requires Amylase Crystals.",
+			"tags": [
+				"profitable",
+				"potion",
+				"utility",
+				"high_level"
+			],
+			"type": "Potion Making"
+		},
+		{
+			"id": "anti_venom_plus",
+			"name": "Anti-venom+ Potions",
+			"levelReq": 94,
+			"xpRate": 300000,
+			"xpPerAction": 125,
+			"actionName": "potion",
+			"itemsRequired": [
+				"Antidote++ (4)",
+				"Torstol"
+			],
+			"notes": "Highest level regular potion. Requires Torstol.",
+			"tags": [
+				"potion",
+				"utility",
+				"very_high_level"
+			],
+			"type": "Potion Making"
+		}
+	]
+}

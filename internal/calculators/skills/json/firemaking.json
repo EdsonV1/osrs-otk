@@ -1,0 +1,78 @@
+{
+    "skillNameCanonical": "firemaking",
+    "skillNameDisplay": "Firemaking",
+    "description": "Burn logs to create fires, providing light, a way to cook food, or simply for training the skill.",
+    "trainingMethods": [
+        {
+        "id": "normal_logs_fm",
+        "name": "Normal Logs",
+        "levelReq": 1,
+        "xpRate": 30000,
+        "xpPerAction": 40,
+        "actionName": "log burnt",
+        "itemsRequired": ["Tinderbox"],
+        "notes": "Basic starting method.",
+        "tags": ["beginner", "f2p"],
+        "type": "Log Burning"
+        },
+        {
+        "id": "oak_logs_fm",
+        "name": "Oak Logs",
+        "levelReq": 15,
+        "xpRate": 45000,
+        "xpPerAction": 60,
+        "actionName": "log burnt",
+        "itemsRequired": ["Tinderbox"],
+        "tags": ["f2p"],
+        "type": "Log Burning"
+        },
+        {
+        "id": "willow_logs_fm",
+        "name": "Willow Logs",
+        "levelReq": 30,
+        "xpRate": 67500,
+        "xpPerAction": 90,
+        "actionName": "log burnt",
+        "itemsRequired": ["Tinderbox"],
+        "tags": ["f2p"],
+        "type": "Log Burning"
+        },
+        {
+        "id": "maple_logs_fm",
+        "name": "Maple Logs",
+        "levelReq": 45,
+        "xpRate": 101250,
+        "xpPerAction": 135,
+        "actionName": "log burnt",
+        "itemsRequired": ["Tinderbox"],
+        "notes": "Commonly used for faster XP.",
+        "tags": ["p2p", "fast_xp"],
+        "type": "Log Burning"
+        },
+        {
+        "id": "yew_logs_fm",
+        "name": "Yew Logs",
+        "levelReq": 60,
+        "xpRate": 151875,
+        "xpPerAction": 202.5,
+        "actionName": "log burnt",
+        "itemsRequired": ["Tinderbox"],
+        "tags": ["p2p", "fast_xp"],
+        "type": "Log Burning"
+        },
+        {
+        "id": "wintertodt",
+        "name": "Wintertodt",
+        "levelReq": 50,
+        "xpRate": 200000, 
+        "location": "Wintertodt Camp (Zeah)",
+        "itemsRequired": ["Warm clothing", "Tinderbox", "Axe", "Hammer"],
+        "notes": "Popular boss/minigame for Firemaking. Gives good rewards and other skill XP.",
+        "tags": ["minigame", "boss", "rewards", "p2p", "multi_skill"],
+        "type": "Minigame",
+        "alternativeXpRate": [
+            {"type": "Woodcutting", "rate": 5000} 
+        ]
+        }
+    ]
+}

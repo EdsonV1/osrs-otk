@@ -1,0 +1,92 @@
+{
+	"skillNameCanonical": "agility",
+	"skillNameDisplay": "Agility",
+	"description": "Train your Agility to traverse Gielinor faster, access new areas, and regenerate run energy more quickly.",
+	"trainingMethods": [
+		{
+			"id": "gnome_stronghold_basic",
+			"name": "Gnome Stronghold (Basic Laps)",
+			"levelReq": 1,
+			"xpRate": 8000,
+			"xpPerAction": 110.5,
+			"actionName": "lap",
+			"location": "Gnome Stronghold",
+			"notes": "Beginner course. No Marks of Grace.",
+			"tags": [
+				"beginner",
+				"course"
+			],
+			"type": "Agility Course"
+		},
+		{
+			"id": "draynor_rooftop",
+			"name": "Draynor Village Rooftop",
+			"levelReq": 10,
+			"xpRate": 9000,
+			"xpPerAction": 216,
+			"actionName": "lap",
+			"marksPerHour": 9.0,
+			"location": "Draynor Village",
+			"notes": "First rooftop to award Marks of Grace.",
+			"tags": [
+				"rooftop",
+				"marks_of_grace"
+			],
+			"type": "Rooftop Course"
+		},
+		{
+			"id": "alkharid_rooftop",
+			"name": "Al Kharid Rooftop",
+			"levelReq": 20,
+			"xpRate": 9360,
+			"xpPerAction": 180,
+			"actionName": "lap",
+			"marksPerHour": 8.5,
+			"location": "Al Kharid",
+			"tags": [
+				"rooftop",
+				"marks_of_grace"
+			],
+			"type": "Rooftop Course"
+		},
+		{
+			"id": "canifis_rooftop",
+			"name": "Canifis Rooftop",
+			"levelReq": 40,
+			"xpRate": 19500,
+			"xpPerAction": 240,
+			"actionName": "lap",
+			"marksPerHour": 18.0,
+			"location": "Canifis",
+			"questsRequired": [
+				"Priest in Peril"
+			],
+			"notes": "Fastest Marks of Grace pre-90, good XP. Laps are quick.",
+			"tags": [
+				"rooftop",
+				"marks_of_grace",
+				"best_marks_early"
+			],
+			"type": "Rooftop Course"
+		},
+		{
+			"id": "ardougne_rooftop",
+			"name": "Ardougne Rooftop",
+			"levelReq": 90,
+			"xpRate": 61000,
+			"xpPerAction": 889,
+			"actionName": "lap",
+			"marksPerHour": 20.0,
+			"location": "Ardougne",
+			"notes": "Best rooftop for XP and Marks post-90. Ardougne Elite diary boosts marks by 25%.",
+			"tags": [
+				"rooftop",
+				"marks_of_grace",
+				"best_xp",
+				"best_marks",
+				"diary_boost_available"
+			],
+			"type": "Rooftop Course"
+		}
+	]
+}

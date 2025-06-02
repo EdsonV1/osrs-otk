@@ -1,0 +1,161 @@
+{
+	"skillNameCanonical": "strength",
+	"skillNameDisplay": "Strength",
+	"description": "Increases your maximum melee hit, allowing you to deal more damage. Also a requirement for some weapons.",
+	"trainingMethods": [
+		{
+			"id": "strength_cows_lumbridge",
+			"name": "Cows (Lumbridge - Aggressive/Strength Style)",
+			"levelReq": 1,
+			"xpRate": 5000,
+			"location": "Lumbridge Cow Pen",
+			"itemsRequired": [
+				"Any melee weapon (set to Aggressive or Strength style)"
+			],
+			"notes": "Classic starting point for combat.",
+			"tags": [
+				"beginner",
+				"f2p",
+				"combat"
+			],
+			"type": "Monster Combat",
+			"alternativeXpRate": [
+				{
+					"type": "Hitpoints",
+					"rate": 1600
+				}
+			]
+		},
+		{
+			"id": "strength_sand_crabs",
+			"name": "Sand Crabs/Ammonite Crabs (Strength Style)",
+			"levelReq": 1,
+			"xpRate": 45000,
+			"location": "Hosidius Beach (Sand Crabs), Fossil Island (Ammonite Crabs)",
+			"itemsRequired": [
+				"Melee weapon",
+				"Armour"
+			],
+			"notes": "Very AFK combat training. Use Strength combat style.",
+			"tags": [
+				"afk",
+				"combat",
+				"p2p"
+			],
+			"type": "Monster Combat",
+			"alternativeXpRate": [
+				{
+					"type": "Attack",
+					"rate": 45000
+				},
+				{
+					"type": "Defence",
+					"rate": 45000
+				},
+				{
+					"type": "Hitpoints",
+					"rate": 15000
+				}
+			]
+		},
+		{
+			"id": "strength_slayer_tasks",
+			"name": "Slayer Tasks (Melee - Strength Style)",
+			"levelReq": 1,
+			"xpRate": 60000,
+			"location": "Various, per task",
+			"itemsRequired": [
+				"Melee weapon",
+				"Armour",
+				"Slayer Helmet (if applicable)"
+			],
+			"notes": "Trains Slayer alongside combat. XP rates depend heavily on the assigned monster.",
+			"tags": [
+				"slayer",
+				"combat",
+				"p2p",
+				"variable_xp"
+			],
+			"type": "Monster Combat (Slayer)",
+			"alternativeXpRate": [
+				{
+					"type": "Attack",
+					"rate": 60000
+				},
+				{
+					"type": "Defence",
+					"rate": 60000
+				},
+				{
+					"type": "Hitpoints",
+					"rate": 20000
+				},
+				{
+					"type": "Slayer",
+					"rate": 15000
+				}
+			]
+		},
+		{
+			"id": "strength_nightmare_zone_dharoks",
+			"name": "Nightmare Zone (NMZ - Dharok's Setup)",
+			"levelReq": 70,
+			"xpRate": 90000,
+			"location": "Nightmare Zone",
+			"itemsRequired": [
+				"Dharok's set",
+				"Absorption potions",
+				"Overload potions",
+				"Rock cake/Locator orb"
+			],
+			"notes": "Very high AFK Strength XP by staying at 1 HP with Dharok's set effect.",
+			"tags": [
+				"afk",
+				"combat",
+				"p2p",
+				"best_xp_strength",
+				"dharoks"
+			],
+			"type": "Minigame (Combat)",
+			"alternativeXpRate": [
+				{
+					"type": "Hitpoints",
+					"rate": 30000
+				}
+			]
+		},
+		{
+			"id": "strength_warriors_guild_animated_armour",
+			"name": "Animated Armour (Warriors' Guild)",
+			"levelReq": 1,
+			"xpRate": 30000,
+			"location": "Warriors' Guild",
+			"itemsRequired": [
+				"Full set of metal armour (e.g., Mithril, Adamant, Rune)",
+				"Melee weapon"
+			],
+			"notes": "Decent AFK option, also a source of Warrior Guild tokens for defenders.",
+			"tags": [
+				"afk",
+				"combat",
+				"p2p",
+				"defender"
+			],
+			"type": "Monster Combat",
+			"alternativeXpRate": [
+				{
+					"type": "Attack",
+					"rate": 30000
+				},
+				{
+					"type": "Defence",
+					"rate": 30000
+				},
+				{
+					"type": "Hitpoints",
+					"rate": 10000
+				}
+			]
+		}
+	]
+}

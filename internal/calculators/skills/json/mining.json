@@ -1,0 +1,104 @@
+{
+	"skillNameCanonical": "mining",
+	"skillNameDisplay": "Mining",
+	"description": "Extract ores from rocks, which can be used in Smithing or sold. Also includes gem mining and essence mining.",
+	"trainingMethods": [
+		{
+			"id": "copper_tin",
+			"name": "Copper/Tin Ore",
+			"levelReq": 1,
+			"xpRate": 5000,
+			"xpPerAction": 17.5,
+			"actionName": "ore",
+			"location": "Lumbridge Swamp, Varrock Mine",
+			"itemsRequired": [
+				"Pickaxe (any)"
+			],
+			"notes": "Basic ores for starting Smithing.",
+			"tags": [
+				"beginner",
+				"f2p"
+			],
+			"type": "Ore"
+		},
+		{
+			"id": "iron_powermine",
+			"name": "Iron Ore (Powermining)",
+			"levelReq": 15,
+			"xpRate": 35000,
+			"xpPerAction": 35,
+			"actionName": "ore",
+			"location": "Al Kharid Mine, Varrock East Mine (3-rock spots)",
+			"itemsRequired": [
+				"Pickaxe (any)"
+			],
+			"notes": "Fast XP if dropping ores. Use a 3-rock spot for efficiency.",
+			"tags": [
+				"fast_xp",
+				"powermining",
+				"f2p"
+			],
+			"type": "Ore"
+		},
+		{
+			"id": "motherlode_mine_lower",
+			"name": "Motherlode Mine (Lower Level)",
+			"levelReq": 30,
+			"xpRate": 20000,
+			"location": "Dwarven Mine",
+			"itemsRequired": [
+				"Pickaxe (any)"
+			],
+			"questsRequired": [
+
+			],
+			"notes": "AFK-friendly. Chance for gems and gold nuggets for prospector outfit.",
+			"tags": [
+				"afk",
+				"minigame",
+				"outfit_pieces"
+			],
+			"type": "Minigame"
+		},
+		{
+			"id": "granite_powermine",
+			"name": "Granite (Powermining)",
+			"levelReq": 45,
+			"xpRate": 65000,
+			"xpPerAction": 50,
+			"actionName": "granite",
+			"location": "Quarry (Desert)",
+			"itemsRequired": [
+				"Pickaxe (any)",
+				"Waterskins",
+				"Desert clothing"
+			],
+			"notes": "Fastest Mining XP in the game, but very click-intensive.",
+			"tags": [
+				"fastest_xp",
+				"powermining",
+				"high_intensity"
+			],
+			"type": "Ore"
+		},
+		{
+			"id": "amethyst",
+			"name": "Amethyst",
+			"levelReq": 92,
+			"xpRate": 17000,
+			"xpPerAction": 240,
+			"actionName": "crystal",
+			"location": "Mining Guild",
+			"itemsRequired": [
+				"Pickaxe (any)"
+			],
+			"notes": "Highly AFK, good profit. Requires Mining Guild access.",
+			"tags": [
+				"afk",
+				"profitable",
+				"high_level"
+			],
+			"type": "Ore"
+		}
+	]
+}

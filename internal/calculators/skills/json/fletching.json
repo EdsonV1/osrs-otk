@@ -1,0 +1,172 @@
+{
+	"skillNameCanonical": "fletching",
+	"skillNameDisplay": "Fletching",
+	"description": "Craft bows from logs, attach feathers to arrow shafts, create crossbow bolts, and more.",
+	"trainingMethods": [
+		{
+			"id": "headless_arrows",
+			"name": "Headless Arrows",
+			"levelReq": 1,
+			"xpRate": 40000,
+			"xpPerAction": 1,
+			"actionName": "set made",
+			"itemsRequired": [
+				"Arrow shaft",
+				"Feather"
+			],
+			"notes": "Extremely fast early levels, but costs money for feathers.",
+			"tags": [
+				"beginner",
+				"fast_xp_early",
+				"money_loss"
+			],
+			"type": "Ammunition"
+		},
+		{
+			"id": "shortbows",
+			"name": "Shortbows (Regular Logs)",
+			"levelReq": 5,
+			"xpRate": 25000,
+			"xpPerAction": 5,
+			"actionName": "bow fletched",
+			"itemsRequired": [
+				"Logs",
+				"Knife"
+			],
+			"notes": "Basic bow fletching.",
+			"tags": [
+				"f2p",
+				"beginner"
+			],
+			"type": "Bows"
+		},
+		{
+			"id": "oak_shortbows",
+			"name": "Oak Shortbows",
+			"levelReq": 20,
+			"xpRate": 50000,
+			"xpPerAction": 16.5,
+			"actionName": "bow fletched",
+			"itemsRequired": [
+				"Oak logs",
+				"Knife"
+			],
+			"tags": [
+				"f2p"
+			],
+			"type": "Bows"
+		},
+		{
+			"id": "willow_longbows",
+			"name": "Willow Longbows (u)",
+			"levelReq": 40,
+			"xpRate": 120000,
+			"xpPerAction": 41.5,
+			"actionName": "bow (u) fletched",
+			"itemsRequired": [
+				"Willow logs",
+				"Knife"
+			],
+			"notes": "Common method, can be profitable if stringing and alching.",
+			"tags": [
+				"p2p",
+				"profitable_sometimes"
+			],
+			"type": "Bows (Unstrung)"
+		},
+		{
+			"id": "maple_longbows",
+			"name": "Maple Longbows (u)",
+			"levelReq": 55,
+			"xpRate": 170000,
+			"xpPerAction": 58.2,
+			"actionName": "bow (u) fletched",
+			"itemsRequired": [
+				"Maple logs",
+				"Knife"
+			],
+			"tags": [
+				"p2p",
+				"good_xp"
+			],
+			"type": "Bows (Unstrung)"
+		},
+		{
+			"id": "yew_longbows",
+			"name": "Yew Longbows (u)",
+			"levelReq": 70,
+			"xpRate": 200000,
+			"xpPerAction": 67.5,
+			"actionName": "bow (u) fletched",
+			"itemsRequired": [
+				"Yew logs",
+				"Knife"
+			],
+			"tags": [
+				"p2p",
+				"good_xp",
+				"profitable_sometimes"
+			],
+			"type": "Bows (Unstrung)"
+		},
+		{
+			"id": "magic_longbows",
+			"name": "Magic Longbows (u)",
+			"levelReq": 85,
+			"xpRate": 250000,
+			"xpPerAction": 83.2,
+			"actionName": "bow (u) fletched",
+			"itemsRequired": [
+				"Magic logs",
+				"Knife"
+			],
+			"tags": [
+				"p2p",
+				"fast_xp",
+				"high_level"
+			],
+			"type": "Bows (Unstrung)"
+		},
+		{
+			"id": "broad_arrows",
+			"name": "Broad Arrows",
+			"levelReq": 52,
+			"xpRate": 225000,
+			"xpPerAction": 15,
+			"actionName": "set made",
+			"itemsRequired": [
+				"Broad arrowheads",
+				"Arrow shaft",
+				"Feather"
+			],
+			"notes": "Requires Slayer task for Broad creatures to use, or Slayer level 55. Good profit and XP.",
+			"tags": [
+				"p2p",
+				"profitable",
+				"fast_xp",
+				"slayer_req"
+			],
+			"type": "Ammunition"
+		},
+		{
+			"id": "dragon_darts",
+			"name": "Dragon Darts",
+			"levelReq": 95,
+			"xpRate": 1000000,
+			"xpPerAction": 25,
+			"actionName": "tip attached",
+			"itemsRequired": [
+				"Dragon dart tip",
+				"Feather"
+			],
+			"notes": "One of the fastest Fletching methods, but very costly.",
+			"tags": [
+				"p2p",
+				"fastest_xp",
+				"very_high_level",
+				"expensive"
+			],
+			"type": "Darts"
+		}
+	]
+}

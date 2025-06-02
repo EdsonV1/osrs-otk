@@ -1,0 +1,146 @@
+{
+	"skillNameCanonical": "cooking",
+	"skillNameDisplay": "Cooking",
+	"description": "Cook raw food on fires or ranges to create edible meals that heal Hitpoints. Reduces burn chance at higher levels.",
+	"trainingMethods": [
+		{
+			"id": "shrimp_cook",
+			"name": "Shrimp",
+			"levelReq": 1,
+			"xpRate": 20000,
+			"xpPerAction": 30,
+			"actionName": "cooked",
+			"itemsRequired": [
+				"Raw shrimp"
+			],
+			"notes": "Basic starting food.",
+			"tags": [
+				"beginner",
+				"f2p"
+			],
+			"type": "Food"
+		},
+		{
+			"id": "trout_cook",
+			"name": "Trout",
+			"levelReq": 15,
+			"xpRate": 50000,
+			"xpPerAction": 70,
+			"actionName": "cooked",
+			"itemsRequired": [
+				"Raw trout"
+			],
+			"tags": [
+				"f2p"
+			],
+			"type": "Food"
+		},
+		{
+			"id": "salmon_cook",
+			"name": "Salmon",
+			"levelReq": 25,
+			"xpRate": 60000,
+			"xpPerAction": 90,
+			"actionName": "cooked",
+			"itemsRequired": [
+				"Raw salmon"
+			],
+			"tags": [
+				"f2p"
+			],
+			"type": "Food"
+		},
+		{
+			"id": "tuna_cook",
+			"name": "Tuna",
+			"levelReq": 30,
+			"xpRate": 70000,
+			"xpPerAction": 100,
+			"actionName": "cooked",
+			"itemsRequired": [
+				"Raw tuna"
+			],
+			"tags": [
+				"f2p"
+			],
+			"type": "Food"
+		},
+		{
+			"id": "lobsters_cook",
+			"name": "Lobsters",
+			"levelReq": 40,
+			"xpRate": 90000,
+			"xpPerAction": 120,
+			"actionName": "cooked",
+			"itemsRequired": [
+				"Raw lobster",
+				"Cooking gauntlets (recommended)"
+			],
+			"notes": "Good F2P money and decent XP.",
+			"tags": [
+				"f2p",
+				"profitable"
+			],
+			"type": "Food"
+		},
+		{
+			"id": "swordfish_cook",
+			"name": "Swordfish",
+			"levelReq": 45,
+			"xpRate": 100000,
+			"xpPerAction": 140,
+			"actionName": "cooked",
+			"itemsRequired": [
+				"Raw swordfish",
+				"Cooking gauntlets"
+			],
+			"tags": [
+				"p2p",
+				"profitable"
+			],
+			"type": "Food"
+		},
+		{
+			"id": "karambwans_cook_1tick",
+			"name": "1-tick Karambwans",
+			"levelReq": 30,
+			"xpRate": 800000,
+			"xpPerAction": 190,
+			"actionName": "cooked",
+			"itemsRequired": [
+				"Raw karambwan",
+				"Wine (for 1-tick method)"
+			],
+			"questsRequired": [
+				"Tai Bwo Wannai Trio"
+			],
+			"notes": "Fastest cooking XP, but requires precise timing and is not AFK.",
+			"tags": [
+				"fastest_xp",
+				"p2p",
+				"high_intensity",
+				"tick_manipulation"
+			],
+			"type": "Food"
+		},
+		{
+			"id": "wines",
+			"name": "Making Wines",
+			"levelReq": 35,
+			"xpRate": 250000,
+			"xpPerAction": 200,
+			"actionName": "wine made",
+			"itemsRequired": [
+				"Grapes",
+				"Jugs of water"
+			],
+			"notes": "Fast and cheap XP, but wines are often useless or sold at a loss.",
+			"tags": [
+				"fast_xp",
+				"p2p",
+				"cheap"
+			],
+			"type": "Other"
+		}
+	]
+}

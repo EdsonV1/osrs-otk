@@ -1,0 +1,124 @@
+{
+	"skillNameCanonical": "woodcutting",
+	"skillNameDisplay": "Woodcutting",
+	"description": "Chop down various trees to gather logs, which can be used in Fletching, Firemaking, Construction, or sold.",
+	"trainingMethods": [
+		{
+			"id": "normal_trees",
+			"name": "Normal Trees",
+			"levelReq": 1,
+			"xpRate": 7000,
+			"xpPerAction": 25,
+			"actionName": "log",
+			"location": "Lumbridge, Varrock",
+			"itemsRequired": [
+				"Axe (any)"
+			],
+			"notes": "Basic starting trees.",
+			"tags": [
+				"beginner",
+				"f2p"
+			],
+			"type": "Tree"
+		},
+		{
+			"id": "oak_trees",
+			"name": "Oak Trees",
+			"levelReq": 15,
+			"xpRate": 12000,
+			"xpPerAction": 37.5,
+			"actionName": "log",
+			"location": "Varrock East, Draynor Village",
+			"itemsRequired": [
+				"Axe (any)"
+			],
+			"notes": "Faster XP than normal trees.",
+			"tags": [
+				"f2p"
+			],
+			"type": "Tree"
+		},
+		{
+			"id": "willow_trees",
+			"name": "Willow Trees (Banking/Dropping)",
+			"levelReq": 30,
+			"xpRate": 30000,
+			"xpPerAction": 67.5,
+			"actionName": "log",
+			"location": "Draynor Village, Catherby, Barbarian Outpost",
+			"itemsRequired": [
+				"Axe (any)"
+			],
+			"notes": "Good XP for F2P, often crowded. Best near a bank.",
+			"tags": [
+				"f2p",
+				"fast_xp_f2p"
+			],
+			"type": "Tree"
+		},
+		{
+			"id": "teak_trees_ape_atoll",
+			"name": "Teak Trees (Ape Atoll)",
+			"levelReq": 35,
+			"xpRate": 70000,
+			"xpPerAction": 85,
+			"actionName": "log",
+			"location": "Ape Atoll (Hardwood Grove)",
+			"itemsRequired": [
+				"Axe (any)",
+				"Greegree (if not done with MM2)"
+			],
+			"questsRequired": [
+				"Monkey Madness I (partial for access)",
+				"Monkey Madness II (for full access/safety)"
+			],
+			"notes": "Fast XP, requires attention. Tick manipulation significantly boosts rates.",
+			"tags": [
+				"fast_xp",
+				"p2p",
+				"tick_manipulation"
+			],
+			"type": "Tree"
+		},
+		{
+			"id": "magic_trees",
+			"name": "Magic Trees",
+			"levelReq": 75,
+			"xpRate": 20000,
+			"xpPerAction": 250,
+			"actionName": "log",
+			"location": "Sorcerer's Tower, Ranging Guild, Prifddinas",
+			"itemsRequired": [
+				"Axe (any)"
+			],
+			"notes": "Valuable logs, but very slow XP. Good for AFK money making.",
+			"tags": [
+				"afk",
+				"profitable",
+				"p2p",
+				"high_level"
+			],
+			"type": "Tree"
+		},
+		{
+			"id": "redwood_trees",
+			"name": "Redwood Trees",
+			"levelReq": 90,
+			"xpRate": 60000,
+			"xpPerAction": 380,
+			"actionName": "log",
+			"location": "Woodcutting Guild (Hosidius)",
+			"itemsRequired": [
+				"Axe (any)"
+			],
+			"notes": "Best AFK Woodcutting XP. Requires 75% Hosidius favour for guild access.",
+			"tags": [
+				"afk",
+				"best_afk_xp",
+				"p2p",
+				"high_level"
+			],
+			"type": "Tree"
+		}
+	]
+}
