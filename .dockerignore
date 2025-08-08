@@ -1,0 +1,62 @@
+# Git
+.git
+.gitignore
+README.md
+
+# Binaries and build artifacts
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+
+# Frontend build artifacts
+web/frontend/node_modules/
+web/frontend/build/
+web/frontend/.svelte-kit/
+web/frontend/package-lock.json
+
+# Go specific
+*.coverage
+*.out
+
+# Environment files (use secrets or env vars instead)
+.env
+.env.local
+.env.*.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+
+# Documentation build
+docs/_build/
+
+# Test artifacts
+coverage.html
+coverage.out
+
+# Scripts (not needed in container)
+scripts/

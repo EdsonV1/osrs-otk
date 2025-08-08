@@ -1,10 +1,11 @@
-.PHONY: build clean dev test backend frontend docker-build docker-run
+.PHONY: build clean dev test backend frontend docker-build docker-run docker-dev docker-prod docker-clean
 
 # Variables
 APP_NAME := osrs-otk
 SERVER_NAME := $(APP_NAME)-server
 FRONTEND_DIR := web/frontend
 DOCKER_IMAGE := $(APP_NAME):latest
+DOCKER_DEV_IMAGE := $(APP_NAME):dev
 
 # Default target
 all: build
@@ -51,15 +52,64 @@ test:
 	@echo "Running frontend tests..."
 	cd $(FRONTEND_DIR) && npm test
 
-# Docker build
+# Docker build (production)
 docker-build:
-	@echo "Building Docker image..."
-	docker build -t $(DOCKER_IMAGE) .
+	@echo "Building production Docker image..."
+	docker build --target production -t $(DOCKER_IMAGE) .
 
-# Docker run
+# Docker build (development)
+docker-build-dev:
+	@echo "Building development Docker image..."
+	docker build --target development -t $(DOCKER_DEV_IMAGE) .
+
+# Docker run (single container)
 docker-run:
 	@echo "Running Docker container..."
-	docker run -p 8080:8080 -p 5173:5173 $(DOCKER_IMAGE)
+	docker run --rm -p 8080:8080 -e APP_ENV=docker $(DOCKER_IMAGE)
+
+# Docker development environment
+docker-dev:
+	@echo "Starting Docker development environment..."
+	docker-compose -f docker-compose.dev.yml up --build
+
+# Docker production environment
+docker-prod:
+	@echo "Starting Docker production environment..."
+	docker-compose -f docker-compose.prod.yml up -d --build
+
+# Docker development (detached)
+docker-dev-detached:
+	@echo "Starting Docker development environment (detached)..."
+	docker-compose -f docker-compose.dev.yml up -d --build
+
+# Stop Docker development
+docker-dev-down:
+	@echo "Stopping Docker development environment..."
+	docker-compose -f docker-compose.dev.yml down
+
+# Stop Docker production
+docker-prod-down:
+	@echo "Stopping Docker production environment..."
+	docker-compose -f docker-compose.prod.yml down
+
+# Docker logs
+docker-logs:
+	docker-compose -f docker-compose.dev.yml logs -f
+
+# Docker clean
+docker-clean:
+	@echo "Cleaning Docker resources..."
+	docker-compose -f docker-compose.dev.yml down -v --remove-orphans
+	docker-compose -f docker-compose.prod.yml down -v --remove-orphans
+	docker system prune -f
+	docker volume prune -f
+
+# Docker shell (development)
+docker-shell:
+	docker-compose -f docker-compose.dev.yml exec backend sh
+
+# Docker rebuild
+docker-rebuild: docker-clean docker-dev
 
 # Format code
 fmt:
@@ -76,6 +126,8 @@ lint:
 # Help
 help:
 	@echo "Available targets:"
+	@echo ""
+	@echo "Local Development:"
 	@echo "  build       - Build backend and frontend"
 	@echo "  backend     - Build backend only"
 	@echo "  frontend    - Build frontend only"
@@ -83,8 +135,25 @@ help:
 	@echo "  dev         - Start development servers"
 	@echo "  clean       - Clean build artifacts"
 	@echo "  test        - Run tests"
-	@echo "  docker-build - Build Docker image"
-	@echo "  docker-run  - Run Docker container"
+	@echo ""
+	@echo "Docker Development:"
+	@echo "  docker-dev  - Start Docker development environment"
+	@echo "  docker-dev-detached - Start Docker development (background)"
+	@echo "  docker-dev-down - Stop Docker development"
+	@echo "  docker-logs - Show Docker development logs"
+	@echo "  docker-shell - Access development container shell"
+	@echo ""
+	@echo "Docker Production:"
+	@echo "  docker-prod - Start Docker production environment"
+	@echo "  docker-prod-down - Stop Docker production"
+	@echo "  docker-build - Build production Docker image"
+	@echo "  docker-run  - Run single production container"
+	@echo ""
+	@echo "Docker Utilities:"
+	@echo "  docker-clean - Clean Docker resources"
+	@echo "  docker-rebuild - Rebuild development environment"
+	@echo ""
+	@echo "Code Quality:"
 	@echo "  fmt         - Format code"
 	@echo "  lint        - Lint code"
 	@echo "  help        - Show this help"

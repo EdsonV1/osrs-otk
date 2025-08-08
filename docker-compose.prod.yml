@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # Production backend and frontend in single container
+  app:
+    build:
+      context: .
+      target: production
+    container_name: osrs-otk-prod
+    ports:
+      - "8080:8080"
+    environment:
+      - APP_ENV=production
+    networks:
+      - osrs-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/api/skill-data/hunter"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Nginx reverse proxy (optional, for production scaling)
+  nginx:
+    image: nginx:alpine
+    container_name: osrs-otk-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deployments/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./deployments/nginx/ssl:/etc/nginx/ssl
+    networks:
+      - osrs-network
+    depends_on:
+      - app
+    restart: unless-stopped
+
+networks:
+  osrs-network:
+    driver: bridge

@@ -23,11 +23,20 @@ A comprehensive collection of calculators and tools for Old School RuneScape tra
 
 ### Development Setup
 
+#### Option 1: Docker (Recommended)
 ```bash
 # Clone the repository
 git clone <repository-url>
 cd osrs-otk
 
+# Start Docker development environment
+make docker-dev
+# OR use the convenience script
+./scripts/docker-dev.sh
+```
+
+#### Option 2: Local Development
+```bash
 # Copy environment files
 cp .env.example .env
 cp web/frontend/.env.example web/frontend/.env
@@ -47,6 +56,17 @@ The application will be available at:
 
 ### Building for Production
 
+#### Docker Production (Recommended)
+```bash
+# Build and run production container
+make docker-build
+make docker-run
+
+# Or use Docker Compose with Nginx
+make docker-prod
+```
+
+#### Local Production Build
 ```bash
 # Build everything
 make build
@@ -158,16 +178,38 @@ The new structure maintains **backward compatibility** with existing calculator 
 
 ## 🚢 Deployment
 
-### Using Make
+### Docker Deployment (Recommended)
+
+#### Production with Docker Compose
+```bash
+# Start production stack with Nginx reverse proxy
+make docker-prod
+
+# Check status
+docker-compose -f docker-compose.prod.yml ps
+
+# Stop
+make docker-prod-down
+```
+
+#### Single Container
+```bash
+make docker-build
+make docker-run
+```
+
+### Local Deployment
 ```bash
 make build
 ./bin/osrs-otk-server
 ```
 
 ### Environment Variables
-- `APP_ENV`: Environment (development/production)
+- `APP_ENV`: Environment (development/production/docker)
 - `SERVER_PORT`: Server port (default: 8080)
-- `SERVER_HOST`: Server host (default: localhost)
+- `SERVER_HOST`: Server host (default: localhost, 0.0.0.0 in Docker)
+
+For detailed Docker documentation, see [docs/docker.md](docs/docker.md).
 
 ## 🤝 Contributing
 
