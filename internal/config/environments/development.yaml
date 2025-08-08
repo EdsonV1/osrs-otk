@@ -1,0 +1,23 @@
+server:
+  port: "8080"
+  host: "localhost"
+
+assets:
+  skill_data_path: "assets/data/skills"
+  images_path: "assets/images"
+
+cors:
+  allowed_origins:
+    - "http://localhost:5173"
+  allowed_methods:
+    - "GET"
+    - "POST"
+    - "OPTIONS"
+    - "PUT"
+    - "DELETE"
+  allowed_headers:
+    - "Accept"
+    - "Content-Type"
+    - "Content-Length"
+    - "Accept-Encoding"
+    - "Authorization"

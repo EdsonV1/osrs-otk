@@ -1,0 +1,78 @@
+name_canonical: "agility"
+name_display: "Agility"
+description: "Boost your natural dexterity to gain access to shortcuts around the world and reduce damage from falling."
+
+training_methods:
+  - id: gnome_stronghold
+    name: "Gnome Stronghold Course"
+    level_required: 1
+    xp_rate: 7500
+    marks_per_hour: 15
+    xp_per_action: 86.5
+    action_name: "lap"
+    location: "Tree Gnome Stronghold"
+    notes: "Good starting course with marks of grace."
+    tags:
+      - "rooftop"
+      - "beginner"
+      - "marks_of_grace"
+    type: "Rooftop Course"
+
+  - id: draynor_village
+    name: "Draynor Village Course" 
+    level_required: 10
+    xp_rate: 9600
+    marks_per_hour: 12
+    xp_per_action: 120
+    action_name: "lap"
+    location: "Draynor Village"
+    notes: "Popular early course with decent marks."
+    tags:
+      - "rooftop"
+      - "marks_of_grace"
+    type: "Rooftop Course"
+
+  - id: al_kharid
+    name: "Al Kharid Course"
+    level_required: 20
+    xp_rate: 9600
+    marks_per_hour: 8
+    xp_per_action: 180
+    action_name: "lap" 
+    location: "Al Kharid"
+    notes: "Less popular but still decent XP."
+    tags:
+      - "rooftop"
+      - "marks_of_grace"
+    type: "Rooftop Course"
+
+  - id: varrock
+    name: "Varrock Course"
+    level_required: 30
+    xp_rate: 9900
+    marks_per_hour: 12
+    xp_per_action: 238
+    action_name: "lap"
+    location: "Varrock"
+    notes: "Good balance of XP and marks."
+    tags:
+      - "rooftop"
+      - "marks_of_grace"
+      - "popular"
+    type: "Rooftop Course"
+
+  - id: canifis
+    name: "Canifis Course"
+    level_required: 40
+    xp_rate: 16000
+    marks_per_hour: 18
+    xp_per_action: 240
+    action_name: "lap"
+    location: "Canifis"
+    notes: "Very popular course, great marks rate."
+    tags:
+      - "rooftop"
+      - "marks_of_grace"
+      - "popular"
+      - "morytania"
+    type: "Rooftop Course"

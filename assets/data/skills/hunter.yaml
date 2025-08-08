@@ -1,0 +1,110 @@
+name_canonical: "hunter"
+name_display: "Hunter"
+description: "Track and trap a variety of creatures across Gielinor for their pelts, meat, or other valuable resources."
+
+training_methods:
+  - id: crimson_swifts
+    name: "Crimson Swifts (Bird Snaring)"
+    level_required: 1
+    xp_rate: 10000
+    xp_per_action: 34
+    action_name: "bird caught"
+    location: "Feldip Hills, Rellekka Hunter area"
+    items_required:
+      - "Bird snare"
+    notes: "Basic bird snaring."
+    tags:
+      - "beginner"
+      - "bird_snaring"
+    type: "Bird Snaring"
+
+  - id: grey_chinchompas
+    name: "Grey Chinchompas (Box Trapping)"
+    level_required: 53
+    xp_rate: 70000
+    xp_per_action: 198.5
+    action_name: "chinchompa caught"
+    location: "Piscatoris Hunter area (West of Eagles' Peak)"
+    items_required:
+      - "Box trap (multiple)"
+    notes: "Decent XP, chinchompas are stackable and used for Ranged training."
+    tags:
+      - "box_trapping"
+      - "ranged_ammo"
+    type: "Box Trapping"
+
+  - id: red_chinchompas
+    name: "Red Chinchompas (Box Trapping)"
+    level_required: 63
+    xp_rate: 95000
+    xp_per_action: 265
+    action_name: "chinchompa caught"
+    location: "Feldip Hunter area (private area is best)"
+    items_required:
+      - "Box trap (multiple)"
+    quests_required:
+      - "Big Chompy Bird Hunting (for ogre access to some areas)"
+    notes: "Fastest Hunter XP for a long time. Very profitable."
+    tags:
+      - "fast_xp"
+      - "profitable"
+      - "box_trapping"
+      - "ranged_ammo"
+      - "high_level"
+    type: "Box Trapping"
+
+  - id: black_salamanders
+    name: "Black Salamanders (Net Trapping)"
+    level_required: 67
+    xp_rate: 80000
+    xp_per_action: 304.5
+    action_name: "salamander caught"
+    location: "Wilderness (Boneyard Hunter area)"
+    items_required:
+      - "Small fishing net"
+      - "Rope"
+    notes: "Good XP, but located in the Wilderness (PvP risk)."
+    tags:
+      - "net_trapping"
+      - "wilderness"
+      - "pvp_risk"
+    type: "Net Trapping"
+
+  - id: herbiboar
+    name: "Herbiboar"
+    level_required: 80
+    xp_rate: 100000
+    location: "Mushroom Forest (Fossil Island)"
+    items_required:
+      - "Secateurs (magic or regular)"
+    quests_required:
+      - "Bone Voyage"
+    notes: "Unique tracking method. Gives herbs, fossils, and a chance at the Herbi pet."
+    tags:
+      - "tracking"
+      - "herblore_xp"
+      - "pet_chance"
+      - "fossil_island"
+      - "high_level"
+    type: "Tracking"
+    alternative_xp_rate:
+      - type: "Herblore"
+        rate: 20000
+
+  - id: maniacal_monkeys
+    name: "Maniacal Monkeys (Kruk's Dungeon)"
+    level_required: 60
+    xp_rate: 110000
+    location: "Kruk's Dungeon (Ape Atoll)"
+    items_required:
+      - "Chinchompas (any type)"
+      - "Greegree (monkey)"
+    quests_required:
+      - "Monkey Madness II"
+    notes: "Very fast Hunter XP using chinchompas to hit multiple monkeys. Click intensive."
+    tags:
+      - "fastest_xp"
+      - "high_intensity"
+      - "tick_manipulation"
+      - "ape_atoll"
+    type: "Special Method"
