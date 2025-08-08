@@ -46,6 +46,13 @@ func (s *Server) setupRoutes() {
 	// Create services
 	skillService := skill.NewService(skillRepo)
 
+	// Health check endpoint
+	s.mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(`{"status":"healthy","service":"osrs-otk"}`))
+	})
+
 	// Legacy calculator handlers (keep existing functionality)
 	s.mux.HandleFunc("/api/birdhouse", handlers.BirdhouseCalcHandler)
 	s.mux.HandleFunc("/api/ardyknights", handlers.ArdyKnightCalcHandler)
