@@ -1,6 +1,6 @@
 <script lang="ts">
     import { createEventDispatcher, type EventDispatcher } from 'svelte';
-    import type { WintertodtFormState, WintertodtApiInput, WintertodtApiResult } from './types';
+    import type { WintertodtFormState, WintertodtApiInput, WintertodtApiResult } from '$lib/types';
 
     interface ComponentEvents {
         calculated: { resultData: WintertodtApiResult };

@@ -17,6 +17,12 @@
             description: 'Calculate Firemaking XP, Phoenix pet chances, and loot from Wintertodt rounds.',
             href: '/tools/wintertodt',
             iconSrc: "/images/skills/firemaking.png"
+        },
+        {
+            name: 'Guardians of the Rift Calculator',
+            description: 'Calculate Runecrafting XP rates, training time, rewards, and Abyssal Protector pet chances.',
+            href: '/tools/gotr',
+            iconSrc: "/images/skills/runecraft.png"
         }
     ];
 </script>

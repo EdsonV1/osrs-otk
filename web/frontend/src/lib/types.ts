@@ -125,3 +125,36 @@ export interface WintertodtApiResult {
     total_value: number;
     total_time: number;
 }
+
+// GOTR (Guardians of the Rift) Types
+export interface GOTRFormState {
+    currentLevel: number;
+    targetLevel: number;
+}
+
+export interface GOTRApiInput {
+    current_level: number;
+    target_level: number;
+}
+
+export interface GOTRReward {
+    name: string;
+    quantity: number;
+    value: number;
+    drop_rate?: string;
+}
+
+export interface GOTRApiResult {
+    current_level: number;
+    target_level: number;
+    xp_needed: number;
+    games_needed: number;
+    hours_needed: number;
+    average_xp_per_game: number;
+    average_xp_per_hour: number;
+    total_reward_rolls: number;
+    pet_chance_percentage: number;
+    estimated_rewards: GOTRReward[];
+    total_reward_value: number;
+    gp_per_hour: number;
+}

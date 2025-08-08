@@ -23,6 +23,14 @@
             iconSrc: '/images/birdhouse/redwood_bird_house.png',
             gradient: 'from-green-500 to-teal-600',
             stats: ['XP/Run', 'Profit', 'Time Efficiency']
+        },
+        {
+            name: 'Guardians of the Rift',
+            description: 'Calculate Runecrafting XP rates, training time, and valuable rewards.',
+            href: '/tools/gotr',
+            iconSrc: '/images/skills/runecraft.png',
+            gradient: 'from-purple-500 to-blue-600',
+            stats: ['XP/Hour', 'Rewards', 'Pet Chance']
         }
     ];
 
@@ -141,6 +149,16 @@
                     </a>
                 </div>
             {/each}
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="/tools" 
+               class="inline-flex items-center px-8 py-3 bg-theme-bg-tertiary hover:bg-theme-bg-elevated border border-theme-border-primary hover:border-theme-accent-primary text-theme-text-primary hover:text-theme-accent-primary font-medium rounded-button shadow-button hover:shadow-button-hover transition-all duration-200">
+                View All Tools
+                <svg class="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
         </div>
     </div>
 </div>

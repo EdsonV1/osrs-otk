@@ -45,6 +45,8 @@ func (s *Server) setupRoutes() {
 	s.mux.HandleFunc("/api/birdhouse", handlers.BirdhouseCalcHandler)
 	s.mux.HandleFunc("/api/ardyknights", handlers.ArdyKnightCalcHandler)
 	s.mux.HandleFunc("/api/wintertodt", handlers.WintertodtCalcHandler)
+	s.mux.HandleFunc("/api/tools/gotr", handlers.GOTRCalcHandler)
+	s.mux.HandleFunc("/api/tools/gotr/strategy", handlers.GOTRStrategyHandler)
 	
 	// New skill data handler
 	s.mux.HandleFunc("/api/skill-data/", handlers.NewSkillHandler(skillService))
