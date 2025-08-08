@@ -1,54 +1,31 @@
-version: '3.8'
-
 services:
-  # Backend service with hot reload
-  backend:
+  # Unified development service (simpler approach)
+  app:
     build:
       context: .
       target: development
-    container_name: osrs-otk-backend-dev
+    container_name: osrs-otk-dev
     ports:
       - "8080:8080"
-    volumes:
-      - .:/app
-      - /app/web/frontend/node_modules  # Prevent node_modules from being overwritten
-      - go-modules:/go/pkg/mod          # Cache Go modules
-    environment:
-      - APP_ENV=development
-      - CGO_ENABLED=0
-    networks:
-      - osrs-network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/api/skill-data/hunter"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-
-  # Frontend service with Vite dev server
-  frontend:
-    build:
-      context: ./web/frontend
-      dockerfile: Dockerfile.dev
-    container_name: osrs-otk-frontend-dev
-    ports:
       - "5173:5173"
     volumes:
-      - ./web/frontend:/app
-      - /app/node_modules               # Prevent node_modules from being overwritten
+      - .:/app
+      - node_modules:/app/web/frontend/node_modules  # Prevent node_modules overwrite
+      - go_modules:/go/pkg/mod                       # Cache Go modules
     environment:
-      - NODE_ENV=development
+      - APP_ENV=docker
+      - CGO_ENABLED=0
       - VITE_API_BASE_URL=http://localhost:8080
+    working_dir: /app
+    command: /app/scripts/docker-start-dev.sh
     networks:
       - osrs-network
     restart: unless-stopped
-    depends_on:
-      - backend
 
 networks:
   osrs-network:
     driver: bridge
 
 volumes:
-  go-modules:
+  node_modules:
+  go_modules:

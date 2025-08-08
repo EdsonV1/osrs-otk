@@ -1,28 +1,25 @@
-# Git
-.git
-.gitignore
-README.md
-
-# Binaries and build artifacts
+# Binaries and executables
 bin/
 *.exe
 *.exe~
 *.dll
 *.so
 *.dylib
-*.test
 
-# Frontend build artifacts
+# Go build artifacts
+*.test
+*.out
+coverage.html
+coverage.out
+tmp/
+
+# Frontend build artifacts and dependencies
 web/frontend/node_modules/
 web/frontend/build/
 web/frontend/.svelte-kit/
 web/frontend/package-lock.json
 
-# Go specific
-*.coverage
-*.out
-
-# Environment files (use secrets or env vars instead)
+# Environment and configuration files
 .env
 .env.local
 .env.*.local
@@ -48,15 +45,7 @@ Thumbs.db
 logs/
 
 # Temporary files
-tmp/
 temp/
 
-# Documentation build
-docs/_build/
-
-# Test artifacts
-coverage.html
-coverage.out
-
-# Development scripts needed for container startup
-# scripts/
+# Docker volumes and data
+docker-data/

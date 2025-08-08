@@ -1,6 +1,6 @@
 # Multi-stage Dockerfile for OSRS OTK
 # Stage 1: Build backend
-FROM golang:1.21-alpine AS backend-builder
+FROM golang:1.24-alpine AS backend-builder
 
 # Install dependencies for building
 RUN apk add --no-cache git ca-certificates tzdata
@@ -30,8 +30,8 @@ WORKDIR /app/frontend
 # Copy package files
 COPY web/frontend/package*.json ./
 
-# Install dependencies
-RUN npm ci
+# Install dependencies (use install instead of ci for flexibility)
+RUN npm install
 
 # Copy frontend source
 COPY web/frontend/ ./
@@ -54,7 +54,7 @@ WORKDIR /app
 COPY --from=backend-builder /app/bin/server /app/server
 
 # Copy built frontend
-COPY --from=frontend-builder /app/frontend/build /app/web/frontend/build
+COPY --from=frontend-builder /app/frontend/.svelte-kit/output /app/web/frontend/build
 
 # Copy configuration and assets
 COPY internal/config /app/internal/config
@@ -81,14 +81,20 @@ ENV APP_ENV=production
 CMD ["./server"]
 
 # Development stage (for development builds)
-FROM golang:1.21-alpine AS development
+FROM golang:1.24-alpine AS development
 
-RUN apk add --no-cache git ca-certificates tzdata curl
+# Install system dependencies
+RUN apk add --no-cache git ca-certificates tzdata curl nodejs npm
 
 WORKDIR /app
 
-# Install air for hot reloading
-RUN go install github.com/cosmtrek/air@latest
+# Set Go environment for module downloads
+ENV GO111MODULE=on
+ENV GOPROXY=https://proxy.golang.org,direct
+ENV GOSUMDB=sum.golang.org
+
+# Install air for hot reloading with explicit version
+RUN go install github.com/cosmtrek/air@v1.49.0
 
 # Copy go mod files
 COPY go.mod go.sum ./
@@ -103,8 +109,16 @@ RUN npm install
 
 WORKDIR /app
 
+# Create scripts directory and copy the development start script
+RUN mkdir -p /app/scripts
+COPY scripts/docker-start-dev.sh /app/scripts/docker-start-dev.sh
+RUN chmod +x /app/scripts/docker-start-dev.sh
+
 # Expose ports
 EXPOSE 8080 5173
 
-# Start development with hot reload
-CMD ["air", "-c", ".air.toml"]
+# Ensure air is in PATH
+ENV PATH="/go/bin:${PATH}"
+
+# Start development with both backend and frontend
+CMD ["/app/scripts/docker-start-dev.sh"]
