@@ -55,7 +55,7 @@
 
     <!-- Input Form Section -->
     <div class="max-w-2xl mx-auto mb-8">
-        <div class="bg-glass backdrop-blur-md rounded-card border border-theme-border-accent/20 p-6 shadow-card">
+        <div class="bg-theme-bg-secondary rounded-card border border-theme-border-accent/20 p-6 shadow-card">
             <WintertodtForm on:calculated={handleCalculation} on:error={handleCalcError} />
         </div>
     </div>

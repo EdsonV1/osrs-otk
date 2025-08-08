@@ -37,10 +37,10 @@
     $: petChanceBg = apiResult.pet_chance > 50 ? 'bg-green-500/10' : apiResult.pet_chance > 25 ? 'bg-orange-500/10' : 'bg-red-500/10';
 </script>
 
-<!-- Animated container with glassmorphism -->
-<div class="relative overflow-hidden bg-gradient-to-br from-theme-bg-secondary/80 via-theme-bg-tertiary/60 to-theme-bg-secondary/80 backdrop-blur-lg border border-theme-border-primary/30 rounded-card shadow-card-hover animate-slide-up">
-    <!-- Background fire effect -->
-    <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-red-500/3 to-yellow-500/5 animate-pulse"></div>
+<!-- Optimized container -->
+<div class="relative bg-theme-bg-secondary border border-theme-border-primary/30 rounded-card shadow-card-hover">
+    <!-- Simplified background fire effect -->
+    <div class="absolute inset-0 bg-gradient-to-br from-orange-500/3 to-red-500/2 rounded-card"></div>
     
     <!-- Header with fire icon -->
     <div class="relative p-6 pb-4">
@@ -65,7 +65,7 @@
     <div class="relative px-6 pb-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <!-- XP Card -->
-            <div class="group relative bg-glass backdrop-blur-md p-5 rounded-card border border-theme-border-accent/20 hover:border-theme-accent-primary/40 transition-all duration-300 hover:shadow-card transform hover:-translate-y-0.5">
+            <div class="group bg-theme-bg-tertiary/80 p-5 rounded-card border border-theme-border-accent/20 hover:border-theme-accent-primary/40 transition-colors duration-200 hover:shadow-card">
                 <div class="flex items-center justify-between mb-3">
                     <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                         <span class="text-white text-lg">📊</span>
@@ -82,7 +82,7 @@
             </div>
 
             <!-- Phoenix Pet Card -->
-            <div class="group relative bg-glass backdrop-blur-md p-5 rounded-card border border-theme-border-accent/20 hover:border-orange-400/40 transition-all duration-300 hover:shadow-card transform hover:-translate-y-0.5">
+            <div class="group bg-theme-bg-tertiary/80 p-5 rounded-card border border-theme-border-accent/20 hover:border-orange-400/40 transition-colors duration-200 hover:shadow-card">
                 <div class="flex items-center justify-between mb-3">
                     <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center {petChanceBg}">
                         <span class="text-white text-lg">🔥</span>
@@ -102,7 +102,7 @@
         <!-- Loot & Time Section -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
             <!-- Loot Value -->
-            <div class="lg:col-span-1 bg-glass backdrop-blur-md p-5 rounded-card border border-theme-border-accent/20 hover:border-green-400/40 transition-all duration-300">
+            <div class="lg:col-span-1 bg-theme-bg-tertiary/80 p-5 rounded-card border border-theme-border-accent/20 hover:border-green-400/40 transition-colors duration-200">
                 <div class="flex items-center justify-between">
                     <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
                         <span class="text-white text-lg">💰</span>
@@ -115,7 +115,7 @@
             </div>
 
             <!-- Time Investment -->
-            <div class="lg:col-span-2 bg-glass backdrop-blur-md p-5 rounded-card border border-theme-border-accent/20">
+            <div class="lg:col-span-2 bg-theme-bg-tertiary/80 p-5 rounded-card border border-theme-border-accent/20">
                 <div class="flex items-center justify-between">
                     <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-lg flex items-center justify-center">
                         <span class="text-white text-lg">⏰</span>
@@ -131,7 +131,7 @@
 
         <!-- Loot Breakdown -->
         {#if sortedLoot.length > 0}
-            <div class="bg-glass backdrop-blur-md rounded-card border border-theme-border-accent/20 overflow-hidden mb-6">
+            <div class="bg-theme-bg-tertiary/80 rounded-card border border-theme-border-accent/20 overflow-hidden mb-6">
                 <div class="p-4 border-b border-theme-border-subtle/30">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-3">
@@ -150,9 +150,9 @@
                 <!-- OSRS-Style Loot Grid -->
                 <div class="p-4">
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-                        {#each sortedLoot as [itemName, quantity], index}
+                        {#each sortedLoot as [itemName, quantity]}
                             {@const itemValue = (apiResult.total_value / sortedLoot.reduce((sum, [_, qty]) => sum + qty, 0)) * quantity}
-                            <div class="group relative bg-theme-bg-tertiary/60 hover:bg-theme-bg-tertiary rounded-lg border border-theme-border-subtle/50 hover:border-theme-accent-primary/30 transition-all duration-200 p-3 animate-scale-in" style="animation-delay: {index * 50}ms">
+                            <div class="group bg-theme-bg-tertiary/60 hover:bg-theme-bg-tertiary rounded-lg border border-theme-border-subtle/50 hover:border-theme-accent-primary/30 transition-colors duration-200 p-3">
                                 <!-- Item Image Placeholder -->
                                 <div class="relative mb-2">
                                     <div class="w-10 h-10 mx-auto bg-gradient-to-br from-orange-400 to-red-600 rounded-lg flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">

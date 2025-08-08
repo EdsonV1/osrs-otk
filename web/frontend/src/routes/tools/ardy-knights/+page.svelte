@@ -53,7 +53,7 @@
 
     <!-- Input Form Section -->
     <div class="max-w-2xl mx-auto mb-8">
-        <div class="bg-glass backdrop-blur-md rounded-card border border-theme-border-accent/20 p-6 shadow-card">
+        <div class="bg-theme-bg-secondary rounded-card border border-theme-border-accent/20 p-6 shadow-card">
             <InputForm on:calculated={handleCalculated} on:error={handleError} />
         </div>
     </div>
