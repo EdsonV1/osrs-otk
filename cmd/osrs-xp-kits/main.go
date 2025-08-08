@@ -30,7 +30,6 @@ func main() {
 	mux.HandleFunc("/api/birdhouse", handlers.BirdhouseCalcHandler)
 	mux.HandleFunc("/api/ardyknights", handlers.ArdyKnightCalcHandler)
 	mux.HandleFunc("/api/wintertodt", handlers.WintertodtCalcHandler)
-
 	mux.HandleFunc("/api/skill-data/", handlers.SkillDataHandler)
 
 	log.Println("Starting server on :8080")

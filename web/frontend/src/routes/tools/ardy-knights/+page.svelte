@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { ArdyKnightResult } from '$lib/types';
-    import InputForm from '$lib/InputForm.svelte';
-    import ResultsDisplay from '$lib/ResultsDisplay.svelte';
+    import InputForm from '$lib/components/ardy-knights/InputForm.svelte';
+    import ResultsDisplay from '$lib/components/ardy-knights/ResultsDisplay.svelte';
 
     let results: ArdyKnightResult | null = null;
     let error: string | null = null;
@@ -33,7 +33,7 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         <div class="lg:col-span-1">
-            <InputForm on:calculated={handleCalculated} on:error={handleError} toolName="Ardougne Knights" />
+            <InputForm on:calculated={handleCalculated} on:error={handleError} />
         </div>
 
         <div class="lg:col-span-1 lg:sticky lg:top-24">

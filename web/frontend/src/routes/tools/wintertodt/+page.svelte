@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { WintertodtApiResult } from '$lib/types';
-    import WintertodtForm from '$lib/WintertodtInputForm.svelte';
-    import WintertodtResults from '$lib/WintertodtResultsDisplay.svelte';
+    import WintertodtForm from '$lib/components/wintertodt/InputForm.svelte';
+    import WintertodtResults from '$lib/components/wintertodt/ResultsDisplay.svelte';
 
     let currentApiResult: WintertodtApiResult | null = null;
     let currentError: string | null = null;

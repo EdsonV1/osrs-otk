@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { BirdhouseApiResult } from '$lib/types';
-    import BirdhouseForm from '$lib/BirdhouseInputForm.svelte';
-    import BirdhouseResults from '$lib/BirdhouseResultsDisplay.svelte';
+    import BirdhouseForm from '$lib/components/birdhouse/InputForm.svelte';
+    import BirdhouseResults from '$lib/components/birdhouse/ResultsDisplay.svelte';
 
     let currentApiResult: BirdhouseApiResult | null = null;
     let currentError: string | null = null;
