@@ -36,19 +36,16 @@ export interface BirdhouseFormState {
     // hunterLevel, numberOfHouses, numberOfRuns are removed from this specific form state
 }
 
-// This remains the same as it matches your backend's needs
 export interface BirdhouseApiInput {
     type: string;     // Lowercase birdhouse type, e.g., "redwood"
     quantity: number; // Total number of individual birdhouses
 }
 
-// Represents the inner structure for seed drops in the API response
 export interface SeedDropInfo {
     quantity: number;
     value: number;
 }
 
-// Represents the JSON response FROM your Go backend API
 export interface BirdhouseApiResult {
     estimated_nests: number;
     hunter_xp: number;
@@ -61,12 +58,6 @@ export interface BirdhouseApiResult {
     };
     total_loot: number; // Total GP value derived from seed_drops by the backend
 }
-
-
-// src/lib/types.ts
-// ... (Keep your existing ArdyKnight, Birdhouse, SkillDisplayInfo, etc. types) ...
-
-// ---- Skill Calculator Types ----
 
 export interface TrainingMethod {
     id: string;                 // Unique identifier for this method, e.g., "canifis_rooftop"
@@ -85,7 +76,6 @@ export interface TrainingMethod {
     type?: string;              // General category, e.g., "Rooftop Course", "Mining Ore", "Combat"
 }
 
-// Expected structure of the JSON response from your Go backend for /api/skill-data/[skillName]
 export interface SkillData {
     skillNameCanonical: string; // e.g., "agility", "mining" (lowercase, for API path)
     skillNameDisplay: string;   // e.g., "Agility", "Mining" (for display in titles)
@@ -93,28 +83,45 @@ export interface SkillData {
     trainingMethods: TrainingMethod[];
 }
 
-// This is the type for the `data` prop passed to your +page.svelte by the load function
-export interface SkillCalculatorPageData { // SvelteKit will use this for $types.PageData if load returns { skillData: SkillData }
+export interface SkillCalculatorPageData {
     skillData: SkillData;
 }
 
-// For the results calculated on the frontend
 export interface CalculatedMethodResult {
     methodId: string;
     methodName: string;
     actionsNeeded?: number;
     timeToCompleteHours?: number;
     xpFromThisMethod?: number;
-    // Skill-specific results
     marksOfGraceEarned?: number;
-    amylasePurchased?: number; // Example for Agility
+    amylasePurchased?: number; 
 }
 
 export interface SkillCalculationOutput {
     totalXPToGain: number;
-    methodsBreakdown: CalculatedMethodResult[]; // If allowing multiple methods in a plan
-    overallTimeToTarget?: string; // Formatted total time
-    // Any other summary results
-    totalMarksOfGrace?: number;   // Example for Agility
-    totalAmylase?: number;        // Example for Agility
+    methodsBreakdown: CalculatedMethodResult[];
+    overallTimeToTarget?: string; 
+    totalMarksOfGrace?: number;   
+    totalAmylase?: number;       
+}
+
+export interface WintertodtFormState {
+    firemakingLevel: number;
+    roundsPerHour: number;
+    totalRounds: number;
+}
+
+export interface WintertodtApiInput {
+    firemaking_level: number;
+    rounds_per_hour: number;
+    total_rounds: number;
+}
+
+export interface WintertodtApiResult {
+    total_experience: number;
+    average_exp_hour: number;
+    pet_chance: number;
+    estimated_loot: { [itemName: string]: number };
+    total_value: number;
+    total_time: number;
 }

@@ -1,4 +1,3 @@
-// internal/handlers/skill_data_handler.go
 package handlers
 
 import (
@@ -30,7 +29,6 @@ func SkillDataHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	filePath := filepath.Join("internal", "calculators", "skills", "json", fmt.Sprintf("%s.json", skillName))
-	fmt.Println(filePath)
 
 	jsonData, err := os.ReadFile(filePath)
 	if err != nil {

@@ -11,6 +11,12 @@
             description: 'Plan your birdhouse runs for maximum Hunter XP and valuable bird nests.',
             href: '/tools/birdhouses',
             iconSrc: "/images/birdhouse/redwood_bird_house.png"
+        },
+        {
+            name: 'Wintertodt Calculator',
+            description: 'Calculate Firemaking XP, Phoenix pet chances, and loot from Wintertodt rounds.',
+            href: '/tools/wintertodt',
+            iconSrc: "/images/skills/firemaking.png"
         }
     ];
 </script>

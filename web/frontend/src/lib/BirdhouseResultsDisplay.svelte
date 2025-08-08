@@ -23,7 +23,7 @@
         : [];
 </script>
 
-<div class="bg-theme-card-bg shadow-card rounded-xl border border-theme-border-subtle p-6 sm:p-8 space-y-6">
+<div class="bg-theme-card-bg shadow-card rounded-lg border border-theme-border p-6 space-y-6">
     <h2 class="text-h3 text-theme-text-primary border-b border-theme-border pb-4">Birdhouse Run Results</h2>
 
     {#if apiResult}
