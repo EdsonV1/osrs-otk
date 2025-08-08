@@ -33,6 +33,11 @@ func (s *Server) Start() error {
 	return http.ListenAndServe(":"+s.config.Server.Port, handler)
 }
 
+// GetHandler returns the HTTP handler for testing
+func (s *Server) GetHandler() http.Handler {
+	return s.corsMiddleware(s.mux)
+}
+
 // setupRoutes configures all application routes
 func (s *Server) setupRoutes() {
 	// Create repositories

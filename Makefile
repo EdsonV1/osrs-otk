@@ -52,6 +52,32 @@ test:
 	@echo "Running frontend tests..."
 	cd $(FRONTEND_DIR) && npm test
 
+# Run tests with coverage
+test-coverage:
+	@echo "Running backend tests with coverage..."
+	go test -v -race -coverprofile=coverage.out ./...
+	go tool cover -html=coverage.out -o coverage.html
+	@echo "Coverage report generated: coverage.html"
+
+# Run integration tests
+test-integration:
+	@echo "Running integration tests..."
+	go test -v -tags=integration ./internal/integration/...
+
+# Run all tests (unit + integration + frontend)
+test-all: test test-integration
+	@echo "All tests completed"
+
+# Run benchmarks
+benchmark:
+	@echo "Running benchmarks..."
+	go test -bench=. -benchmem ./...
+
+# Test with race detection
+test-race:
+	@echo "Running tests with race detection..."
+	go test -v -race ./...
+
 # Docker build (production)
 docker-build:
 	@echo "Building production Docker image..."
