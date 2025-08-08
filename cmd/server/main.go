@@ -16,7 +16,7 @@ func main() {
 
 	// Create and start server
 	srv := server.New(cfg)
-	
+
 	log.Printf("Starting server on %s", cfg.GetAddr())
 	if err := srv.Start(); err != nil {
 		log.Fatalf("Server failed to start: %v", err)

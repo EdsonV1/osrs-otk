@@ -69,28 +69,28 @@ func TestXPRequired(t *testing.T) {
 			expectError:  false,
 		},
 		{
-			name:        "Invalid: current level 0",
+			name:         "Invalid: current level 0",
 			currentLevel: 0,
 			targetLevel:  50,
-			expectError: true,
+			expectError:  true,
 		},
 		{
-			name:        "Invalid: target level 100",
+			name:         "Invalid: target level 100",
 			currentLevel: 50,
 			targetLevel:  100,
-			expectError: true,
+			expectError:  true,
 		},
 		{
-			name:        "Invalid: current >= target",
+			name:         "Invalid: current >= target",
 			currentLevel: 70,
 			targetLevel:  70,
-			expectError: true,
+			expectError:  true,
 		},
 		{
-			name:        "Invalid: current > target",
+			name:         "Invalid: current > target",
 			currentLevel: 80,
 			targetLevel:  70,
-			expectError: true,
+			expectError:  true,
 		},
 	}
 
@@ -111,7 +111,7 @@ func TestXPRequired(t *testing.T) {
 			}
 
 			if result != tt.expectedXP {
-				t.Errorf("XPRequired(%d, %d) = %f, want %f", 
+				t.Errorf("XPRequired(%d, %d) = %f, want %f",
 					tt.currentLevel, tt.targetLevel, result, tt.expectedXP)
 			}
 
@@ -204,7 +204,7 @@ func TestXPTableBoundaryConditions(t *testing.T) {
 	// Test exact boundary values
 	for level := 2; level <= 99; level++ {
 		xpThreshold := XPTable[level-1]
-		
+
 		// Test exactly at threshold
 		calculatedLevel := LevelForXP(xpThreshold)
 		if calculatedLevel != level {
@@ -226,7 +226,7 @@ func TestXPTableBoundaryConditions(t *testing.T) {
 // Benchmark tests
 func BenchmarkLevelForXP(b *testing.B) {
 	xpValues := []float64{100000, 500000, 1000000, 5000000, 10000000}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		for _, xp := range xpValues {
@@ -237,7 +237,7 @@ func BenchmarkLevelForXP(b *testing.B) {
 
 func BenchmarkXPRequired(b *testing.B) {
 	testCases := [][2]int{{1, 50}, {50, 77}, {77, 99}, {90, 99}}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		for _, tc := range testCases {

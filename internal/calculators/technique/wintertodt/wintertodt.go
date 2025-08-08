@@ -48,4 +48,3 @@ func CalculateWintertodtData(firemakingLevel int, roundsPerHour float64, totalRo
 		TotalTime:       totalTime,
 	}, nil
 }
-

@@ -6,12 +6,12 @@ import (
 
 func TestCalculateGOTRData(t *testing.T) {
 	tests := []struct {
-		name           string
-		currentLevel   int
-		targetLevel    int
-		expectError    bool
-		minXPPerHour   float64
-		maxXPPerHour   float64
+		name         string
+		currentLevel int
+		targetLevel  int
+		expectError  bool
+		minXPPerHour float64
+		maxXPPerHour float64
 	}{
 		{
 			name:         "Level 77 to 99",
@@ -66,7 +66,7 @@ func TestCalculateGOTRData(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			result, err := CalculateGOTRData(tt.currentLevel, tt.targetLevel)
-			
+
 			if tt.expectError {
 				if err == nil {
 					t.Errorf("Expected error but got none")
@@ -102,7 +102,7 @@ func TestCalculateGOTRData(t *testing.T) {
 
 			// Check XP per hour is within reasonable bounds
 			if result.AverageXPPerHour < tt.minXPPerHour || result.AverageXPPerHour > tt.maxXPPerHour {
-				t.Errorf("XP per hour out of range: got %f, want between %f and %f", 
+				t.Errorf("XP per hour out of range: got %f, want between %f and %f",
 					result.AverageXPPerHour, tt.minXPPerHour, tt.maxXPPerHour)
 			}
 
@@ -143,7 +143,7 @@ func TestCalculateXPPerGame(t *testing.T) {
 
 	for _, tt := range tests {
 		xpPerGame := calculateXPPerGame(tt.currentLevel, tt.targetLevel)
-		
+
 		if xpPerGame < tt.minXP || xpPerGame > tt.maxXP {
 			t.Errorf("XP per game for levels %d-%d out of range: got %f, want between %f and %f",
 				tt.currentLevel, tt.targetLevel, xpPerGame, tt.minXP, tt.maxXP)
@@ -154,17 +154,17 @@ func TestCalculateXPPerGame(t *testing.T) {
 func TestSimulateAverageRewards(t *testing.T) {
 	// Test with a reasonable number of searches
 	searches := 1000
-	
+
 	rewards, totalValue := SimulateAverageRewards(searches)
-	
+
 	if len(rewards) == 0 {
 		t.Errorf("Should have rewards from %d searches", searches)
 	}
-	
+
 	if totalValue <= 0 {
 		t.Errorf("Total value should be positive, got %d", totalValue)
 	}
-	
+
 	// Should have common items like guardian essence
 	hasEssence := false
 	for _, reward := range rewards {
@@ -173,7 +173,7 @@ func TestSimulateAverageRewards(t *testing.T) {
 			break
 		}
 	}
-	
+
 	if !hasEssence {
 		t.Errorf("Should have guardian essence in rewards")
 	}

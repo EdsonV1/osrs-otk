@@ -22,7 +22,7 @@ func NewService(repo Repository) *Service {
 func (s *Service) GetSkillData(ctx context.Context, skillName string) (*SkillData, error) {
 	// Normalize skill name
 	normalizedName := strings.ToLower(strings.TrimSpace(skillName))
-	
+
 	if normalizedName == "" {
 		return nil, fmt.Errorf("skill name cannot be empty")
 	}

@@ -38,7 +38,7 @@ func Load() (*Config, error) {
 	}
 
 	configPath := filepath.Join("internal", "config", "environments", fmt.Sprintf("%s.yaml", env))
-	
+
 	data, err := os.ReadFile(configPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read config file %s: %w", configPath, err)

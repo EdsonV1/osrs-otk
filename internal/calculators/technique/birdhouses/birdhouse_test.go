@@ -20,7 +20,7 @@ func TestCalculateBirdhouseData(t *testing.T) {
 			typ:             "regular",
 			quantity:        10,
 			expectError:     false,
-			expectedMinXP:   2500,  // Hunter XP
+			expectedMinXP:   2500, // Hunter XP
 			expectedMaxXP:   3000,
 			expectedMinLoot: 50000,
 			expectedMaxLoot: 200000,
@@ -168,7 +168,7 @@ func TestCalculateBirdhouseData(t *testing.T) {
 
 func TestBirdhouseTypeValidation(t *testing.T) {
 	validTypes := []string{"regular", "oak", "willow", "teak", "maple", "mahogany", "yew", "magic", "redwood"}
-	
+
 	for _, typ := range validTypes {
 		t.Run("Valid_"+typ, func(t *testing.T) {
 			result, err := CalculateBirdhouseData(typ, 10)
@@ -196,29 +196,29 @@ func TestBirdhouseScaling(t *testing.T) {
 	// Test that higher tier birdhouses give proportionally more rewards
 	types := []string{"regular", "oak", "willow", "yew", "magic", "redwood"}
 	quantity := 50
-	
+
 	var prevHunterXP int
 	var prevTotalLoot int
-	
+
 	for i, typ := range types {
 		result, err := CalculateBirdhouseData(typ, quantity)
 		if err != nil {
 			t.Fatalf("Unexpected error for %s: %v", typ, err)
 		}
-		
+
 		if i > 0 {
 			if result.HunterXP <= prevHunterXP {
 				t.Errorf("Higher tier %s should give more Hunter XP than previous (%d vs %d)",
 					typ, result.HunterXP, prevHunterXP)
 			}
-			
+
 			// Total loot might not always increase linearly, but should generally trend upward
 			if i > 2 && result.TotalLoot < prevTotalLoot/2 {
 				t.Errorf("Higher tier %s loot unexpectedly low compared to previous (%d vs %d)",
 					typ, result.TotalLoot, prevTotalLoot)
 			}
 		}
-		
+
 		prevHunterXP = result.HunterXP
 		prevTotalLoot = result.TotalLoot
 	}
@@ -227,27 +227,27 @@ func TestBirdhouseScaling(t *testing.T) {
 // Test consistency of calculations
 func TestBirdhouseConsistency(t *testing.T) {
 	typ := "yew"
-	
+
 	// Test that doubling quantity roughly doubles rewards
 	result1, err1 := CalculateBirdhouseData(typ, 50)
 	result2, err2 := CalculateBirdhouseData(typ, 100)
-	
+
 	if err1 != nil || err2 != nil {
 		t.Fatalf("Unexpected errors: %v, %v", err1, err2)
 	}
-	
+
 	// Hunter XP should scale exactly
 	if result2.HunterXP != result1.HunterXP*2 {
 		t.Errorf("Hunter XP should scale exactly: %d * 2 != %d", result1.HunterXP, result2.HunterXP)
 	}
-	
+
 	// Crafting XP should scale exactly
 	if result2.CraftingXP != result1.CraftingXP*2 {
 		t.Errorf("Crafting XP should scale exactly: %d * 2 != %d", result1.CraftingXP, result2.CraftingXP)
 	}
-	
+
 	// Estimated nests should scale exactly
-	if abs(int(result2.EstimatedNests*10) - int(result1.EstimatedNests*20)) > 1 {
+	if abs(int(result2.EstimatedNests*10)-int(result1.EstimatedNests*20)) > 1 {
 		t.Errorf("Estimated nests should scale: %f * 2 ≈ %f", result1.EstimatedNests, result2.EstimatedNests)
 	}
 }

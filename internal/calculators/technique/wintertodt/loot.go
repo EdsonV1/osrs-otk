@@ -8,7 +8,7 @@ import (
 // SimulateLoot simulates Wintertodt loot for the given number of rounds
 func SimulateLoot(rounds int) (map[string]any, int) {
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
-	
+
 	lootCounts := make(map[string]int)
 	totalValue := 0
 

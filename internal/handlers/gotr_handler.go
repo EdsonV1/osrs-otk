@@ -30,12 +30,12 @@ func GOTRCalcHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Current level must be between 27 and 126 (minimum level to access GOTR)", http.StatusBadRequest)
 		return
 	}
-	
+
 	if input.TargetLevel < 27 || input.TargetLevel > 126 {
 		http.Error(w, "Target level must be between 27 and 126", http.StatusBadRequest)
 		return
 	}
-	
+
 	if input.TargetLevel <= input.CurrentLevel {
 		http.Error(w, "Target level must be higher than current level", http.StatusBadRequest)
 		return
@@ -50,7 +50,7 @@ func GOTRCalcHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Set response headers
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	// Encode and send response
 	if err := json.NewEncoder(w).Encode(result); err != nil {
 		http.Error(w, "Error encoding response: "+err.Error(), http.StatusInternalServerError)
@@ -69,7 +69,7 @@ func GOTRStrategyHandler(w http.ResponseWriter, r *http.Request) {
 		CurrentLevel int `json:"current_level"`
 		TargetLevel  int `json:"target_level"`
 	}
-	
+
 	if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
 		http.Error(w, "Invalid JSON: "+err.Error(), http.StatusBadRequest)
 		return

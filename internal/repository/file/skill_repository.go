@@ -27,7 +27,7 @@ func NewSkillRepository(dataPath string) *SkillRepository {
 // GetSkillData retrieves skill data from YAML file
 func (r *SkillRepository) GetSkillData(ctx context.Context, skillName string) (*skill.SkillData, error) {
 	filePath := filepath.Join(r.dataPath, fmt.Sprintf("%s.yaml", skillName))
-	
+
 	data, err := os.ReadFile(filePath)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -61,7 +61,7 @@ func (r *SkillRepository) ListSkills(ctx context.Context) ([]string, error) {
 		if entry.IsDir() {
 			continue
 		}
-		
+
 		name := entry.Name()
 		if strings.HasSuffix(name, ".yaml") || strings.HasSuffix(name, ".yml") {
 			skillName := strings.TrimSuffix(strings.TrimSuffix(name, ".yaml"), ".yml")

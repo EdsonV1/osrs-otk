@@ -7,15 +7,15 @@ import (
 
 func TestCalculateWintertodtData(t *testing.T) {
 	tests := []struct {
-		name               string
-		firemakingLevel    int
-		roundsPerHour      float64
-		totalRounds        int
-		expectError        bool
-		expectedMinXPHour  float64
-		expectedMaxXPHour  float64
-		expectedMinValue   int
-		expectedMaxValue   int
+		name              string
+		firemakingLevel   int
+		roundsPerHour     float64
+		totalRounds       int
+		expectError       bool
+		expectedMinXPHour float64
+		expectedMaxXPHour float64
+		expectedMinValue  int
+		expectedMaxValue  int
 	}{
 		{
 			name:              "Level 50 baseline",
@@ -201,14 +201,14 @@ func TestSimulateLoot(t *testing.T) {
 // Test that pet chance calculation is accurate
 func TestPetChanceCalculation(t *testing.T) {
 	tests := []struct {
-		rounds      int
-		minChance   float64
-		maxChance   float64
+		rounds    int
+		minChance float64
+		maxChance float64
 	}{
-		{1, 0.01, 0.03},      // Single round
-		{100, 1.8, 2.2},      // Medium rounds
-		{1000, 18.0, 22.0},   // Many rounds
-		{5000, 63.0, 67.0},   // Very many rounds (approaching but not exceeding ~95%)
+		{1, 0.01, 0.03},    // Single round
+		{100, 1.8, 2.2},    // Medium rounds
+		{1000, 18.0, 22.0}, // Many rounds
+		{5000, 63.0, 67.0}, // Very many rounds (approaching but not exceeding ~95%)
 	}
 
 	for _, tt := range tests {

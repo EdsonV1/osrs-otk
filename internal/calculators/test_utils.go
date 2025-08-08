@@ -126,16 +126,16 @@ func GetCommonSkillTestScenarios() []SkillTestScenario {
 			MaxEfficiency: 5.0,
 		},
 		{
-			Name:        "Invalid: same level",
+			Name:         "Invalid: same level",
 			CurrentLevel: 70,
 			TargetLevel:  70,
-			ExpectError: true,
+			ExpectError:  true,
 		},
 		{
-			Name:        "Invalid: target lower",
+			Name:         "Invalid: target lower",
 			CurrentLevel: 80,
 			TargetLevel:  70,
-			ExpectError: true,
+			ExpectError:  true,
 		},
 	}
 }

@@ -25,7 +25,7 @@ func NewSkillHandler(skillService *skill.Service) http.HandlerFunc {
 // handleSkillData handles requests for skill data
 func (h *SkillHandler) handleSkillData(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
-		response.Error(w, http.StatusMethodNotAllowed, 
+		response.Error(w, http.StatusMethodNotAllowed,
 			http.ErrNotSupported)
 		return
 	}
@@ -33,14 +33,14 @@ func (h *SkillHandler) handleSkillData(w http.ResponseWriter, r *http.Request) {
 	// Extract skill name from path
 	pathParts := strings.Split(strings.Trim(r.URL.Path, "/"), "/")
 	if len(pathParts) < 3 || pathParts[0] != "api" || pathParts[1] != "skill-data" {
-		response.Error(w, http.StatusBadRequest, 
+		response.Error(w, http.StatusBadRequest,
 			http.ErrMissingFile)
 		return
 	}
-	
+
 	skillName := pathParts[len(pathParts)-1]
 	if skillName == "" {
-		response.Error(w, http.StatusBadRequest, 
+		response.Error(w, http.StatusBadRequest,
 			http.ErrMissingFile)
 		return
 	}

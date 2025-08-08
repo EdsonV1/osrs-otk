@@ -204,15 +204,15 @@ func TestWintertodtEndpoint(t *testing.T) {
 // TestArdyKnightsEndpoint tests the Ardy Knights calculator endpoint
 func TestArdyKnightsEndpoint(t *testing.T) {
 	payload := map[string]interface{}{
-		"current_thieving_xp":  500000,
-		"target_thieving_xp":   1000000,
-		"has_ardy_med":         true,
-		"has_thieving_cape":    false,
-		"has_rogues_outfit":    true,
-		"has_shadow_veil":      false,
-		"hourly_pickpockets":   4000,
-		"food_heal_amount":     20,
-		"food_cost":            400,
+		"current_thieving_xp": 500000,
+		"target_thieving_xp":  1000000,
+		"has_ardy_med":        true,
+		"has_thieving_cape":   false,
+		"has_rogues_outfit":   true,
+		"has_shadow_veil":     false,
+		"hourly_pickpockets":  4000,
+		"food_heal_amount":    20,
+		"food_cost":           400,
 	}
 
 	jsonPayload, err := json.Marshal(payload)
@@ -286,7 +286,7 @@ func TestCORSHeaders(t *testing.T) {
 		t.Fatalf("Failed to create request: %v", err)
 	}
 
-	req.Header.Set("Origin", "http://localhost:3000")
+	req.Header.Set("Origin", "http://localhost:5173")
 
 	client := &http.Client{}
 	resp, err := client.Do(req)

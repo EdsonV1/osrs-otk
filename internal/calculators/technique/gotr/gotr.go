@@ -8,18 +8,18 @@ import (
 
 // GOTRResult represents the calculated results for GOTR training
 type GOTRResult struct {
-	CurrentLevel        int       `json:"current_level"`
-	TargetLevel         int       `json:"target_level"`
-	XPNeeded            int       `json:"xp_needed"`
-	GamesNeeded         int       `json:"games_needed"`
-	HoursNeeded         float64   `json:"hours_needed"`
-	AverageXPPerGame    float64   `json:"average_xp_per_game"`
-	AverageXPPerHour    float64   `json:"average_xp_per_hour"`
-	TotalRewardRolls    int       `json:"total_reward_rolls"`
-	PetChancePercentage float64   `json:"pet_chance_percentage"`
-	EstimatedRewards    []Reward  `json:"estimated_rewards"`
-	TotalRewardValue    int       `json:"total_reward_value"`
-	GPPerHour           float64   `json:"gp_per_hour"`
+	CurrentLevel        int      `json:"current_level"`
+	TargetLevel         int      `json:"target_level"`
+	XPNeeded            int      `json:"xp_needed"`
+	GamesNeeded         int      `json:"games_needed"`
+	HoursNeeded         float64  `json:"hours_needed"`
+	AverageXPPerGame    float64  `json:"average_xp_per_game"`
+	AverageXPPerHour    float64  `json:"average_xp_per_hour"`
+	TotalRewardRolls    int      `json:"total_reward_rolls"`
+	PetChancePercentage float64  `json:"pet_chance_percentage"`
+	EstimatedRewards    []Reward `json:"estimated_rewards"`
+	TotalRewardValue    int      `json:"total_reward_value"`
+	GPPerHour           float64  `json:"gp_per_hour"`
 }
 
 // CalculateGOTRData performs the main GOTR calculation
@@ -28,11 +28,11 @@ func CalculateGOTRData(currentLevel, targetLevel int) (GOTRResult, error) {
 	if currentLevel < 27 || currentLevel > 126 {
 		return GOTRResult{}, fmt.Errorf("current level must be between 27 and 126 (minimum level to access GOTR)")
 	}
-	
+
 	if targetLevel < 27 || targetLevel > 126 {
 		return GOTRResult{}, fmt.Errorf("target level must be between 27 and 126")
 	}
-	
+
 	if targetLevel <= currentLevel {
 		return GOTRResult{}, fmt.Errorf("target level must be higher than current level")
 	}
@@ -86,9 +86,9 @@ func calculateXPPerGame(currentLevel, targetLevel int) float64 {
 
 	// Base XP calculation - GOTR XP scales significantly with RC level
 	// Real GOTR rates: ~180k+ XP/hr at level 77, up to ~220k+ at 99
-	
+
 	var xpPerGame float64
-	
+
 	if avgLevel < 77 {
 		// Before level 77, GOTR is less efficient (use ZMI instead)
 		// Scale from ~120k/hr to ~160k/hr
@@ -99,12 +99,12 @@ func calculateXPPerGame(currentLevel, targetLevel int) float64 {
 		// Base rate at 77: ~180k XP/hr, scaling to ~220k+ at 99
 		xpPerHourBase := 180000 + (avgLevel-77)*1800
 		xpPerGame = xpPerHourBase / GamesPerHour
-		
+
 		// Additional scaling for very high levels
 		if avgLevel >= 90 {
 			xpPerGame *= 1.08 // 8% bonus for mastery
 		}
-		
+
 		if avgLevel >= 95 {
 			xpPerGame *= 1.05 // Additional 5% for near-max efficiency
 		}
@@ -139,15 +139,15 @@ func EstimateTimeToLevel(currentLevel, targetLevel int) (map[string]any, error) 
 	strategy := CalculateOptimalStrategy(currentLevel)
 
 	breakdown := map[string]any{
-		"total_hours":        result.HoursNeeded,
-		"total_games":        result.GamesNeeded,
-		"daily_hours_1h":     math.Ceil(result.HoursNeeded),
-		"daily_hours_2h":     math.Ceil(result.HoursNeeded / 2),
-		"daily_hours_3h":     math.Ceil(result.HoursNeeded / 3),
-		"optimal_strategy":   strategy,
-		"xp_per_hour":        result.AverageXPPerHour,
-		"profit_potential":   result.GPPerHour,
-		"pet_chance":         result.PetChancePercentage,
+		"total_hours":      result.HoursNeeded,
+		"total_games":      result.GamesNeeded,
+		"daily_hours_1h":   math.Ceil(result.HoursNeeded),
+		"daily_hours_2h":   math.Ceil(result.HoursNeeded / 2),
+		"daily_hours_3h":   math.Ceil(result.HoursNeeded / 3),
+		"optimal_strategy": strategy,
+		"xp_per_hour":      result.AverageXPPerHour,
+		"profit_potential": result.GPPerHour,
+		"pet_chance":       result.PetChancePercentage,
 	}
 
 	return breakdown, nil

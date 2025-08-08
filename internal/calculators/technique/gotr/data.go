@@ -24,10 +24,10 @@ const (
 
 // Reward represents a GOTR reward item
 type Reward struct {
-	Name     string  `json:"name"`
-	Quantity int     `json:"quantity"`
-	Value    int     `json:"value"`
-	DropRate string  `json:"drop_rate,omitempty"`
+	Name     string `json:"name"`
+	Quantity int    `json:"quantity"`
+	Value    int    `json:"value"`
+	DropRate string `json:"drop_rate,omitempty"`
 }
 
 // RewardTable represents possible rewards from GOTR

@@ -7,21 +7,21 @@ import (
 
 func TestCalculateArdyKnightStats(t *testing.T) {
 	tests := []struct {
-		name                string
-		currentThievingXP   int
-		targetThievingXP    int
-		hasArdyMed          bool
-		hasThievingCape     bool
-		hasRoguesOutfit     bool
-		hasShadowVeil       bool
-		hourlyPickpockets   int
-		foodHealAmount      int
-		foodCost            int
-		expectError         bool
-		expectedMinXPHour   int
-		expectedMaxXPHour   int
-		expectedMinGPHour   int
-		expectedMaxGPHour   int
+		name              string
+		currentThievingXP int
+		targetThievingXP  int
+		hasArdyMed        bool
+		hasThievingCape   bool
+		hasRoguesOutfit   bool
+		hasShadowVeil     bool
+		hourlyPickpockets int
+		foodHealAmount    int
+		foodCost          int
+		expectError       bool
+		expectedMinXPHour int
+		expectedMaxXPHour int
+		expectedMinGPHour int
+		expectedMaxGPHour int
 	}{
 		{
 			name:              "Level 55 baseline",
@@ -195,11 +195,11 @@ func TestGetArdyKnightBaseSuccessChance(t *testing.T) {
 		minRate  float64
 		maxRate  float64
 	}{
-		{54, 0.0, 0.0, 0.0},    // Below minimum level
-		{55, 0.0, 0.0, 0.15},   // Minimum level
-		{70, 0.0, 0.15, 0.4},   // Mid-level
-		{99, 0.0, 0.4, 0.8},    // Maximum level
-		{120, 0.0, 0.4, 0.8},   // Above maximum (should cap at 99)
+		{54, 0.0, 0.0, 0.0},  // Below minimum level
+		{55, 0.0, 0.0, 0.15}, // Minimum level
+		{70, 0.0, 0.15, 0.4}, // Mid-level
+		{99, 0.0, 0.4, 0.8},  // Maximum level
+		{120, 0.0, 0.4, 0.8}, // Above maximum (should cap at 99)
 	}
 
 	for _, tt := range tests {
@@ -232,14 +232,14 @@ func TestGetArdyKnightBaseSuccessChance(t *testing.T) {
 
 func TestGetLevelForXP(t *testing.T) {
 	tests := []struct {
-		xp           int
+		xp            int
 		expectedLevel int
 	}{
 		{0, 1},
 		{83, 2},
-		{13034431, 99},    // Exactly level 99
-		{13034430, 98},    // Just below level 99
-		{50000000, 99},    // Way above level 99 (should cap at 99)
+		{13034431, 99}, // Exactly level 99
+		{13034430, 98}, // Just below level 99
+		{50000000, 99}, // Way above level 99 (should cap at 99)
 	}
 
 	for _, tt := range tests {

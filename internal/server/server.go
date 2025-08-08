@@ -2,6 +2,7 @@ package server
 
 import (
 	"net/http"
+	"slices"
 	"strings"
 
 	"osrs-xp-kits/internal/config"
@@ -42,7 +43,7 @@ func (s *Server) GetHandler() http.Handler {
 func (s *Server) setupRoutes() {
 	// Create repositories
 	skillRepo := file.NewSkillRepository(s.config.Assets.SkillDataPath)
-	
+
 	// Create services
 	skillService := skill.NewService(skillRepo)
 
@@ -59,7 +60,7 @@ func (s *Server) setupRoutes() {
 	s.mux.HandleFunc("/api/wintertodt", handlers.WintertodtCalcHandler)
 	s.mux.HandleFunc("/api/tools/gotr", handlers.GOTRCalcHandler)
 	s.mux.HandleFunc("/api/tools/gotr/strategy", handlers.GOTRStrategyHandler)
-	
+
 	// New skill data handler
 	s.mux.HandleFunc("/api/skill-data/", handlers.NewSkillHandler(skillService))
 }
@@ -69,13 +70,10 @@ func (s *Server) corsMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Set CORS headers
 		origin := r.Header.Get("Origin")
-		for _, allowedOrigin := range s.config.CORS.AllowedOrigins {
-			if origin == allowedOrigin {
-				w.Header().Set("Access-Control-Allow-Origin", origin)
-				break
-			}
+		if slices.Contains(s.config.CORS.AllowedOrigins, "*") || slices.Contains(s.config.CORS.AllowedOrigins, origin) {
+			w.Header().Set("Access-Control-Allow-Origin", origin)
 		}
-		
+
 		w.Header().Set("Access-Control-Allow-Methods", strings.Join(s.config.CORS.AllowedMethods, ", "))
 		w.Header().Set("Access-Control-Allow-Headers", strings.Join(s.config.CORS.AllowedHeaders, ", "))
 		w.Header().Set("Access-Control-Allow-Credentials", "true")
