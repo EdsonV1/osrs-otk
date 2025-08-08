@@ -8,6 +8,8 @@ import (
 	"osrs-xp-kits/internal/calculators/skills"
 	"path/filepath"
 	"strings"
+
+	"gopkg.in/yaml.v2"
 )
 
 func SkillDataHandler(w http.ResponseWriter, r *http.Request) {
@@ -28,9 +30,9 @@ func SkillDataHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	filePath := filepath.Join("internal", "calculators", "skills", "json", fmt.Sprintf("%s.json", skillName))
+	filePath := filepath.Join("assets", "data", "skills", fmt.Sprintf("%s.yaml", skillName))
 
-	jsonData, err := os.ReadFile(filePath)
+	yamlData, err := os.ReadFile(filePath)
 	if err != nil {
 		if os.IsNotExist(err) {
 			http.Error(w, fmt.Sprintf("Skill data not found for: %s", skillName), http.StatusNotFound)
@@ -41,7 +43,7 @@ func SkillDataHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var skillData skills.SkillData
-	if err := json.Unmarshal(jsonData, &skillData); err != nil {
+	if err := yaml.Unmarshal(yamlData, &skillData); err != nil {
 		http.Error(w, fmt.Sprintf("Error parsing skill data: %v", err), http.StatusInternalServerError)
 		return
 	}

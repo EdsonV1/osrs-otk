@@ -1,0 +1,117 @@
+name_canonical: "defence"
+name_display: "Defence"
+description: "Increases your ability to resist damage and allows you to wear stronger armour."
+
+training_methods:
+- id: "defence_cows_lumbridge"
+  name: "Cows (Lumbridge - Defensive Style)"
+  level_required: 1
+  xp_rate: 5000
+  location: "Lumbridge Cow Pen"
+  items_required:
+  - "Any melee weapon (set to Defensive style)"
+  notes: "Classic starting point for combat."
+  tags:
+  - "beginner"
+  - "f2p"
+  - "combat"
+  type: "Monster Combat"
+  alternative_xp_rate:
+  - type: "Hitpoints"
+    rate: 1600
+
+- id: "defence_sand_crabs"
+  name: "Sand Crabs/Ammonite Crabs (Defensive Style)"
+  level_required: 1
+  xp_rate: 45000
+  location: "Hosidius Beach (Sand Crabs), Fossil Island (Ammonite Crabs)"
+  items_required:
+  - "Melee weapon"
+  - "Armour"
+  notes: "Very AFK combat training. Use Defensive combat style."
+  tags:
+  - "afk"
+  - "combat"
+  - "p2p"
+  type: "Monster Combat"
+  alternative_xp_rate:
+  - type: "Attack"
+    rate: 45000
+  - type: "Strength"
+    rate: 45000
+  - type: "Hitpoints"
+    rate: 15000
+
+- id: "defence_slayer_tasks"
+  name: "Slayer Tasks (Melee - Defensive Style)"
+  level_required: 1
+  xp_rate: 60000
+  location: "Various, per task"
+  items_required:
+  - "Melee weapon"
+  - "Armour"
+  - "Slayer Helmet (if applicable)"
+  notes: "Trains Slayer alongside combat. XP rates depend heavily on the assigned monster."
+  tags:
+  - "slayer"
+  - "combat"
+  - "p2p"
+  - "variable_xp"
+  type: "Monster Combat (Slayer)"
+  alternative_xp_rate:
+  - type: "Attack"
+    rate: 60000
+  - type: "Strength"
+    rate: 60000
+  - type: "Hitpoints"
+    rate: 20000
+  - type: "Slayer"
+    rate: 15000
+
+- id: "defence_nightmare_zone"
+  name: "Nightmare Zone (NMZ - Defensive Style)"
+  level_required: 1
+  xp_rate: 80000
+  location: "Nightmare Zone"
+  items_required:
+  - "Melee setup"
+  - "Absorption potions"
+  - "Overload potions"
+  notes: "AFK combat training against quest bosses. Use Defensive combat style."
+  tags:
+  - "afk"
+  - "combat"
+  - "p2p"
+  - "high_xp_potential"
+  type: "Minigame (Combat)"
+  alternative_xp_rate:
+  - type: "Attack"
+    rate: 80000
+  - type: "Strength"
+    rate: 80000
+  - type: "Hitpoints"
+    rate: 26000
+
+- id: "defence_controlled_whip"
+  name: "Abyssal Whip (Controlled Style)"
+  level_required: 70
+  xp_rate: 70000
+  location: "Various (Slayer tasks, NMZ, Crabs)"
+  items_required:
+  - "Abyssal whip"
+  - "Dragon defender (or similar)"
+  - "Armour"
+  notes: "Trains Attack, Strength, and Defence simultaneously. Good all-around training."
+  tags:
+  - "combat"
+  - "p2p"
+  - "shared_xp"
+  - "efficient"
+  type: "Monster Combat"
+  alternative_xp_rate:
+  - type: "Attack"
+    rate: 70000
+  - type: "Strength"
+    rate: 70000
+  - type: "Hitpoints"
+    rate: 23000

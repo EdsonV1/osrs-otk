@@ -1,0 +1,99 @@
+name_canonical: "construction"
+name_display: "Construction"
+description: "Build and customize your own Player-Owned House (POH) with various rooms, furniture, and utilities."
+
+training_methods:
+- id: "crude_wooden_chair"
+  name: "Crude Wooden Chairs"
+  level_required: 1
+  xp_rate: 40000
+  xp_per_action: 29
+  action_name: "chair built"
+  items_required:
+  - "Plank (2)"
+  - "Nails (various)"
+  - "Saw"
+  - "Hammer"
+  location: "Player-Owned House (Parlour)"
+  notes: "Very basic starting method."
+  tags:
+  - "beginner"
+  - "poh"
+  type: "Furniture"
+
+- id: "oak_larders"
+  name: "Oak Larders"
+  level_required: 33
+  xp_rate: 400000
+  xp_per_action: 480
+  action_name: "larder built"
+  items_required:
+  - "Oak plank (8)"
+  - "Saw"
+  - "Hammer"
+  location: "Player-Owned House (Kitchen)"
+  notes: "Fastest early-mid Construction XP, but costly in oak planks. Requires butler for banking."
+  tags:
+  - "fast_xp"
+  - "expensive"
+  - "poh"
+  - "butler_method"
+  type: "Furniture"
+
+- id: "mahogany_tables"
+  name: "Mahogany Tables"
+  level_required: 52
+  xp_rate: 700000
+  xp_per_action: 840
+  action_name: "table built"
+  items_required:
+  - "Mahogany plank (6)"
+  - "Saw"
+  - "Hammer"
+  location: "Player-Owned House (Dining Room)"
+  notes: "One of the fastest Construction methods overall. Very expensive. Butler is essential."
+  tags:
+  - "fastest_xp"
+  - "very_expensive"
+  - "poh"
+  - "butler_method"
+  - "high_level"
+  type: "Furniture"
+
+- id: "mounted_mythical_cape"
+  name: "Mounted Mythical Cape"
+  level_required: 47
+  xp_rate: 250000
+  xp_per_action: 170
+  action_name: "cape mounted"
+  items_required:
+  - "Teak plank (3)"
+  - "Mythical cape"
+  - "Saw"
+  - "Hammer"
+  location: "Player-Owned House (Quest Hall / Skill Hall)"
+  quests_required:
+  - "Dragon Slayer II (for Mythical Cape)"
+  notes: "Decent XP and uses fewer planks than some other methods if Mythical Capes are available."
+  tags:
+  - "poh"
+  - "quest_item"
+  type: "Mounted Item"
+
+- id: "gnome_benches"
+  name: "Gnome Benches (Mahogany Homes)"
+  level_required: 1
+  xp_rate: 150000
+  location: "Various NPC houses (Mahogany Homes minigame)"
+  items_required:
+  - "Planks (various types)"
+  - "Saw"
+  - "Hammer"
+  - "Steel bars (sometimes)"
+  notes: "Alternative training method that is cheaper than traditional POH training. Rewards include carpenter's outfit."
+  tags:
+  - "minigame"
+  - "cheaper_xp"
+  - "outfit_pieces"
+  - "p2p"
+  type: "Mahogany Homes"

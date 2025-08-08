@@ -1,0 +1,103 @@
+name_canonical: "thieving"
+name_display: "Thieving"
+description: "Steal from market stalls, pickpocket NPCs, and loot chests for gold, items, and experience."
+
+training_methods:
+  - id: men_women_pickpocket
+    name: "Pickpocketing Men/Women"
+    level_required: 1
+    xp_rate: 5000
+    xp_per_action: 8
+    action_name: "pickpocket"
+    location: "Lumbridge, Edgeville, etc."
+    notes: "Basic starting method. Low success rate initially."
+    tags:
+      - "beginner"
+      - "f2p"
+    type: "Pickpocketing"
+
+  - id: cake_stall
+    name: "Cake Stall (Ardougne Market)"
+    level_required: 5
+    xp_rate: 10000
+    xp_per_action: 16
+    action_name: "cake stolen"
+    location: "East Ardougne Market"
+    notes: "Good for early food for ironmen or some cash."
+    tags:
+      - "stall_thieving"
+      - "f2p_friendly_location_p2p_skill"
+      - "food"
+    type: "Stall Thieving"
+
+  - id: master_farmer_pickpocket
+    name: "Pickpocketing Master Farmer"
+    level_required: 38
+    xp_rate: 25000
+    xp_per_action: 43
+    action_name: "pickpocket"
+    location: "Draynor Village, Farming Guild"
+    items_required:
+      - "Dodgy necklace (recommended)"
+    notes: "Primary method for obtaining various farming seeds."
+    tags:
+      - "seeds"
+      - "pickpocketing"
+      - "profitable_sometimes"
+    type: "Pickpocketing"
+
+  - id: ardy_knights_thieving
+    name: "Ardougne Knights"
+    level_required: 55
+    xp_rate: 150000
+    xp_per_action: 84.3
+    action_name: "pickpocket"
+    location: "East Ardougne (south bank)"
+    items_required:
+      - "Dodgy necklace"
+      - "Rogue outfit (for double loot)"
+    notes: "Popular method for fast XP and decent GP. Often done by luring a knight."
+    tags:
+      - "fast_xp"
+      - "profitable"
+      - "pickpocketing"
+      - "high_level_focus"
+    type: "Pickpocketing"
+
+  - id: pyramid_plunder
+    name: "Pyramid Plunder"
+    level_required: 21
+    xp_rate: 100000
+    location: "Sophanem (Jalsavrah Pyramid)"
+    quests_required:
+      - "Icthlarin's Little Helper"
+    items_required:
+      - "Anti-poison"
+      - "Food"
+      - "Stamina potions"
+    notes: "Minigame offering good Thieving XP and a chance at Pharaoh's Sceptre."
+    tags:
+      - "minigame"
+      - "p2p"
+      - "sceptre_chance"
+    type: "Minigame"
+
+  - id: vyres_pickpocket
+    name: "Pickpocketing Vyres (Darkmeyer)"
+    level_required: 82
+    xp_rate: 120000
+    xp_per_action: 150
+    action_name: "pickpocket"
+    location: "Darkmeyer"
+    items_required:
+      - "Rogue outfit"
+      - "Dodgy necklace"
+    quests_required:
+      - "Sins of the Father"
+    notes: "Good XP and chance for valuable Blood Shards."
+    tags:
+      - "pickpocketing"
+      - "profitable"
+      - "blood_shards"
+      - "high_level"
+    type: "Pickpocketing"

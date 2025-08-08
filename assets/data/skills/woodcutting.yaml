@@ -1,0 +1,102 @@
+name_canonical: "woodcutting"
+name_display: "Woodcutting"
+description: "Chop down various trees to gather logs, which can be used in Fletching, Firemaking, Construction, or sold."
+
+training_methods:
+  - id: normal_trees
+    name: "Normal Trees"
+    level_required: 1
+    xp_rate: 7000
+    xp_per_action: 25
+    action_name: "log"
+    location: "Lumbridge, Varrock"
+    items_required:
+      - "Axe (any)"
+    notes: "Basic starting trees."
+    tags:
+      - "beginner"
+      - "f2p"
+    type: "Tree"
+
+  - id: oak_trees
+    name: "Oak Trees"
+    level_required: 15
+    xp_rate: 12000
+    xp_per_action: 37.5
+    action_name: "log"
+    location: "Varrock East, Draynor Village"
+    items_required:
+      - "Axe (any)"
+    notes: "Faster XP than normal trees."
+    tags:
+      - "f2p"
+    type: "Tree"
+
+  - id: willow_trees
+    name: "Willow Trees (Banking/Dropping)"
+    level_required: 30
+    xp_rate: 30000
+    xp_per_action: 67.5
+    action_name: "log"
+    location: "Draynor Village, Catherby, Barbarian Outpost"
+    items_required:
+      - "Axe (any)"
+    notes: "Good XP for F2P, often crowded. Best near a bank."
+    tags:
+      - "f2p"
+      - "fast_xp_f2p"
+    type: "Tree"
+
+  - id: teak_trees_ape_atoll
+    name: "Teak Trees (Ape Atoll)"
+    level_required: 35
+    xp_rate: 70000
+    xp_per_action: 85
+    action_name: "log"
+    location: "Ape Atoll (Hardwood Grove)"
+    items_required:
+      - "Axe (any)"
+      - "Greegree (if not done with MM2)"
+    quests_required:
+      - "Monkey Madness I (partial for access)"
+      - "Monkey Madness II (for full access/safety)"
+    notes: "Fast XP, requires attention. Tick manipulation significantly boosts rates."
+    tags:
+      - "fast_xp"
+      - "p2p"
+      - "tick_manipulation"
+    type: "Tree"
+
+  - id: magic_trees
+    name: "Magic Trees"
+    level_required: 75
+    xp_rate: 20000
+    xp_per_action: 250
+    action_name: "log"
+    location: "Sorcerer's Tower, Ranging Guild, Prifddinas"
+    items_required:
+      - "Axe (any)"
+    notes: "Valuable logs, but very slow XP. Good for AFK money making."
+    tags:
+      - "afk"
+      - "profitable"
+      - "p2p"
+      - "high_level"
+    type: "Tree"
+
+  - id: redwood_trees
+    name: "Redwood Trees"
+    level_required: 90
+    xp_rate: 60000
+    xp_per_action: 380
+    action_name: "log"
+    location: "Woodcutting Guild (Hosidius)"
+    items_required:
+      - "Axe (any)"
+    notes: "Best AFK Woodcutting XP. Requires 75% Hosidius favour for guild access."
+    tags:
+      - "afk"
+      - "best_afk_xp"
+      - "p2p"
+      - "high_level"
+    type: "Tree"

@@ -1,0 +1,118 @@
+name_canonical: "attack"
+name_display: "Attack"
+description: "Increases your accuracy in melee combat, allowing you to hit more often and wield stronger melee weapons."
+
+training_methods:
+- id: "attack_cows_lumbridge"
+  name: "Cows (Lumbridge)"
+  level_required: 1
+  xp_rate: 5000
+  location: "Lumbridge Cow Pen"
+  items_required:
+  - "Any melee weapon"
+  notes: "Classic starting point for combat."
+  tags:
+  - "beginner"
+  - "f2p"
+  - "combat"
+  type: "Monster Combat"
+  alternative_xp_rate:
+  - type: "Hitpoints"
+    rate: 1600
+
+- id: "attack_sand_crabs"
+  name: "Sand Crabs/Ammonite Crabs"
+  level_required: 1
+  xp_rate: 45000
+  location: "Hosidius Beach (Sand Crabs), Fossil Island (Ammonite Crabs)"
+  items_required:
+  - "Melee weapon"
+  - "Armour"
+  notes: "Very AFK combat training due to high HP and low defence of crabs. Resets required."
+  tags:
+  - "afk"
+  - "combat"
+  - "p2p"
+  type: "Monster Combat"
+  alternative_xp_rate:
+  - type: "Strength"
+    rate: 45000
+  - type: "Defence"
+    rate: 45000
+  - type: "Hitpoints"
+    rate: 15000
+
+- id: "attack_slayer_tasks"
+  name: "Slayer Tasks (Melee)"
+  level_required: 1
+  xp_rate: 60000
+  location: "Various, per task"
+  items_required:
+  - "Melee weapon"
+  - "Armour"
+  - "Slayer Helmet (if applicable)"
+  notes: "Trains Slayer alongside combat. XP rates depend heavily on the assigned monster."
+  tags:
+  - "slayer"
+  - "combat"
+  - "p2p"
+  - "variable_xp"
+  type: "Monster Combat (Slayer)"
+  alternative_xp_rate:
+  - type: "Strength"
+    rate: 60000
+  - type: "Defence"
+    rate: 60000
+  - type: "Hitpoints"
+    rate: 20000
+  - type: "Slayer"
+    rate: 15000
+
+- id: "attack_nightmare_zone"
+  name: "Nightmare Zone (NMZ - Melee)"
+  level_required: 1
+  xp_rate: 80000
+  location: "Nightmare Zone"
+  items_required:
+  - "Melee setup (e.g., Dharok's, Piety)"
+  - "Absorption potions"
+  - "Overload potions"
+  notes: "AFK combat training against quest bosses. Can be very high XP with optimal setup."
+  tags:
+  - "afk"
+  - "combat"
+  - "p2p"
+  - "high_xp_potential"
+  type: "Minigame (Combat)"
+  alternative_xp_rate:
+  - type: "Strength"
+    rate: 80000
+  - type: "Defence"
+    rate: 80000
+  - type: "Hitpoints"
+    rate: 26000
+
+- id: "attack_experiments"
+  name: "Experiments (Experiment No.2)"
+  level_required: 1
+  xp_rate: 20000
+  location: "Experiment Cave (Port Phasmatys)"
+  quests_required:
+  - "Creature of Fenkenstrain"
+  items_required:
+  - "Melee weapon"
+  - "Armour"
+  notes: "Low defence, high HP monsters. Good for lower-level AFK training."
+  tags:
+  - "afk"
+  - "combat"
+  - "p2p"
+  - "low_level"
+  type: "Monster Combat"
+  alternative_xp_rate:
+  - type: "Strength"
+    rate: 20000
+  - type: "Defence"
+    rate: 20000
+  - type: "Hitpoints"
+    rate: 6500

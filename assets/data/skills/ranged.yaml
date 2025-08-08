@@ -1,0 +1,106 @@
+name_canonical: "ranged"
+name_display: "Ranged"
+description: "Master the use of bows, crossbows, throwing weapons, and other ranged equipment to attack from a distance."
+
+training_methods:
+  - id: ranged_cows_shortbow
+    name: "Cows (Shortbow & Bronze Arrows)"
+    level_required: 1
+    xp_rate: 4000
+    location: "Lumbridge Cow Pen"
+    items_required:
+      - "Shortbow"
+      - "Bronze arrows"
+    notes: "Basic ranged training."
+    tags:
+      - "beginner"
+      - "f2p"
+      - "combat"
+    type: "Monster Combat"
+    alternative_xp_rate:
+      - type: "Hitpoints"
+        rate: 1300
+
+  - id: ranged_sand_crabs_darts
+    name: "Sand Crabs/Ammonite Crabs (Darts)"
+    level_required: 1
+    xp_rate: 50000
+    location: "Hosidius Beach (Sand Crabs), Fossil Island (Ammonite Crabs)"
+    items_required:
+      - "Darts (e.g., Steel, Mithril)"
+      - "Ranged gear (optional for low levels)"
+    notes: "Very AFK ranged training. Darts are fast."
+    tags:
+      - "afk"
+      - "combat"
+      - "p2p"
+    type: "Monster Combat"
+    alternative_xp_rate:
+      - type: "Hitpoints"
+        rate: 16000
+
+  - id: ranged_cannon_slayer
+    name: "Dwarf Multicannon (Slayer Tasks)"
+    level_required: 1
+    xp_rate: 30000
+    location: "Various, per task (multi-combat areas best)"
+    items_required:
+      - "Dwarf multicannon"
+      - "Cannonballs"
+    notes: "Adds significant passive Ranged XP during Slayer tasks. Expensive."
+    tags:
+      - "slayer"
+      - "combat"
+      - "p2p"
+      - "expensive"
+      - "passive_xp"
+    type: "Tool-assisted Combat"
+    alternative_xp_rate:
+      - type: "Hitpoints"
+        rate: 10000
+
+  - id: ranged_chinchompas_mm2_tunnels
+    name: "Chinchompas (Monkey Madness II Tunnels)"
+    level_required: 55
+    xp_rate: 400000
+    location: "Monkey Madness II Tunnels (Ape Atoll)"
+    items_required:
+      - "Red/Black chinchompas"
+      - "Prayer potions"
+      - "Ranged Potion"
+      - "Best ranged void/armour"
+    quests_required:
+      - "Monkey Madness II"
+    notes: "Fastest Ranged XP in the game. Expensive and click-intensive. Stack maniacal monkeys."
+    tags:
+      - "fastest_xp"
+      - "combat"
+      - "p2p"
+      - "expensive"
+      - "aoe"
+      - "high_intensity"
+    type: "Monster Combat (AoE)"
+    alternative_xp_rate:
+      - type: "Hitpoints"
+        rate: 130000
+
+  - id: ranged_twisted_bow_raids
+    name: "Twisted Bow (Raids/Bossing)"
+    level_required: 75
+    xp_rate: 80000
+    location: "Chambers of Xeric, Theatre of Blood, various bosses"
+    items_required:
+      - "Twisted bow"
+      - "Best ranged gear"
+      - "Amethyst arrows (or better)"
+    notes: "Best-in-slot ranged weapon for many high-level encounters. XP is a byproduct of bossing."
+    tags:
+      - "combat"
+      - "p2p"
+      - "bossing"
+      - "best_in_slot"
+      - "very_expensive"
+    type: "Monster Combat (Bossing)"
+    alternative_xp_rate:
+      - type: "Hitpoints"
+        rate: 26000

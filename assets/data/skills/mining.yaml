@@ -1,0 +1,84 @@
+name_canonical: "mining"
+name_display: "Mining"
+description: "Extract ores from rocks, which can be used in Smithing or sold. Also includes gem mining and essence mining."
+
+training_methods:
+  - id: copper_tin
+    name: "Copper/Tin Ore"
+    level_required: 1
+    xp_rate: 5000
+    xp_per_action: 17.5
+    action_name: "ore"
+    location: "Lumbridge Swamp, Varrock Mine"
+    items_required:
+      - "Pickaxe (any)"
+    notes: "Basic ores for starting Smithing."
+    tags:
+      - "beginner"
+      - "f2p"
+    type: "Ore"
+
+  - id: iron_powermine
+    name: "Iron Ore (Powermining)"
+    level_required: 15
+    xp_rate: 35000
+    xp_per_action: 35
+    action_name: "ore"
+    location: "Al Kharid Mine, Varrock East Mine (3-rock spots)"
+    items_required:
+      - "Pickaxe (any)"
+    notes: "Fast XP if dropping ores. Use a 3-rock spot for efficiency."
+    tags:
+      - "fast_xp"
+      - "powermining"
+      - "f2p"
+    type: "Ore"
+
+  - id: motherlode_mine_lower
+    name: "Motherlode Mine (Lower Level)"
+    level_required: 30
+    xp_rate: 20000
+    location: "Dwarven Mine"
+    items_required:
+      - "Pickaxe (any)"
+    quests_required: []
+    notes: "AFK-friendly. Chance for gems and gold nuggets for prospector outfit."
+    tags:
+      - "afk"
+      - "minigame"
+      - "outfit_pieces"
+    type: "Minigame"
+
+  - id: granite_powermine
+    name: "Granite (Powermining)"
+    level_required: 45
+    xp_rate: 65000
+    xp_per_action: 50
+    action_name: "granite"
+    location: "Quarry (Desert)"
+    items_required:
+      - "Pickaxe (any)"
+      - "Waterskins"
+      - "Desert clothing"
+    notes: "Fastest Mining XP in the game, but very click-intensive."
+    tags:
+      - "fastest_xp"
+      - "powermining"
+      - "high_intensity"
+    type: "Ore"
+
+  - id: amethyst
+    name: "Amethyst"
+    level_required: 92
+    xp_rate: 17000
+    xp_per_action: 240
+    action_name: "crystal"
+    location: "Mining Guild"
+    items_required:
+      - "Pickaxe (any)"
+    notes: "Highly AFK, good profit. Requires Mining Guild access."
+    tags:
+      - "afk"
+      - "profitable"
+      - "high_level"
+    type: "Ore"

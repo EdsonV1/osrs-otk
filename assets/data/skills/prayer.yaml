@@ -1,0 +1,94 @@
+name_canonical: "prayer"
+name_display: "Prayer"
+description: "Bury bones or offer them at altars to gain Prayer points, allowing the use of powerful combat and utility prayers."
+
+training_methods:
+  - id: bury_bones
+    name: "Burying Bones (Regular)"
+    level_required: 1
+    xp_rate: 10000
+    xp_per_action: 4.5
+    action_name: "bone buried"
+    items_required:
+      - "Bones"
+    notes: "Simplest method, very slow XP."
+    tags:
+      - "beginner"
+      - "f2p"
+      - "slow_xp"
+    type: "Bone Burying"
+
+  - id: ensouled_heads_basic
+    name: "Reanimating Ensouled Goblin Heads"
+    level_required: 1
+    xp_rate: 30000
+    xp_per_action: 130
+    action_name: "head reanimated"
+    items_required:
+      - "Ensouled goblin head"
+      - "Nature rune"
+      - "Body rune"
+      - "Appropriate spellbook"
+    notes: "Early Arceuus spellbook method. XP varies by head type."
+    tags:
+      - "arceuus"
+      - "p2p"
+      - "combat_involved"
+    type: "Ensouled Heads"
+
+  - id: ectofuntus_big_bones
+    name: "Ectofuntus (Big Bones)"
+    level_required: 1
+    xp_rate: 40000
+    xp_per_action: 60
+    action_name: "bone offered"
+    items_required:
+      - "Big Bones"
+      - "Pots"
+      - "Buckets of slime"
+      - "Ecto-tokens (for teleport/access)"
+    location: "Ectofuntus (Port Phasmatys)"
+    quests_required:
+      - "Ghosts Ahoy (for full access and Ectophial)"
+    notes: "Highest XP per bone, but very slow and click-intensive process."
+    tags:
+      - "best_xp_per_bone"
+      - "p2p"
+      - "tedious"
+    type: "Altar Offering (Ecto)"
+
+  - id: gilded_altar_dragon_bones
+    name: "Gilded Altar (Dragon Bones)"
+    level_required: 70
+    xp_rate: 500000
+    xp_per_action: 252
+    action_name: "bone offered"
+    items_required:
+      - "Dragon bones"
+      - "Lit burners (if your altar)"
+    location: "Player-Owned House (with Gilded Altar)"
+    notes: "Fastest conventional Prayer training. Requires access to a Gilded Altar."
+    tags:
+      - "fastest_xp"
+      - "p2p"
+      - "poh_altar"
+      - "expensive"
+    type: "Altar Offering (POH)"
+
+  - id: chaos_altar_wilderness
+    name: "Chaos Altar (Wilderness - Dragon Bones)"
+    level_required: 1
+    xp_rate: 600000
+    xp_per_action: 252
+    action_name: "bone offered"
+    items_required:
+      - "Dragon bones"
+    location: "Chaos Temple (Level 38 Wilderness)"
+    notes: "Highest potential XP due to bone-saving effect, but high risk due to PvP. Elder Chaos Druid can unnote bones."
+    tags:
+      - "fastest_xp_potential"
+      - "p2p"
+      - "wilderness"
+      - "pvp_risk"
+      - "bone_saving"
+    type: "Altar Offering (Wildy)"

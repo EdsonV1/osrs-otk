@@ -1,0 +1,118 @@
+name_canonical: "cooking"
+name_display: "Cooking"
+description: "Cook raw food on fires or ranges to create edible meals that heal Hitpoints. Reduces burn chance at higher levels."
+
+training_methods:
+- id: "shrimp_cook"
+  name: "Shrimp"
+  level_required: 1
+  xp_rate: 20000
+  xp_per_action: 30
+  action_name: "cooked"
+  items_required:
+  - "Raw shrimp"
+  notes: "Basic starting food."
+  tags:
+  - "beginner"
+  - "f2p"
+  type: "Food"
+
+- id: "trout_cook"
+  name: "Trout"
+  level_required: 15
+  xp_rate: 50000
+  xp_per_action: 70
+  action_name: "cooked"
+  items_required:
+  - "Raw trout"
+  tags:
+  - "f2p"
+  type: "Food"
+
+- id: "salmon_cook"
+  name: "Salmon"
+  level_required: 25
+  xp_rate: 60000
+  xp_per_action: 90
+  action_name: "cooked"
+  items_required:
+  - "Raw salmon"
+  tags:
+  - "f2p"
+  type: "Food"
+
+- id: "tuna_cook"
+  name: "Tuna"
+  level_required: 30
+  xp_rate: 70000
+  xp_per_action: 100
+  action_name: "cooked"
+  items_required:
+  - "Raw tuna"
+  tags:
+  - "f2p"
+  type: "Food"
+
+- id: "lobsters_cook"
+  name: "Lobsters"
+  level_required: 40
+  xp_rate: 90000
+  xp_per_action: 120
+  action_name: "cooked"
+  items_required:
+  - "Raw lobster"
+  - "Cooking gauntlets (recommended)"
+  notes: "Good F2P money and decent XP."
+  tags:
+  - "f2p"
+  - "profitable"
+  type: "Food"
+
+- id: "swordfish_cook"
+  name: "Swordfish"
+  level_required: 45
+  xp_rate: 100000
+  xp_per_action: 140
+  action_name: "cooked"
+  items_required:
+  - "Raw swordfish"
+  - "Cooking gauntlets"
+  tags:
+  - "p2p"
+  - "profitable"
+  type: "Food"
+
+- id: "karambwans_cook_1tick"
+  name: "1-tick Karambwans"
+  level_required: 30
+  xp_rate: 800000
+  xp_per_action: 190
+  action_name: "cooked"
+  items_required:
+  - "Raw karambwan"
+  - "Wine (for 1-tick method)"
+  quests_required:
+  - "Tai Bwo Wannai Trio"
+  notes: "Fastest cooking XP, but requires precise timing and is not AFK."
+  tags:
+  - "fastest_xp"
+  - "p2p"
+  - "high_intensity"
+  - "tick_manipulation"
+  type: "Food"
+
+- id: "wines"
+  name: "Making Wines"
+  level_required: 35
+  xp_rate: 250000
+  xp_per_action: 200
+  action_name: "wine made"
+  items_required:
+  - "Grapes"
+  - "Jugs of water"
+  notes: "Fast and cheap XP, but wines are often useless or sold at a loss."
+  tags:
+  - "fast_xp"
+  - "p2p"
+  - "cheap"
+  type: "Other"

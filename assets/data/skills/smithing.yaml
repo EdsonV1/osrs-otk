@@ -1,0 +1,107 @@
+name_canonical: "smithing"
+name_display: "Smithing"
+description: "Smelt ores into metal bars and then smith those bars into armor, weapons, and other useful items."
+
+training_methods:
+  - id: bronze_bars_smelt
+    name: "Smelting Bronze Bars"
+    level_required: 1
+    xp_rate: 40000
+    xp_per_action: 6.2
+    action_name: "bar smelted"
+    items_required:
+      - "Copper ore"
+      - "Tin ore"
+    location: "Any furnace (e.g., Lumbridge, Falador)"
+    notes: "Basic smelting to create bronze bars."
+    tags:
+      - "beginner"
+      - "f2p"
+      - "smelting"
+    type: "Smelting"
+
+  - id: bronze_platebody
+    name: "Smithing Bronze Platebodies"
+    level_required: 18
+    xp_rate: 60000
+    xp_per_action: 62.5
+    action_name: "platebody smithed"
+    items_required:
+      - "Bronze bar (5)"
+      - "Hammer"
+    location: "Any anvil (e.g., Varrock West Bank)"
+    notes: "Smithing items from bars. Platebodies give good XP per bar."
+    tags:
+      - "f2p"
+      - "smithing_items"
+    type: "Item Smithing"
+
+  - id: gold_bars_blast_furnace
+    name: "Gold Bars (Blast Furnace)"
+    level_required: 40
+    xp_rate: 250000
+    xp_per_action: 56.2
+    action_name: "bar smelted"
+    items_required:
+      - "Gold ore"
+      - "Goldsmith gauntlets"
+      - "Coal bag (recommended)"
+      - "Ice gloves (recommended)"
+    location: "Blast Furnace (Keldagrim)"
+    notes: "Fastest Smithing XP in the game. Requires paying fees or being on official worlds."
+    tags:
+      - "fastest_xp"
+      - "p2p"
+      - "minigame"
+      - "money_loss"
+    type: "Smelting (Blast Furnace)"
+
+  - id: mithril_platebody
+    name: "Smithing Mithril Platebodies"
+    level_required: 68
+    xp_rate: 150000
+    xp_per_action: 250
+    action_name: "platebody smithed"
+    items_required:
+      - "Mithril bar (5)"
+      - "Hammer"
+    location: "Any anvil"
+    notes: "Good XP per bar for higher level smithing."
+    tags:
+      - "p2p"
+      - "smithing_items"
+    type: "Item Smithing"
+
+  - id: adamantite_darts
+    name: "Adamantite Darts"
+    level_required: 74
+    xp_rate: 120000
+    xp_per_action: 12.5
+    action_name: "bar used"
+    items_required:
+      - "Adamantite bar"
+      - "Hammer"
+    notes: "Often profitable while training Smithing. Darts are made quickly."
+    tags:
+      - "p2p"
+      - "profitable"
+      - "smithing_items"
+    type: "Item Smithing"
+
+  - id: rune_platelegs_skirts
+    name: "Smithing Rune Platelegs/Plateskirts"
+    level_required: 99
+    xp_rate: 225000
+    xp_per_action: 225
+    action_name: "item smithed"
+    items_required:
+      - "Runite bar (3)"
+      - "Hammer"
+    location: "Any anvil"
+    notes: "High level smithing, can be profitable depending on bar prices."
+    tags:
+      - "p2p"
+      - "high_level"
+      - "smithing_items"
+      - "profitable_sometimes"
+    type: "Item Smithing"

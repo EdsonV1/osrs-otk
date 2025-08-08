@@ -1,0 +1,104 @@
+name_canonical: "crafting"
+name_display: "Crafting"
+description: "Create items from raw materials, such as jewelry, pottery, glass items, leather armour, and battle staves."
+
+training_methods:
+- id: "craft_leather_gloves"
+  name: "Leather Gloves"
+  level_required: 1
+  xp_rate: 25000
+  xp_per_action: 13.8
+  action_name: "gloves made"
+  items_required:
+  - "Leather"
+  - "Thread"
+  - "Needle"
+  notes: "Basic starting method for Crafting."
+  tags:
+  - "beginner"
+  - "f2p"
+  - "leatherwork"
+  type: "Leather Crafting"
+
+- id: "craft_gold_bracelets"
+  name: "Gold Bracelets"
+  level_required: 7
+  xp_rate: 60000
+  xp_per_action: 30
+  action_name: "item crafted"
+  items_required:
+  - "Gold bar"
+  - "Bracelet mould / Amulet mould"
+  location: "Any furnace"
+  notes: "Decent early XP, can be slightly profitable or break-even."
+  tags:
+  - "f2p"
+  - "jewelry"
+  type: "Jewelry Making"
+
+- id: "craft_glassblowing_vials"
+  name: "Glassblowing - Vials"
+  level_required: 33
+  xp_rate: 70000
+  xp_per_action: 35
+  action_name: "item blown"
+  items_required:
+  - "Molten glass"
+  - "Glassblowing pipe"
+  notes: "Common method, can be profitable. Unpowered orbs are good XP."
+  tags:
+  - "p2p"
+  - "glassblowing"
+  - "profitable_sometimes"
+  type: "Glassblowing"
+
+- id: "craft_battlestaves"
+  name: "Crafting Battlestaves (Air/Water etc.)"
+  level_required: 54
+  xp_rate: 150000
+  xp_per_action: 100
+  action_name: "staff crafted"
+  items_required:
+  - "Battlestaff"
+  - "Powered orb (e.g., Water orb)"
+  notes: "Can be very fast XP but is often expensive. Profit depends on market prices."
+  tags:
+  - "p2p"
+  - "fast_xp"
+  - "expensive"
+  type: "Magic Item Crafting"
+
+- id: "craft_green_dhide_bodies"
+  name: "Green Dragonhide Bodies"
+  level_required: 63
+  xp_rate: 250000
+  xp_per_action: 186
+  action_name: "body crafted"
+  items_required:
+  - "Green dragonleather (3)"
+  - "Thread"
+  - "Needle"
+  notes: "Good XP and often profitable. Requires a good supply of dragonhides."
+  tags:
+  - "p2p"
+  - "good_xp"
+  - "profitable"
+  type: "Dragonhide Crafting"
+
+- id: "craft_black_dhide_bodies"
+  name: "Black Dragonhide Bodies"
+  level_required: 84
+  xp_rate: 300000
+  xp_per_action: 258
+  action_name: "body crafted"
+  items_required:
+  - "Black dragonleather (3)"
+  - "Thread"
+  - "Needle"
+  notes: "Fastest conventional Crafting XP, but very expensive."
+  tags:
+  - "p2p"
+  - "fastest_xp"
+  - "very_expensive"
+  - "high_level"
+  type: "Dragonhide Crafting"

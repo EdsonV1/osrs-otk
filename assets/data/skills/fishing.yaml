@@ -1,0 +1,101 @@
+name_canonical: "fishing"
+name_display: "Fishing"
+description: "Catch a variety of fish from different bodies of water, used for Cooking, training, or profit."
+
+training_methods:
+- id: "shrimp_anchovies"
+  name: "Shrimp/Anchovies (Net)"
+  level_required: 1
+  xp_rate: 3000
+  xp_per_action: 10
+  action_name: "fish"
+  location: "Lumbridge Swamp, Draynor Village"
+  items_required:
+  - "Small fishing net"
+  notes: "Starting method."
+  tags:
+  - "beginner"
+  - "f2p"
+  type: "Net Fishing"
+
+- id: "fly_fishing_trout_salmon"
+  name: "Fly Fishing (Trout/Salmon)"
+  level_required: 20
+  xp_rate: 25000
+  xp_per_action: 50
+  action_name: "fish"
+  location: "Barbarian Village, Shilo Village"
+  items_required:
+  - "Fly fishing rod"
+  - "Feathers"
+  notes: "Fast XP, requires dropping fish (powerfishing) or banking."
+  tags:
+  - "fast_xp"
+  - "f2p (Barb Village)"
+  - "p2p (Shilo)"
+  type: "Fly Fishing"
+
+- id: "barbarian_fishing"
+  name: "Barbarian Fishing (Leaping Trout/Salmon/Sturgeon)"
+  level_required: 48
+  xp_rate: 65000
+  xp_per_action: 80
+  action_name: "fish"
+  location: "Otto's Grotto"
+  items_required:
+  - "Barbarian rod"
+  - "Fishing bait/Feathers (depends on catch)"
+  quests_required:
+  - "Barbarian Training (Fishing part)"
+  notes: "Good XP, also trains Agility and Strength passively. Requires dropping fish."
+  tags:
+  - "fast_xp"
+  - "multi_skill"
+  - "p2p"
+  - "tick_manipulation_possible"
+  type: "Barbarian Fishing"
+  alternative_xp_rate:
+  - type: "Agility"
+    rate: 7000
+  - type: "Strength"
+    rate: 7000
+
+- id: "karambwans"
+  name: "Karambwans"
+  level_required: 65
+  xp_rate: 35000
+  xp_per_action: 50
+  action_name: "karambwan"
+  location: "Tai Bwo Wannai (requires Karamja gloves 1 for deposit box access)"
+  items_required:
+  - "Karambwan vessel"
+  - "Raw karambwanji (bait)"
+  quests_required:
+  - "Tai Bwo Wannai Trio"
+  notes: "Fast fishing, good food, can be profitable. Very AFK once set up."
+  tags:
+  - "afk"
+  - "profitable"
+  - "p2p"
+  - "good_food"
+  type: "Specialty Fishing"
+
+- id: "infernal_eels"
+  name: "Infernal Eels"
+  level_required: 80
+  xp_rate: 30000
+  xp_per_action: 95
+  action_name: "eel"
+  location: "Mor Ul Rek (requires Fire Cape)"
+  items_required:
+  - "Oily fishing rod"
+  - "Fishing bait"
+  - "Ice gloves"
+  - "Hammer"
+  notes: "AFK, gives onyx bolt tips, lava scale shards. No banking needed."
+  tags:
+  - "afk"
+  - "p2p"
+  - "high_level"
+  - "no_banking"
+  type: "Specialty Fishing"

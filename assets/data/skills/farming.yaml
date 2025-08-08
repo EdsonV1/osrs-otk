@@ -1,0 +1,115 @@
+name_canonical: "farming"
+name_display: "Farming"
+description: "Grow a variety of plants, herbs, trees, and other produce in farming patches across Gielinor."
+
+training_methods:
+- id: "allotments_potatoes"
+  name: "Allotments (Potatoes)"
+  level_required: 1
+  xp_rate: 1000
+  xp_per_action: 8
+  action_name: "plant/harvest"
+  location: "Various allotment patches"
+  items_required:
+  - "Potato seeds"
+  - "Seed dibber"
+  - "Rake"
+  - "Spade"
+  notes: "Basic introduction to farming."
+  tags:
+  - "beginner"
+  - "allotment"
+  type: "Allotment"
+
+- id: "herb_runs_guam"
+  name: "Herb Runs (Guam)"
+  level_required: 9
+  xp_rate: 5000
+  xp_per_action: 12.5
+  action_name: "herb"
+  location: "Various herb patches"
+  items_required:
+  - "Guam seeds"
+  - "Seed dibber"
+  - "Rake"
+  - "Spade"
+  - "Compost (optional)"
+  notes: "Herb runs are a consistent money maker. XP is secondary."
+  tags:
+  - "profitable"
+  - "herb_run"
+  type: "Herb Patch"
+
+- id: "tree_runs_oak"
+  name: "Tree Runs (Oak Trees)"
+  level_required: 15
+  xp_rate: 10000
+  xp_per_action: 14
+  action_name: "tree"
+  location: "Various tree patches"
+  items_required:
+  - "Oak sapling"
+  - "Spade"
+  notes: "Tree runs provide large XP drops periodically."
+  tags:
+  - "tree_run"
+  - "periodic_xp"
+  type: "Tree Patch"
+
+- id: "seaweed_spores"
+  name: "Giant Seaweed (Underwater)"
+  level_required: 23
+  xp_rate: 20000
+  xp_per_action: 21
+  action_name: "seaweed"
+  location: "Underwater section of Fossil Island"
+  items_required:
+  - "Seaweed spores"
+  - "Diving apparatus"
+  - "Flippers"
+  quests_required:
+  - "Bone Voyage"
+  notes: "Crucial for Ironman crafting training (Superglass Make)."
+  tags:
+  - "ironman"
+  - "crafting_supply"
+  - "underwater"
+  type: "Special Patch"
+
+- id: "tithe_farm"
+  name: "Tithe Farm Minigame"
+  level_required: 34
+  xp_rate: 70000
+  location: "Hosidius (requires 100% Hosidius favour)"
+  items_required:
+  - "Seed dibber"
+  - "Watering can(s)"
+  - "Spade"
+  - "Fertiliser (optional)"
+  notes: "Click-intensive minigame for fast Farming XP. Rewards include farmer's outfit."
+  tags:
+  - "minigame"
+  - "fast_xp"
+  - "outfit_pieces"
+  - "high_intensity"
+  type: "Minigame"
+
+- id: "hardwood_trees_fossil_island"
+  name: "Hardwood Trees (Fossil Island)"
+  level_required: 35
+  xp_rate: 15000
+  xp_per_action: 7198
+  action_name: "tree"
+  location: "Hardwood Grove, Fossil Island"
+  items_required:
+  - "Teak/Mahogany sapling"
+  - "Spade"
+  - "Payment to squirrel (optional)"
+  quests_required:
+  - "Bone Voyage"
+  notes: "Very long growth times, provides good passive XP and construction materials."
+  tags:
+  - "passive_xp"
+  - "long_term"
+  - "construction_supply"
+  type: "Tree Patch (Special)"

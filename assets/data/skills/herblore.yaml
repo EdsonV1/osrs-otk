@@ -1,0 +1,87 @@
+name_canonical: "herblore"
+name_display: "Herblore"
+description: "Clean grimy herbs and combine them with secondary ingredients to create a wide variety of potions."
+
+training_methods:
+- id: "attack_potions"
+  name: "Attack Potions"
+  level_required: 3
+  xp_rate: 50000
+  xp_per_action: 25
+  action_name: "potion"
+  items_required:
+  - "Grimy Guam Leaf"
+  - "Eye of Newt"
+  - "Vial of Water"
+  notes: "Early level potion. Guam leaves are cleaned first (2.5 XP)."
+  tags:
+  - "beginner"
+  - "potion"
+  type: "Potion Making"
+
+- id: "prayer_potions"
+  name: "Prayer Potions"
+  level_required: 38
+  xp_rate: 150000
+  xp_per_action: 87.5
+  action_name: "potion"
+  items_required:
+  - "Grimy Ranarr Weed"
+  - "Snape Grass"
+  - "Vial of Water"
+  notes: "Highly useful and often profitable potion."
+  tags:
+  - "profitable"
+  - "potion"
+  - "utility"
+  type: "Potion Making"
+
+- id: "super_restore_potions"
+  name: "Super Restore Potions"
+  level_required: 63
+  xp_rate: 250000
+  xp_per_action: 142.5
+  action_name: "potion"
+  items_required:
+  - "Grimy Snapdragon"
+  - "Red Spiders' Eggs"
+  - "Vial of Water"
+  notes: "Restores all stats including Prayer."
+  tags:
+  - "potion"
+  - "utility"
+  - "high_level"
+  type: "Potion Making"
+
+- id: "stamina_potions"
+  name: "Stamina Potions"
+  level_required: 77
+  xp_rate: 200000
+  xp_per_action: 102
+  action_name: "potion"
+  items_required:
+  - "Super Energy (3)"
+  - "Amylase Crystal (4 per dose)"
+  notes: "Very useful potion, often profitable. Requires Amylase Crystals."
+  tags:
+  - "profitable"
+  - "potion"
+  - "utility"
+  - "high_level"
+  type: "Potion Making"
+
+- id: "anti_venom_plus"
+  name: "Anti-venom+ Potions"
+  level_required: 94
+  xp_rate: 300000
+  xp_per_action: 125
+  action_name: "potion"
+  items_required:
+  - "Antidote++ (4)"
+  - "Torstol"
+  notes: "Highest level regular potion. Requires Torstol."
+  tags:
+  - "potion"
+  - "utility"
+  - "very_high_level"
+  type: "Potion Making"

@@ -1,0 +1,97 @@
+name_canonical: "runecraft"
+name_display: "Runecraft"
+description: "Craft magical runes by imbuing essence at various altars found throughout Gielinor."
+
+training_methods:
+  - id: air_runes
+    name: "Air Runes"
+    level_required: 1
+    xp_rate: 7000
+    xp_per_action: 5
+    action_name: "essence"
+    location: "Air Altar (south of Falador)"
+    items_required:
+      - "Rune/Pure essence"
+      - "Air tiara/talisman"
+    notes: "Basic starting rune. Low profit."
+    tags:
+      - "beginner"
+      - "f2p"
+    type: "Altar Crafting"
+
+  - id: lava_runes
+    name: "Lava Runes (Magic Imbue)"
+    level_required: 23
+    xp_rate: 72000
+    xp_per_action: 10.5
+    action_name: "earth rune"
+    location: "Fire Altar (Al Kharid)"
+    items_required:
+      - "Earth runes"
+      - "Pure essence"
+      - "Binding necklace"
+      - "Fire tiara/talisman"
+      - "Magic Imbue spell"
+    quests_required: []
+    notes: "Fastest Runecraft XP pre-ZMI/Guardians. Requires precise clicks and Magic Imbue."
+    tags:
+      - "fastest_xp_early"
+      - "p2p"
+      - "high_intensity"
+    type: "Combination Runes"
+
+  - id: zmi_altar
+    name: "ZMI Altar (Ourania Altar)"
+    level_required: 1
+    xp_rate: 55000
+    location: "ZMI Dungeon (north of Castle Wars)"
+    items_required:
+      - "Pure essence"
+      - "Payment to NPCs (optional)"
+      - "Stamina potions"
+    quests_required: []
+    notes: "Crafts a variety of runes based on your level. Good XP, especially with runners."
+    tags:
+      - "p2p"
+      - "good_xp"
+      - "variety_runes"
+    type: "Special Altar"
+
+  - id: guardians_of_the_rift
+    name: "Guardians of the Rift"
+    level_required: 27
+    xp_rate: 60000
+    location: "Temple of the Eye"
+    items_required:
+      - "Pickaxe"
+      - "Chisel"
+      - "Essence pouches"
+    quests_required:
+      - "Temple of the Eye"
+    notes: "Minigame offering good XP, catalytic/elemental runes, and unique rewards (outfit, pet)."
+    tags:
+      - "minigame"
+      - "p2p"
+      - "rewards"
+      - "outfit_pieces"
+    type: "Minigame"
+
+  - id: blood_runes_zeah
+    name: "Blood Runes (Zeah)"
+    level_required: 77
+    xp_rate: 35000
+    xp_per_action: 23.8
+    action_name: "fragment"
+    location: "Arceuus (Dark Altar -> True Blood Altar)"
+    items_required:
+      - "Dark essence fragments"
+      - "Blood essence (optional)"
+    quests_required:
+      - "Sins of the Father (for True Blood Altar access)"
+    notes: "Very AFK and profitable. Requires 100% Arceuus favour for dark essence blocks."
+    tags:
+      - "afk"
+      - "profitable"
+      - "p2p"
+      - "high_level"
+    type: "Altar Crafting"

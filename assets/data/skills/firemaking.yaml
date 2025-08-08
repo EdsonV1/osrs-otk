@@ -1,0 +1,91 @@
+name_canonical: "firemaking"
+name_display: "Firemaking"
+description: "Burn logs to create fires, providing light, a way to cook food, or simply for training the skill."
+
+training_methods:
+- id: "normal_logs_fm"
+  name: "Normal Logs"
+  level_required: 1
+  xp_rate: 30000
+  xp_per_action: 40
+  action_name: "log burnt"
+  items_required:
+  - "Tinderbox"
+  notes: "Basic starting method."
+  tags:
+  - "beginner"
+  - "f2p"
+  type: "Log Burning"
+
+- id: "oak_logs_fm"
+  name: "Oak Logs"
+  level_required: 15
+  xp_rate: 45000
+  xp_per_action: 60
+  action_name: "log burnt"
+  items_required:
+  - "Tinderbox"
+  tags:
+  - "f2p"
+  type: "Log Burning"
+
+- id: "willow_logs_fm"
+  name: "Willow Logs"
+  level_required: 30
+  xp_rate: 67500
+  xp_per_action: 90
+  action_name: "log burnt"
+  items_required:
+  - "Tinderbox"
+  tags:
+  - "f2p"
+  type: "Log Burning"
+
+- id: "maple_logs_fm"
+  name: "Maple Logs"
+  level_required: 45
+  xp_rate: 101250
+  xp_per_action: 135
+  action_name: "log burnt"
+  items_required:
+  - "Tinderbox"
+  notes: "Commonly used for faster XP."
+  tags:
+  - "p2p"
+  - "fast_xp"
+  type: "Log Burning"
+
+- id: "yew_logs_fm"
+  name: "Yew Logs"
+  level_required: 60
+  xp_rate: 151875
+  xp_per_action: 202.5
+  action_name: "log burnt"
+  items_required:
+  - "Tinderbox"
+  tags:
+  - "p2p"
+  - "fast_xp"
+  type: "Log Burning"
+
+- id: "wintertodt"
+  name: "Wintertodt"
+  level_required: 50
+  xp_rate: 200000
+  location: "Wintertodt Camp (Zeah)"
+  items_required:
+  - "Warm clothing"
+  - "Tinderbox"
+  - "Axe"
+  - "Hammer"
+  notes: "Popular boss/minigame for Firemaking. Gives good rewards and other skill XP."
+  tags:
+  - "minigame"
+  - "boss"
+  - "rewards"
+  - "p2p"
+  - "multi_skill"
+  type: "Minigame"
+  alternative_xp_rate:
+  - type: "Woodcutting"
+    rate: 5000

@@ -1,0 +1,67 @@
+name_canonical: "hitpoints"
+name_display: "Hitpoints"
+description: "Determines your maximum health. Hitpoints XP is gained passively alongside most combat training."
+
+training_methods:
+  - id: "hp_general_combat"
+    name: "General Combat Training"
+    level_required: 1
+    xp_rate: 20000
+    notes: >
+      "Hitpoints XP is gained at a rate of 1.33 XP per damage dealt with melee, ranged, or magic
+      (excluding some specific weapons/spells). The listed XP rate is a rough estimate and depends entirely
+      on your combat skill XP rates."
+    tags:
+      - "passive"
+      - "combat"
+    type: "Combat"
+
+  - id: "hp_sand_crabs"
+    name: "Sand Crabs / Ammonite Crabs"
+    level_required: 1
+    xp_rate: 15000
+    location: "Hosidius Beach (Sand Crabs), Fossil Island (Ammonite Crabs)"
+    notes: "AFK combat training. HP XP is gained alongside your primary combat skill training."
+    tags:
+      - "afk"
+      - "combat"
+      - "p2p"
+    type: "Monster Combat"
+
+  - id: "hp_nightmare_zone"
+    name: "Nightmare Zone (NMZ)"
+    level_required: 1
+    xp_rate: 25000
+    location: "Nightmare Zone"
+    notes: "AFK combat training against quest bosses. HP XP is gained alongside your primary combat skill training. Can be very high with overloads and Dharok's."
+    tags:
+      - "afk"
+      - "combat"
+      - "p2p"
+      - "high_xp_potential"
+    type: "Minigame (Combat)"
+
+  - id: "hp_pest_control"
+    name: "Pest Control"
+    level_required: 40
+    xp_rate: 20000
+    location: "Pest Control Island"
+    notes: "Minigame where points can be exchanged for XP in combat skills, including Hitpoints."
+    tags:
+      - "minigame"
+      - "combat"
+      - "p2p"
+    type: "Minigame"
+
+  - id: "hp_soul_wars"
+    name: "Soul Wars"
+    level_required: 40
+    xp_rate: 25000
+    location: "Soul Wars Island (Edgeville)"
+    notes: "Minigame where zeal can be exchanged for XP in combat skills, including Hitpoints."
+    tags:
+      - "minigame"
+      - "combat"
+      - "p2p"
+      - "pvp_elements"
+    type: "Minigame"
