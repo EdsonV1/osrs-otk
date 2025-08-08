@@ -2,18 +2,38 @@
     import type { BirdhouseApiResult } from '$lib/types';
     import BirdhouseForm from '$lib/components/birdhouse/InputForm.svelte';
     import BirdhouseResults from '$lib/components/birdhouse/ResultsDisplay.svelte';
+    import { tick } from 'svelte';
 
     let currentApiResult: BirdhouseApiResult | null = null;
     let currentError: string | null = null;
+    let resultsElement: HTMLElement;
 
-    function handleCalculation(event: CustomEvent<{ resultData: BirdhouseApiResult }>) {
-        currentApiResult = event.detail.resultData;
-        currentError = null;
+    function scrollToResults() {
+        if (resultsElement) {
+            resultsElement.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start',
+                inline: 'nearest'
+            });
+        }
     }
 
-    function handleCalcError(event: CustomEvent<{ message: string }>) {
+    async function handleCalculation(event: CustomEvent<{ resultData: BirdhouseApiResult }>) {
+        currentApiResult = event.detail.resultData;
+        currentError = null;
+        
+        // Wait for the DOM to update, then scroll to results
+        await tick();
+        setTimeout(() => scrollToResults(), 100);
+    }
+
+    async function handleCalcError(event: CustomEvent<{ message: string }>) {
         currentError = event.detail.message;
         currentApiResult = null;
+        
+        // Wait for the DOM to update, then scroll to error
+        await tick();
+        setTimeout(() => scrollToResults(), 100);
     }
 </script>
 
@@ -27,39 +47,45 @@
         </a>
     </div>
     <header class="mb-10 text-center">
-        <h1 class="text-h1 text-theme-text-primary tracking-tight mt-10">Birdhouse Run Calculator</h1>
+        <h1 class="text-h1 text-theme-text-primary tracking-tight">Birdhouse Run Calculator</h1>
         <p class="mt-3 text-lg text-theme-text-secondary">
             Estimate XP, nests, and valuable loot from your birdhouse runs based on log type and total houses.
         </p>
     </header>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-        <div class="lg:col-span-2">
+    <!-- Input Form Section -->
+    <div class="max-w-2xl mx-auto mb-8">
+        <div class="bg-glass backdrop-blur-md rounded-card border border-theme-border-accent/20 p-6 shadow-card">
             <BirdhouseForm on:calculated={handleCalculation} on:error={handleCalcError} />
         </div>
+    </div>
 
-        <div class="lg:col-span-1 lg:sticky lg:top-24">
-            {#if currentError && currentError.trim() !== ''}
-                <div class="bg-red-900/80 border border-red-700 text-red-100 px-4 py-3 rounded-lg mb-6 shadow-md" role="alert">
-                    <div class="flex">
-                        <div class="py-1">
-                            <svg class="fill-current h-6 w-6 text-red-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zM11.414 10l2.829-2.829a1 1 0 0 0-1.414-1.414L10 8.586 7.172 5.757a1 1 0 0 0-1.414 1.414L8.586 10l-2.829 2.829a1 1 0 1 0 1.414 1.414L10 11.414l2.829 2.829a1 1 0 0 0 1.414-1.414L11.414 10z"/></svg>
+    <!-- Results/Error Section -->
+    <div bind:this={resultsElement}>
+        <!-- Error Display -->
+        {#if currentError && currentError.trim() !== ''}
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="bg-gradient-to-r from-red-500/10 via-red-600/5 to-transparent border border-red-500/30 rounded-card p-4 animate-slide-down">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
                         </div>
                         <div>
-                            <p class="font-bold">Calculation Error</p>
-                            <p class="text-sm">{currentError}</p>
+                            <h4 class="text-sm font-semibold text-red-400 mb-1">Calculation Error</h4>
+                            <p class="text-xs text-theme-text-secondary leading-relaxed">{currentError}</p>
                         </div>
                     </div>
                 </div>
-            {/if}
+            </div>
+        {/if}
 
-            {#if currentApiResult}
+        <!-- Results Section -->
+        {#if currentApiResult}
+            <div class="animate-slide-up">
                 <BirdhouseResults apiResult={currentApiResult} />
-            {:else if !currentError || currentError.trim() === ''}
-                <div class="bg-theme-card-bg p-6 rounded-lg shadow-card border border-theme-border text-center text-theme-text-secondary">
-                    Results will appear here once calculated.
-                </div>
-            {/if}
-        </div>
+            </div>
+        {/if}
     </div>
 </div>

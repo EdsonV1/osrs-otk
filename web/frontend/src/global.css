@@ -2,12 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Enhanced root styling for better theme consistency */
 html {
-    @apply h-full bg-gray-900;
+    @apply h-full bg-theme-bg-primary;
+    scroll-behavior: smooth;
 }
 
 body {
-    @apply h-full bg-gray-900 text-white;
+    @apply h-full bg-theme-bg-primary text-theme-text-primary antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
 :root {
