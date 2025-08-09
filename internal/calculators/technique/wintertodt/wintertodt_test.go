@@ -164,7 +164,8 @@ func TestSimulateLoot(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			loot, totalValue := SimulateLoot(tt.totalRounds)
+			// Use deterministic seed for consistent test results
+			loot, totalValue := SimulateLootWithSeed(tt.totalRounds, 12345)
 
 			if totalValue < tt.minValue || totalValue > tt.maxValue {
 				t.Errorf("Total value out of range: got %d, want between %d and %d",

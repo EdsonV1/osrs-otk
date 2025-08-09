@@ -13,8 +13,13 @@ type LootSimulator struct {
 
 // NewLootSimulator creates a new loot simulator
 func NewLootSimulator() *LootSimulator {
+	return NewLootSimulatorWithSeed(time.Now().UnixNano())
+}
+
+// NewLootSimulatorWithSeed creates a new loot simulator with a specific seed for deterministic testing
+func NewLootSimulatorWithSeed(seed int64) *LootSimulator {
 	return &LootSimulator{
-		rand: rand.New(rand.NewSource(time.Now().UnixNano())),
+		rand: rand.New(rand.NewSource(seed)),
 	}
 }
 

@@ -7,7 +7,12 @@ import (
 
 // SimulateLoot simulates Wintertodt loot for the given number of rounds
 func SimulateLoot(rounds int) (map[string]any, int) {
-	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	return SimulateLootWithSeed(rounds, time.Now().UnixNano())
+}
+
+// SimulateLootWithSeed simulates Wintertodt loot with a specific seed for deterministic testing
+func SimulateLootWithSeed(rounds int, seed int64) (map[string]any, int) {
+	r := rand.New(rand.NewSource(seed))
 
 	lootCounts := make(map[string]int)
 	totalValue := 0

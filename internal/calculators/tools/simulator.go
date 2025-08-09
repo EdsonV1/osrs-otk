@@ -11,8 +11,12 @@ import (
 // It returns a map of item types to their quantity and total value, and the overall total value.
 // https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-probability-statistics/cc-7th-basic-prob/v/basic-probability
 func SimulateMultipleDrops(dt DropTable, numDrops int) (map[string]map[string]int, int, error) {
+	return SimulateMultipleDropsWithSeed(dt, numDrops, time.Now().UnixNano())
+}
 
-	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+// SimulateMultipleDropsWithSeed simulates drops with a specific seed for deterministic testing
+func SimulateMultipleDropsWithSeed(dt DropTable, numDrops int, seed int64) (map[string]map[string]int, int, error) {
+	r := rand.New(rand.NewSource(seed))
 
 	results := map[string]map[string]int{}
 	totalValue := 0
