@@ -18,6 +18,7 @@ export default [
 	},
 	{
 		files: ['**/*.{ts,tsx}'],
+		ignores: ['**/*.test.ts', '**/*.spec.ts', 'src/tests/**'],
 		languageOptions: {
 			parser: tsParser,
 			parserOptions: {
@@ -33,6 +34,35 @@ export default [
 			...ts.configs.recommended.rules,
 			'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
 			'@typescript-eslint/no-explicit-any': 'warn',
+		},
+	},
+	{
+		files: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}', 'src/tests/**/*.ts'],
+		languageOptions: {
+			parser: tsParser,
+			parserOptions: {
+				ecmaVersion: 2020,
+				sourceType: 'module',
+				// Don't use project for test files
+			},
+			globals: {
+				...globals.browser,
+				...globals.node,
+				describe: 'readonly',
+				it: 'readonly',
+				expect: 'readonly',
+				beforeEach: 'readonly',
+				afterEach: 'readonly',
+				vi: 'readonly',
+			},
+		},
+		plugins: {
+			'@typescript-eslint': ts,
+		},
+		rules: {
+			...ts.configs.recommended.rules,
+			'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+			'@typescript-eslint/no-explicit-any': 'off',
 		},
 	},
 	{
@@ -70,24 +100,6 @@ export default [
 			// Allow unused variables that start with underscore
 			'no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
 			'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
-		},
-	},
-	{
-		files: ['**/*.test.{js,ts}', '**/*.spec.{js,ts}'],
-		languageOptions: {
-			globals: {
-				...globals.browser,
-				...globals.node,
-				describe: 'readonly',
-				it: 'readonly',
-				expect: 'readonly',
-				beforeEach: 'readonly',
-				afterEach: 'readonly',
-				vi: 'readonly',
-			},
-		},
-		rules: {
-			'@typescript-eslint/no-explicit-any': 'off',
 		},
 	},
 	{

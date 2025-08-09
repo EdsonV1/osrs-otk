@@ -2,21 +2,21 @@ import '@testing-library/jest-dom';
 import { vi } from 'vitest';
 
 // Mock IntersectionObserver for components that use it
-global.IntersectionObserver = vi.fn(() => ({
+(globalThis as any).IntersectionObserver = vi.fn(() => ({
 	disconnect: vi.fn(),
 	observe: vi.fn(),
 	unobserve: vi.fn(),
-})) as any;
+}));
 
 // Mock ResizeObserver for responsive components
-global.ResizeObserver = vi.fn(() => ({
+(globalThis as any).ResizeObserver = vi.fn(() => ({
 	disconnect: vi.fn(),
 	observe: vi.fn(),
 	unobserve: vi.fn(),
-})) as any;
+}));
 
 // Mock fetch for API calls
-global.fetch = vi.fn();
+(globalThis as any).fetch = vi.fn();
 
 // Mock window.matchMedia for responsive design tests
 Object.defineProperty(window, 'matchMedia', {
@@ -46,7 +46,7 @@ vi.mock('$app/environment', () => ({
 
 // Mock $app/stores for SvelteKit
 vi.mock('$app/stores', () => {
-	const readable = vi.fn(() => ({
+	const readable = vi.fn((_initialValue: any) => ({
 		subscribe: vi.fn(() => vi.fn())
 	}));
 	
