@@ -178,9 +178,10 @@ jobs:
       continue-on-error: true
 
     - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v3
+      uses: actions/upload-artifact@v4
       with:
-        sarif_file: gosec-results.sarif
+        name: gosec-results
+        path: gosec-results.sarif
 
 
   # Build and push Docker images
