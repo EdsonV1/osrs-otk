@@ -132,6 +132,10 @@ jobs:
       working-directory: web/frontend
       run: npm run check
 
+    - name: Run frontend tests (CI-safe)
+      working-directory: web/frontend
+      run: npm run test:run:ci
+
     - name: Build frontend
       working-directory: web/frontend
       run: npm run build

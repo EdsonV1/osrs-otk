@@ -10,48 +10,48 @@ export interface IconConfig {
 // Common metric icons - these will be preloaded for performance
 export const METRIC_ICONS = {
     experience: {
-        src: '/images/icons/experience.svg',
+        src: '/images/skills/runecraft.png', // Using runecraft as experience icon
         preload: true,
-        fallback: '/images/icons/experience.png'
+        fallback: '/images/skills/magic.png'
     },
     coins: {
-        src: '/images/icons/coins.svg', 
+        src: '/images/tools/knight_of_ardougne.png', // Using knight icon for coins temporarily
         preload: true,
-        fallback: '/images/icons/coins.png'
+        fallback: '/images/skills/thieving.png'
     },
     clock: {
-        src: '/images/icons/clock.svg',
+        src: '/images/skills/agility.png', // Using agility icon for time/speed
         preload: true,
-        fallback: '/images/icons/clock.png'
+        fallback: '/images/skills/construction.png'
     },
     chart: {
-        src: '/images/icons/chart.svg',
+        src: '/images/skills/slayer.png',
         preload: false,
-        fallback: '/images/icons/chart.png'
+        fallback: '/images/skills/strength.png'
     }
 } as const;
 
-// Skill icons - lazy loaded
+// Skill icons - lazy loaded (using existing PNG files)
 export const SKILL_ICONS = {
-    firemaking: '/images/skills/firemaking.svg',
-    runecraft: '/images/skills/runecraft.svg',
-    thieving: '/images/skills/thieving.svg',
-    hunter: '/images/skills/hunter.svg',
-    attack: '/images/skills/attack.svg',
-    agility: '/images/skills/agility.svg',
-    mining: '/images/skills/mining.svg'
+    firemaking: '/images/skills/firemaking.png',
+    runecraft: '/images/skills/runecraft.png',
+    thieving: '/images/skills/thieving.png',
+    hunter: '/images/skills/hunter.png',
+    attack: '/images/skills/attack.png',
+    agility: '/images/skills/agility.png',
+    mining: '/images/skills/mining.png'
 } as const;
 
 // Tool icons - lazy loaded  
 export const TOOL_ICONS = {
-    knight: '/images/tools/knight_of_ardougne.svg',
-    birdhouse: '/images/birdhouse/redwood_bird_house.svg'
+    knight: '/images/tools/knight_of_ardougne.png',
+    birdhouse: '/images/birdhouse/redwood_bird_house.png'
 } as const;
 
-// Pet icons - lazy loaded
+// Pet icons - using skill icons as placeholders
 export const PET_ICONS = {
-    phoenix: '/images/pets/phoenix.svg',
-    abyssal_protector: '/images/pets/abyssal_protector.svg'
+    phoenix: '/images/skills/firemaking.png', // Phoenix relates to firemaking
+    abyssal_protector: '/images/skills/runecraft.png' // Abyssal protector relates to runecraft
 } as const;
 
 // Preload critical icons for better performance
