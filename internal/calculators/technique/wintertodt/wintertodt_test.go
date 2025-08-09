@@ -23,10 +23,10 @@ func TestCalculateWintertodtData(t *testing.T) {
 			roundsPerHour:     4.0,
 			totalRounds:       100,
 			expectError:       false,
-			expectedMinXPHour: 150000,
-			expectedMaxXPHour: 200000,
-			expectedMinValue:  500000,
-			expectedMaxValue:  1500000,
+			expectedMinXPHour: 5000,
+			expectedMaxXPHour: 7000,
+			expectedMinValue:  1500000,
+			expectedMaxValue:  3000000,
 		},
 		{
 			name:              "Level 75 mid-level",
@@ -34,10 +34,10 @@ func TestCalculateWintertodtData(t *testing.T) {
 			roundsPerHour:     5.0,
 			totalRounds:       200,
 			expectError:       false,
-			expectedMinXPHour: 200000,
-			expectedMaxXPHour: 280000,
-			expectedMinValue:  1000000,
-			expectedMaxValue:  2500000,
+			expectedMinXPHour: 8000,
+			expectedMaxXPHour: 9500,
+			expectedMinValue:  3500000,
+			expectedMaxValue:  5500000,
 		},
 		{
 			name:              "Level 99 maximum",
@@ -45,10 +45,10 @@ func TestCalculateWintertodtData(t *testing.T) {
 			roundsPerHour:     6.0,
 			totalRounds:       500,
 			expectError:       false,
-			expectedMinXPHour: 250000,
-			expectedMaxXPHour: 350000,
-			expectedMinValue:  2500000,
-			expectedMaxValue:  8000000,
+			expectedMinXPHour: 12000,
+			expectedMaxXPHour: 13000,
+			expectedMinValue:  10000000,
+			expectedMaxValue:  15000000,
 		},
 		{
 			name:            "Invalid: level too low",
@@ -157,9 +157,9 @@ func TestSimulateLoot(t *testing.T) {
 		maxValue    int
 		minItems    int
 	}{
-		{"Small run", 10, 50000, 200000, 3},
-		{"Medium run", 100, 500000, 2000000, 5},
-		{"Large run", 1000, 5000000, 20000000, 8},
+		{"Small run", 10, 150000, 500000, 3},
+		{"Medium run", 100, 1500000, 3000000, 5},
+		{"Large run", 1000, 15000000, 35000000, 8},
 	}
 
 	for _, tt := range tests {

@@ -31,8 +31,8 @@ var XPTable = map[int]int{
 
 func LevelForXP(xp float64) int {
 	for level := 1; level < len(XPTable); level++ {
-		if xp < float64(XPTable[level]) {
-			return level - 1
+		if xp < XPTable[level] {
+			return level
 		}
 	}
 	return 99

@@ -28,6 +28,8 @@ var SupplyLoot = []LootItem{
 	{"Uncut diamond", 1, 2800, 0.12},
 	{"Pure essence", 50, 4, 0.2},
 	{"Raw shark", 3, 800, 0.15},
+	{"yew_logs", 10, 400, 0.08},
+	{"magic_logs", 5, 1000, 0.05},
 }
 
 // Experience calculation constants

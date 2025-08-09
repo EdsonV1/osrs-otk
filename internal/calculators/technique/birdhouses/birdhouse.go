@@ -48,6 +48,10 @@ var craftingXPPerBirdhouse = map[string]int{
 }
 
 func CalculateBirdhouseData(typ string, quantity int) (BirdhouseResult, error) {
+	if quantity <= 0 {
+		return BirdhouseResult{}, fmt.Errorf("quantity must be positive, got %d", quantity)
+	}
+
 	rate, ok := avgNests[typ]
 	if !ok {
 		return BirdhouseResult{}, fmt.Errorf("unknown birdhouse type: %s", typ)
