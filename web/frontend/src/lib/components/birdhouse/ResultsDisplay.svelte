@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { BirdhouseApiResult, SeedDropInfo } from '$lib/types'; 
+    import type { BirdhouseApiResult } from '$lib/types'; 
     
     export let apiResult: BirdhouseApiResult | null;
     export let iconSrc: string = '/images/birdhouse/redwood_bird_house.png';

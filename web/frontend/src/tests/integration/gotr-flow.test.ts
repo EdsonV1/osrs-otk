@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/svelte';
 import userEvent from '@testing-library/user-event';
-import { mockFetch, mockApiResponses } from '../utils';
+import { mockFetch } from '../utils';
 import GotrPage from '../../routes/tools/gotr/+page.svelte';
 
 describe('GOTR Integration Flow', () => {

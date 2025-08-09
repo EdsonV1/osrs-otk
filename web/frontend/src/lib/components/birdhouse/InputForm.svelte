@@ -46,7 +46,7 @@
             return;
         }
 
-        const selectedTypeData = birdhouseTypes.find(b => b.value === formState.selectedLogType);
+        const _selectedTypeData = birdhouseTypes.find(b => b.value === formState.selectedLogType);
 
 
         const apiPayload: BirdhouseApiInput = {

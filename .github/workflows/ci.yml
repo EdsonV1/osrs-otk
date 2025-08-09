@@ -126,7 +126,7 @@ jobs:
 
     - name: Run frontend linting
       working-directory: web/frontend
-      run: npm run lint
+      run: npm run lint:ci
 
     - name: Run frontend type checking
       working-directory: web/frontend

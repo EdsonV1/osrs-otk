@@ -73,7 +73,7 @@ describe('Icon Component', () => {
 	});
 
 	it('shows fallback image on error when provided', async () => {
-		const { component } = render(Icon, {
+		render(Icon, {
 			src: '/broken.png',
 			alt: 'test',
 			fallback: '/fallback.png'
