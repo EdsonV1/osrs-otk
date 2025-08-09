@@ -4,6 +4,13 @@
     import ResultsDisplay from '$lib/components/ardy-knights/ResultsDisplay.svelte';
     import { tick } from 'svelte';
 
+    // Tool configuration
+    const toolConfig = {
+        name: 'Ardougne Knight Calculator',
+        description: 'Calculate your Thieving XP, GP, and more.',
+        iconSrc: '/images/tools/knight_of_ardougne.png'
+    };
+
     let results: ArdyKnightResult | null = null;
     let error: string | null = null;
     let resultsElement: HTMLElement;
@@ -47,8 +54,15 @@
         </a>
     </div>
     <header class="mb-10 text-center">
-        <h1 class="text-h1 text-theme-text-primary tracking-tight">Ardougne Knight Calculator</h1>
-        <p class="mt-3 text-lg text-theme-text-secondary">Calculate your Thieving XP, GP, and more.</p>
+        <div class="flex items-center justify-center mb-4">
+            <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center p-2 mr-4">
+                <img src={toolConfig.iconSrc} alt="{toolConfig.name} icon" class="w-full h-full object-contain" />
+            </div>
+            <h1 class="text-h1 text-theme-text-primary tracking-tight">{toolConfig.name}</h1>
+        </div>
+        <p class="mt-3 text-lg text-theme-text-secondary">
+            {toolConfig.description}
+        </p>
     </header>
 
     <!-- Input Form Section -->
@@ -82,7 +96,7 @@
         <!-- Results Section -->
         {#if results}
             <div class="animate-slide-up">
-                <ResultsDisplay {results} />
+                <ResultsDisplay {results} iconSrc={toolConfig.iconSrc} />
             </div>
         {/if}
     </div>

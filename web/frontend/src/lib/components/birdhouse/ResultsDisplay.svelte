@@ -2,6 +2,12 @@
     import type { BirdhouseApiResult, SeedDropInfo } from '$lib/types'; 
     
     export let apiResult: BirdhouseApiResult | null;
+    export let iconSrc: string = '/images/birdhouse/redwood_bird_house.png';
+    
+    // Metric icons configuration
+    export let experienceIconSrc: string = '/images/icons/experience.png';
+    export let lootIconSrc: string = '/images/icons/coins.png';
+    export let timeIconSrc: string = '/images/icons/clock.png';
 
     function formatNum(num: number | null | undefined, decimals: number = 0): string {
         if (num === null || num === undefined || typeof num !== 'number' || isNaN(num)) return 'N/A';
@@ -36,8 +42,8 @@
         <div class="relative p-6 pb-4">
             <div class="flex items-center justify-between mb-6">
                 <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl flex items-center justify-center shadow-glow">
-                        <span class="text-2xl">🏠</span>
+                    <div class="w-12 h-12 bg-gradient-to-br from-green-600 to-emerald-700 rounded-xl flex items-center justify-center shadow-glow p-2">
+                        <img src={iconSrc} alt="Birdhouse icon" class="w-full h-full object-contain" />
                     </div>
                     <div>
                         <h2 class="text-2xl font-bold text-theme-text-primary">Birdhouse Results</h2>
@@ -57,8 +63,8 @@
                 <!-- Hunter XP Card -->
                 <div class="group bg-glass backdrop-blur-md p-5 rounded-card border border-theme-border-accent/20 hover:border-green-400/40 transition-all duration-300 hover:shadow-card transform hover:-translate-y-0.5">
                     <div class="flex items-center justify-between mb-3">
-                        <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
-                            <span class="text-white text-lg">🏹</span>
+                        <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center p-2">
+                            <img src={experienceIconSrc} alt="Experience icon" class="w-full h-full object-contain" />
                         </div>
                         <div class="text-right">
                             <div class="text-xs text-theme-text-tertiary uppercase tracking-wider">Hunter XP</div>
@@ -74,8 +80,8 @@
                 <!-- Profit Card -->
                 <div class="group bg-glass backdrop-blur-md p-5 rounded-card border border-theme-border-accent/20 hover:border-yellow-400/40 transition-all duration-300 hover:shadow-card transform hover:-translate-y-0.5">
                     <div class="flex items-center justify-between mb-3">
-                        <div class="w-10 h-10 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center">
-                            <span class="text-white text-lg">💰</span>
+                        <div class="w-10 h-10 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center p-2">
+                            <img src={lootIconSrc} alt="Loot icon" class="w-full h-full object-contain" />
                         </div>
                         <div class="text-right">
                             <div class="text-xs text-theme-text-tertiary uppercase tracking-wider">Loot Value</div>
@@ -93,8 +99,8 @@
             <div class="bg-glass backdrop-blur-md rounded-card border border-theme-border-accent/20 p-5 mb-6">
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center space-x-3">
-                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
-                            <span class="text-white text-sm">⏱️</span>
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center p-1.5">
+                            <img src={timeIconSrc} alt="Time icon" class="w-full h-full object-contain" />
                         </div>
                         <h3 class="text-lg font-semibold text-theme-text-primary">Time Investment</h3>
                     </div>

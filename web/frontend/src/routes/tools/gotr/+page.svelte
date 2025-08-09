@@ -4,6 +4,13 @@
     import GOTRResults from '$lib/components/gotr/ResultsDisplay.svelte';
     import { tick } from 'svelte';
 
+    // Tool configuration
+    const toolConfig = {
+        name: 'Guardians of the Rift Calculator',
+        description: 'Calculate XP rates, training time, reward rolls, and pet chances for GOTR based on your current and target levels.',
+        iconSrc: '/images/skills/runecraft.png'
+    };
+
     let currentApiResult: GOTRApiResult | null = null;
     let currentError: string | null = null;
     let resultsElement: HTMLElement;
@@ -47,9 +54,14 @@
         </a>
     </div>
     <header class="mb-10 text-center">
-        <h1 class="text-h1 text-theme-text-primary tracking-tight">Guardians of the Rift Calculator</h1>
+        <div class="flex items-center justify-center mb-4">
+            <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-600 rounded-xl flex items-center justify-center p-2 mr-4">
+                <img src={toolConfig.iconSrc} alt="{toolConfig.name} icon" class="w-full h-full object-contain" />
+            </div>
+            <h1 class="text-h1 text-theme-text-primary tracking-tight">{toolConfig.name}</h1>
+        </div>
         <p class="mt-3 text-lg text-theme-text-secondary">
-            Calculate XP rates, training time, reward rolls, and pet chances for GOTR based on your current and target levels.
+            {toolConfig.description}
         </p>
     </header>
 
@@ -84,7 +96,7 @@
         <!-- Results Section -->
         {#if currentApiResult}
             <div class="animate-slide-up">
-                <GOTRResults apiResult={currentApiResult} />
+                <GOTRResults apiResult={currentApiResult} iconSrc={toolConfig.iconSrc} />
             </div>
         {/if}
     </div>

@@ -1,7 +1,16 @@
 <script lang="ts">
     import type { WintertodtApiResult } from '$lib/types';
+    import Icon from '$lib/components/shared/Icon.svelte';
+    import { METRIC_ICONS, SKILL_ICONS, PET_ICONS } from '$lib/stores/icons';
 
     export let apiResult: WintertodtApiResult;
+    export let iconSrc: string = SKILL_ICONS.firemaking;
+    
+    // Metric icons configuration - optimized with defaults
+    export let experienceIconSrc: string = METRIC_ICONS.experience.src;
+    export let petIconSrc: string = PET_ICONS.phoenix;
+    export let lootIconSrc: string = METRIC_ICONS.coins.src;
+    export let timeIconSrc: string = METRIC_ICONS.clock.src;
 
     function formatNumber(num: number): string {
         return new Intl.NumberFormat().format(Math.round(num));
@@ -46,8 +55,8 @@
     <div class="relative p-6 pb-4">
         <div class="flex items-center justify-between mb-6">
             <div class="flex items-center space-x-3">
-                <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center shadow-glow animate-glow">
-                    <span class="text-2xl">🔥</span>
+                <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center shadow-glow animate-glow p-2">
+                    <Icon src={iconSrc} alt="Wintertodt icon" size="lg" loading="eager" preload={true} />
                 </div>
                 <div>
                     <h2 class="text-2xl font-bold text-theme-text-primary">Wintertodt Results</h2>
@@ -67,8 +76,8 @@
             <!-- XP Card -->
             <div class="group bg-theme-bg-tertiary/80 p-5 rounded-card border border-theme-border-accent/20 hover:border-theme-accent-primary/40 transition-colors duration-200 hover:shadow-card">
                 <div class="flex items-center justify-between mb-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                        <span class="text-white text-lg">📊</span>
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center p-2">
+                        <Icon src={experienceIconSrc} alt="Experience icon" size="md" loading="eager" preload={true} />
                     </div>
                     <div class="text-right">
                         <div class="text-xs text-theme-text-tertiary uppercase tracking-wider">Experience</div>
@@ -84,8 +93,8 @@
             <!-- Phoenix Pet Card -->
             <div class="group bg-theme-bg-tertiary/80 p-5 rounded-card border border-theme-border-accent/20 hover:border-orange-400/40 transition-colors duration-200 hover:shadow-card">
                 <div class="flex items-center justify-between mb-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center {petChanceBg}">
-                        <span class="text-white text-lg">🔥</span>
+                    <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center {petChanceBg} p-2">
+                        <Icon src={petIconSrc} alt="Phoenix pet icon" size="md" loading="lazy" />
                     </div>
                     <div class="text-right">
                         <div class="text-xs text-theme-text-tertiary uppercase tracking-wider">Phoenix Chance</div>
@@ -104,8 +113,8 @@
             <!-- Loot Value -->
             <div class="lg:col-span-1 bg-theme-bg-tertiary/80 p-5 rounded-card border border-theme-border-accent/20 hover:border-green-400/40 transition-colors duration-200">
                 <div class="flex items-center justify-between">
-                    <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
-                        <span class="text-white text-lg">💰</span>
+                    <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center p-2">
+                        <Icon src={lootIconSrc} alt="Loot value icon" size="md" loading="eager" preload={true} />
                     </div>
                     <div class="text-right">
                         <div class="text-xs text-theme-text-tertiary uppercase tracking-wider">Loot Value</div>
@@ -117,8 +126,8 @@
             <!-- Time Investment -->
             <div class="lg:col-span-2 bg-theme-bg-tertiary/80 p-5 rounded-card border border-theme-border-accent/20">
                 <div class="flex items-center justify-between">
-                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-lg flex items-center justify-center">
-                        <span class="text-white text-lg">⏰</span>
+                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-lg flex items-center justify-center p-2">
+                        <Icon src={timeIconSrc} alt="Time investment icon" size="md" loading="eager" preload={true} />
                     </div>
                     <div class="text-right">
                         <div class="text-xs text-theme-text-tertiary uppercase tracking-wider">Time Investment</div>

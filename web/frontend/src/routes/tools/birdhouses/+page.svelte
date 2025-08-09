@@ -4,6 +4,13 @@
     import BirdhouseResults from '$lib/components/birdhouse/ResultsDisplay.svelte';
     import { tick } from 'svelte';
 
+    // Tool configuration
+    const toolConfig = {
+        name: 'Birdhouse Run Calculator',
+        description: 'Estimate XP, nests, and valuable loot from your birdhouse runs based on log type and total houses.',
+        iconSrc: '/images/birdhouse/redwood_bird_house.png'
+    };
+
     let currentApiResult: BirdhouseApiResult | null = null;
     let currentError: string | null = null;
     let resultsElement: HTMLElement;
@@ -47,9 +54,14 @@
         </a>
     </div>
     <header class="mb-10 text-center">
-        <h1 class="text-h1 text-theme-text-primary tracking-tight">Birdhouse Run Calculator</h1>
+        <div class="flex items-center justify-center mb-4">
+            <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-600 rounded-xl flex items-center justify-center p-2 mr-4">
+                <img src={toolConfig.iconSrc} alt="{toolConfig.name} icon" class="w-full h-full object-contain" />
+            </div>
+            <h1 class="text-h1 text-theme-text-primary tracking-tight">{toolConfig.name}</h1>
+        </div>
         <p class="mt-3 text-lg text-theme-text-secondary">
-            Estimate XP, nests, and valuable loot from your birdhouse runs based on log type and total houses.
+            {toolConfig.description}
         </p>
     </header>
 
@@ -84,7 +96,7 @@
         <!-- Results Section -->
         {#if currentApiResult}
             <div class="animate-slide-up">
-                <BirdhouseResults apiResult={currentApiResult} />
+                <BirdhouseResults apiResult={currentApiResult} iconSrc={toolConfig.iconSrc} />
             </div>
         {/if}
     </div>

@@ -2,6 +2,12 @@
     import type { GOTRApiResult } from '$lib/types';
 
     export let apiResult: GOTRApiResult;
+    export let iconSrc: string = '/images/skills/runecraft.png';
+    
+    // Metric icons configuration
+    export let timeIconSrc: string = '/images/icons/clock.png';
+    export let experienceIconSrc: string = '/images/icons/experience.png';
+    export let lootIconSrc: string = '/images/icons/coins.png';
 
     function formatNumber(num: number): string {
         return new Intl.NumberFormat().format(Math.round(num));
@@ -46,8 +52,8 @@
     <div class="relative p-6 pb-4">
         <div class="flex items-center justify-between mb-6">
             <div class="flex items-center space-x-3">
-                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl flex items-center justify-center shadow-glow animate-glow">
-                    <span class="text-2xl">🔮</span>
+                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl flex items-center justify-center shadow-glow animate-glow p-2">
+                    <img src={iconSrc} alt="GOTR icon" class="w-full h-full object-contain" />
                 </div>
                 <div>
                     <h2 class="text-2xl font-bold text-theme-text-primary">GOTR Training Plan</h2>
@@ -67,8 +73,8 @@
             <!-- Games & Time Card -->
             <div class="group bg-theme-bg-tertiary/80 p-5 rounded-card border border-theme-border-accent/20 hover:border-theme-accent-primary/40 transition-colors duration-200 hover:shadow-card">
                 <div class="flex items-center justify-between mb-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                        <span class="text-white text-lg">⏱️</span>
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center p-2">
+                        <img src={timeIconSrc} alt="Time icon" class="w-full h-full object-contain" />
                     </div>
                     <div class="text-right">
                         <div class="text-xs text-theme-text-tertiary uppercase tracking-wider">Training Time</div>
@@ -84,8 +90,8 @@
             <!-- XP Rates Card -->
             <div class="group bg-theme-bg-tertiary/80 p-5 rounded-card border border-theme-border-accent/20 hover:border-green-400/40 transition-colors duration-200 hover:shadow-card">
                 <div class="flex items-center justify-between mb-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center">
-                        <span class="text-white text-lg">📈</span>
+                    <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center p-2">
+                        <img src={experienceIconSrc} alt="Experience icon" class="w-full h-full object-contain" />
                     </div>
                     <div class="text-right">
                         <div class="text-xs text-theme-text-tertiary uppercase tracking-wider">XP Rates</div>
@@ -104,8 +110,8 @@
             <!-- Profit Per Hour -->
             <div class="lg:col-span-1 bg-theme-bg-tertiary/80 p-5 rounded-card border border-theme-border-accent/20 hover:border-yellow-400/40 transition-colors duration-200">
                 <div class="flex items-center justify-between">
-                    <div class="w-10 h-10 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center">
-                        <span class="text-white text-lg">💰</span>
+                    <div class="w-10 h-10 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center p-2">
+                        <img src={lootIconSrc} alt="Loot icon" class="w-full h-full object-contain" />
                     </div>
                     <div class="text-right">
                         <div class="text-xs text-theme-text-tertiary uppercase tracking-wider">GP/Hour</div>

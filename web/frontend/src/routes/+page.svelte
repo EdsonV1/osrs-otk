@@ -35,12 +35,12 @@
     ];
 
     const skills = [
-        { name: 'Attack', icon: '⚔️', href: '/skills/attack' },
-        { name: 'Hunter', icon: '🏹', href: '/skills/hunter' },
-        { name: 'Firemaking', icon: '🔥', href: '/skills/firemaking' },
-        { name: 'Thieving', icon: '💰', href: '/skills/thieving' },
-        { name: 'Agility', icon: '🏃', href: '/skills/agility' },
-        { name: 'Mining', icon: '⛏️', href: '/skills/mining' }
+        { name: 'Attack', iconSrc: '/images/skills/attack.png', href: '/skills/attack' },
+        { name: 'Hunter', iconSrc: '/images/skills/hunter.png', href: '/skills/hunter' },
+        { name: 'Firemaking', iconSrc: '/images/skills/firemaking.png', href: '/skills/firemaking' },
+        { name: 'Thieving', iconSrc: '/images/skills/thieving.png', href: '/skills/thieving' },
+        { name: 'Agility', iconSrc: '/images/skills/agility.png', href: '/skills/agility' },
+        { name: 'Mining', iconSrc: '/images/skills/mining.png', href: '/skills/mining' }
     ];
 
     const stats = [
@@ -178,8 +178,8 @@
                 <a href={skill.href} 
                    class="group bg-theme-bg-tertiary hover:bg-theme-bg-tertiary p-6 rounded-card border border-theme-border-primary hover:border-theme-accent-primary/50 transition-colors duration-200 hover:shadow-card">
                     <div class="text-center">
-                        <div class="text-3xl mb-3">
-                            {skill.icon}
+                        <div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                            <img src={skill.iconSrc} alt="{skill.name} icon" class="w-full h-full object-contain group-hover:scale-110 transition-transform" />
                         </div>
                         <div class="text-sm font-medium text-theme-text-primary group-hover:text-theme-accent-primary transition-colors duration-200">
                             {skill.name}
