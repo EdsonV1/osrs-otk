@@ -207,6 +207,17 @@ jobs:
       with:
         name: frontend-build
         path: web/frontend/build
+      continue-on-error: true
+      
+    - name: Check if frontend build exists
+      id: check-frontend
+      run: |
+        if [ -d "web/frontend/build" ] && [ "$(ls -A web/frontend/build)" ]; then
+          echo "frontend-exists=true" >> $GITHUB_OUTPUT
+        else
+          echo "frontend-exists=false" >> $GITHUB_OUTPUT
+          echo "Frontend build not found, building frontend in Docker"
+        fi
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
