@@ -85,3 +85,16 @@ func GOTRStrategyHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(breakdown)
 }
+
+// GOTRProTipsHandler provides detailed calculation methodology and tips
+func GOTRProTipsHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Only GET method allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	tips := gotr.GetCalculationProTips()
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(tips)
+}

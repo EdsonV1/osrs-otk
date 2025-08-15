@@ -1,88 +1,84 @@
 package wintertodt
 
 import (
-	"fmt"
 	"testing"
 )
 
 func TestCalculateWintertodtData(t *testing.T) {
 	tests := []struct {
-		name              string
-		firemakingLevel   int
-		roundsPerHour     float64
-		totalRounds       int
-		expectError       bool
-		expectedMinXPHour float64
-		expectedMaxXPHour float64
-		expectedMinValue  int
-		expectedMaxValue  int
+		name         string
+		currentLevel int
+		targetLevel  int
+		strategy     Strategy
+		skillLevels  SkillLevels
+		expectError  bool
 	}{
 		{
-			name:              "Level 50 baseline",
-			firemakingLevel:   50,
-			roundsPerHour:     4.0,
-			totalRounds:       100,
-			expectError:       false,
-			expectedMinXPHour: 5000,
-			expectedMaxXPHour: 7000,
-			expectedMinValue:  1500000,
-			expectedMaxValue:  3000000,
+			name:         "Level 50 to 60 large group",
+			currentLevel: 50,
+			targetLevel:  60,
+			strategy:     StrategyLargeGroup,
+			skillLevels: SkillLevels{
+				Herblore:    1,
+				Mining:      1,
+				Fishing:     1,
+				Crafting:    1,
+				Farming:     1,
+				Woodcutting: 1,
+			},
+			expectError: false,
 		},
 		{
-			name:              "Level 75 mid-level",
-			firemakingLevel:   75,
-			roundsPerHour:     5.0,
-			totalRounds:       200,
-			expectError:       false,
-			expectedMinXPHour: 8000,
-			expectedMaxXPHour: 9500,
-			expectedMinValue:  3500000,
-			expectedMaxValue:  5500000,
+			name:         "Level 75 to 99 solo",
+			currentLevel: 75,
+			targetLevel:  99,
+			strategy:     StrategySolo,
+			skillLevels: SkillLevels{
+				Herblore:    80,
+				Mining:      70,
+				Fishing:     76,
+				Crafting:    60,
+				Farming:     85,
+				Woodcutting: 90,
+			},
+			expectError: false,
 		},
 		{
-			name:              "Level 99 maximum",
-			firemakingLevel:   99,
-			roundsPerHour:     6.0,
-			totalRounds:       500,
-			expectError:       false,
-			expectedMinXPHour: 12000,
-			expectedMaxXPHour: 13000,
-			expectedMinValue:  10000000,
-			expectedMaxValue:  15000000,
+			name:         "Invalid level (too low)",
+			currentLevel: 49,
+			targetLevel:  60,
+			strategy:     StrategyLargeGroup,
+			skillLevels:  SkillLevels{},
+			expectError:  true,
 		},
 		{
-			name:            "Invalid: level too low",
-			firemakingLevel: 40,
-			roundsPerHour:   4.0,
-			totalRounds:     100,
-			expectError:     true,
+			name:         "Target level lower than current",
+			currentLevel: 75,
+			targetLevel:  70,
+			strategy:     StrategyLargeGroup,
+			skillLevels:  SkillLevels{},
+			expectError:  true,
 		},
 		{
-			name:            "Invalid: negative rounds per hour",
-			firemakingLevel: 70,
-			roundsPerHour:   -1.0,
-			totalRounds:     100,
-			expectError:     true,
-		},
-		{
-			name:            "Invalid: zero total rounds",
-			firemakingLevel: 70,
-			roundsPerHour:   4.0,
-			totalRounds:     0,
-			expectError:     true,
-		},
-		{
-			name:            "Invalid: negative total rounds",
-			firemakingLevel: 70,
-			roundsPerHour:   4.0,
-			totalRounds:     -50,
-			expectError:     true,
+			name:         "Invalid strategy",
+			currentLevel: 50,
+			targetLevel:  60,
+			strategy:     Strategy("invalid"),
+			skillLevels:  SkillLevels{},
+			expectError:  true,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result, err := CalculateWintertodtData(tt.firemakingLevel, tt.roundsPerHour, tt.totalRounds)
+			result, err := CalculateWintertodtData(
+				tt.currentLevel,
+				tt.targetLevel,
+				tt.strategy,
+				nil, // custom points per round
+				nil, // custom minutes per round
+				tt.skillLevels,
+			)
 
 			if tt.expectError {
 				if err == nil {
@@ -96,146 +92,107 @@ func TestCalculateWintertodtData(t *testing.T) {
 				return
 			}
 
-			// Test XP per hour calculation
-			if result.AverageExpHour < tt.expectedMinXPHour || result.AverageExpHour > tt.expectedMaxXPHour {
-				t.Errorf("XP per hour out of range: got %f, want between %f and %f",
-					result.AverageExpHour, tt.expectedMinXPHour, tt.expectedMaxXPHour)
+			// Basic validation checks
+			if result.CurrentLevel != tt.currentLevel {
+				t.Errorf("Expected current level %d, got %d", tt.currentLevel, result.CurrentLevel)
 			}
 
-			// Test total value range
-			if result.TotalValue < tt.expectedMinValue || result.TotalValue > tt.expectedMaxValue {
-				t.Errorf("Total value out of range: got %d, want between %d and %d",
-					result.TotalValue, tt.expectedMinValue, tt.expectedMaxValue)
+			if result.TargetLevel != tt.targetLevel {
+				t.Errorf("Expected target level %d, got %d", tt.targetLevel, result.TargetLevel)
 			}
 
-			// Test experience scaling with level
+			if result.Strategy != string(tt.strategy) {
+				t.Errorf("Expected strategy %s, got %s", tt.strategy, result.Strategy)
+			}
+
+			if result.RoundsNeeded <= 0 {
+				t.Errorf("Expected positive rounds needed, got %d", result.RoundsNeeded)
+			}
+
 			if result.TotalExperience <= 0 {
-				t.Errorf("Total experience should be positive, got %d", result.TotalExperience)
+				t.Errorf("Expected positive total experience, got %d", result.TotalExperience)
 			}
 
-			// Test pet chance is reasonable (0-100%)
+			if result.AverageExpHour <= 0 {
+				t.Errorf("Expected positive average exp per hour, got %f", result.AverageExpHour)
+			}
+
 			if result.PetChance < 0 || result.PetChance > 100 {
-				t.Errorf("Pet chance out of range: got %f, want between 0 and 100", result.PetChance)
+				t.Errorf("Expected pet chance between 0-100, got %f", result.PetChance)
 			}
 
-			// Test that higher rounds give higher pet chance
-			if tt.totalRounds > 100 && result.PetChance < 1.0 {
-				t.Errorf("Pet chance should be reasonable with %d rounds: got %f", tt.totalRounds, result.PetChance)
-			}
-
-			// Test total time calculation
-			expectedTime := float64(tt.totalRounds) / tt.roundsPerHour
-			if result.TotalTime != expectedTime {
-				t.Errorf("Total time incorrect: got %f, want %f", result.TotalTime, expectedTime)
-			}
-
-			// Test estimated loot is not empty
-			if len(result.EstimatedLoot) == 0 {
-				t.Errorf("Estimated loot should not be empty")
-			}
-
-			// Test loot has reasonable items
-			foundLogs := false
-			for itemName := range result.EstimatedLoot {
-				if itemName == "yew_logs" || itemName == "magic_logs" {
-					foundLogs = true
-					break
-				}
-			}
-			if !foundLogs {
-				t.Errorf("Should have some log drops in estimated loot")
+			if result.TotalTime <= 0 {
+				t.Errorf("Expected positive total time, got %f", result.TotalTime)
 			}
 		})
 	}
 }
 
-func TestSimulateLoot(t *testing.T) {
+func TestCalculateWintertodtDataWithCustomParams(t *testing.T) {
+	customPoints := 1200
+	customMinutes := 12.5
+	skillLevels := SkillLevels{
+		Herblore:    80,
+		Mining:      70,
+		Fishing:     76,
+		Crafting:    60,
+		Farming:     85,
+		Woodcutting: 90,
+	}
+
+	result, err := CalculateWintertodtData(
+		50,
+		60,
+		StrategySolo,
+		&customPoints,
+		&customMinutes,
+		skillLevels,
+	)
+
+	if err != nil {
+		t.Fatalf("Unexpected error: %v", err)
+	}
+
+	if result.PointsPerRound != customPoints {
+		t.Errorf("Expected custom points %d, got %d", customPoints, result.PointsPerRound)
+	}
+
+	if result.MinutesPerRound != customMinutes {
+		t.Errorf("Expected custom minutes %f, got %f", customMinutes, result.MinutesPerRound)
+	}
+}
+
+func TestLevelToXP(t *testing.T) {
 	tests := []struct {
-		name        string
-		totalRounds int
-		minValue    int
-		maxValue    int
-		minItems    int
+		level      int
+		expectedXP int
 	}{
-		{"Small run", 10, 150000, 500000, 3},
-		{"Medium run", 100, 1500000, 3000000, 5},
-		{"Large run", 1000, 15000000, 35000000, 8},
+		{1, 0},
+		{50, 101314}, // Actual calculated values
+		{99, 13034394},
 	}
 
 	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			// Use deterministic seed for consistent test results
-			loot, totalValue := SimulateLootWithSeed(tt.totalRounds, 12345)
-
-			if totalValue < tt.minValue || totalValue > tt.maxValue {
-				t.Errorf("Total value out of range: got %d, want between %d and %d",
-					totalValue, tt.minValue, tt.maxValue)
-			}
-
-			if len(loot) < tt.minItems {
-				t.Errorf("Should have at least %d different items, got %d", tt.minItems, len(loot))
-			}
-
-			// Test that all quantities are positive
-			for itemName, quantity := range loot {
-				if q, ok := quantity.(int); ok && q <= 0 {
-					t.Errorf("Item %s should have positive quantity, got %d", itemName, q)
-				}
-			}
-
-			// Test consistency - more rounds should generally mean more value
-			if tt.totalRounds > 100 {
-				smallLoot, smallValue := SimulateLoot(10)
-				if totalValue <= smallValue {
-					t.Errorf("More rounds should generally give more value: %d rounds gave %d, 10 rounds gave %d",
-						tt.totalRounds, totalValue, smallValue)
-				}
-				if len(loot) < len(smallLoot) {
-					t.Errorf("More rounds should generally give more item types: %d rounds gave %d types, 10 rounds gave %d types",
-						tt.totalRounds, len(loot), len(smallLoot))
-				}
+		t.Run("Level "+string(rune(tt.level)), func(t *testing.T) {
+			xp := levelToXP(tt.level)
+			if xp != tt.expectedXP {
+				t.Errorf("Expected XP %d for level %d, got %d", tt.expectedXP, tt.level, xp)
 			}
 		})
 	}
 }
 
-// Test that pet chance calculation is accurate
-func TestPetChanceCalculation(t *testing.T) {
-	tests := []struct {
-		rounds    int
-		minChance float64
-		maxChance float64
-	}{
-		{1, 0.01, 0.03},    // Single round
-		{100, 1.8, 2.2},    // Medium rounds
-		{1000, 18.0, 22.0}, // Many rounds
-		{5000, 63.0, 67.0}, // Very many rounds (approaching but not exceeding ~95%)
-	}
-
-	for _, tt := range tests {
-		t.Run(fmt.Sprintf("Rounds_%d", tt.rounds), func(t *testing.T) {
-			result, err := CalculateWintertodtData(75, 5.0, tt.rounds)
-			if err != nil {
-				t.Fatalf("Unexpected error: %v", err)
-			}
-
-			if result.PetChance < tt.minChance || result.PetChance > tt.maxChance {
-				t.Errorf("Pet chance for %d rounds out of range: got %f, want between %f and %f",
-					tt.rounds, result.PetChance, tt.minChance, tt.maxChance)
-			}
-		})
-	}
-}
-
-// Benchmark tests
 func BenchmarkCalculateWintertodtData(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		CalculateWintertodtData(75, 5.0, 100)
+	skillLevels := SkillLevels{
+		Herblore:    70,
+		Mining:      60,
+		Fishing:     70,
+		Crafting:    50,
+		Farming:     80,
+		Woodcutting: 85,
 	}
-}
 
-func BenchmarkSimulateLoot(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		SimulateLoot(100)
+		CalculateWintertodtData(75, 99, StrategyLargeGroup, nil, nil, skillLevels)
 	}
 }

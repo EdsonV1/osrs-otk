@@ -32,3 +32,16 @@ func BirdhouseCalcHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(result)
 }
+
+// BirdhouseProTipsHandler provides detailed calculation methodology and tips
+func BirdhouseProTipsHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Only GET method allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	tips := birdhouses.GetCalculationProTips()
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(tips)
+}

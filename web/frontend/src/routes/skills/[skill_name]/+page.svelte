@@ -1,7 +1,8 @@
 <script lang="ts">
     import type { PageData } from './$types';
-    import type { TrainingMethod, SkillCalculationOutput, CalculatedMethodResult } from '$lib/types';
+    import type { TrainingMethod, SkillCalculationOutput, CalculatedMethodResult, PlayerStats } from '$lib/types';
     import { getXpForLevel, getLevelForXp } from '$lib/xp_table';
+    import PlayerLookup from '$lib/components/shared/PlayerLookup.svelte';
 
     export let data: PageData;
 
@@ -17,7 +18,68 @@
     let targetLevelState: number = Math.min(currentLevelState + 1 > 99 ? 99 : currentLevelState + 1, 99);
     let targetXPState: number = getXpForLevel(targetLevelState);
     
+    let playerUsername = '';
+    let playerLookupLoading = false;
     let calculationError: string | null = null;
+
+    function handlePlayerStatsLoaded(event: CustomEvent<PlayerStats>) {
+        const stats = event.detail;
+        playerUsername = stats.username;
+        
+        if (skillInfo) {
+            // Get the appropriate skill level based on the current skill
+            const skillName = skillInfo.skillNameCanonical.toLowerCase();
+            let playerLevel = 1;
+            
+            switch (skillName) {
+                case 'attack': playerLevel = stats.attack; break;
+                case 'defence': playerLevel = stats.defence; break;
+                case 'strength': playerLevel = stats.strength; break;
+                case 'hitpoints': playerLevel = stats.hitpoints; break;
+                case 'ranged': playerLevel = stats.ranged; break;
+                case 'prayer': playerLevel = stats.prayer; break;
+                case 'magic': playerLevel = stats.magic; break;
+                case 'cooking': playerLevel = stats.cooking; break;
+                case 'woodcutting': playerLevel = stats.woodcutting; break;
+                case 'fletching': playerLevel = stats.fletching; break;
+                case 'fishing': playerLevel = stats.fishing; break;
+                case 'firemaking': playerLevel = stats.firemaking; break;
+                case 'crafting': playerLevel = stats.crafting; break;
+                case 'smithing': playerLevel = stats.smithing; break;
+                case 'mining': playerLevel = stats.mining; break;
+                case 'herblore': playerLevel = stats.herblore; break;
+                case 'agility': playerLevel = stats.agility; break;
+                case 'thieving': playerLevel = stats.thieving; break;
+                case 'slayer': playerLevel = stats.slayer; break;
+                case 'farming': playerLevel = stats.farming; break;
+                case 'runecrafting': playerLevel = stats.runecrafting; break;
+                case 'hunter': playerLevel = stats.hunter; break;
+                case 'construction': playerLevel = stats.construction; break;
+                default: playerLevel = 1;
+            }
+            
+            // Update current level and sync XP
+            currentLevelState = playerLevel;
+            currentXPState = getXpForLevel(currentLevelState);
+            
+            // Handle level 99 case
+            if (playerLevel >= 99) {
+                targetLevelState = 99;
+                targetXPState = getXpForLevel(99);
+                calculationError = null; // Clear any errors for level 99 calculations
+            } else {
+                // Update target level to be at least one higher
+                if (targetLevelState <= currentLevelState) {
+                    targetLevelState = Math.min(currentLevelState + 1, 99);
+                    targetXPState = getXpForLevel(targetLevelState);
+                }
+            }
+        }
+    }
+
+    function handlePlayerLookupError(event: CustomEvent<string>) {
+        calculationError = `Player lookup failed: ${event.detail}`;
+    }
 
     function syncCurrentXP() { if (currentInputMode === 'level') currentXPState = getXpForLevel(currentLevelState); }
     function syncCurrentLevel() { if (currentInputMode === 'xp') currentLevelState = getLevelForXp(currentXPState); }
@@ -34,7 +96,10 @@
         let baseXPForTarget = currentXPState;
         let nextPossibleLevel = Math.min(baseLevelForTarget + 1, 99);
         
-        if (targetXPState <= currentXPState) {
+        // Handle level 99 case - allow same XP for level 99 calculations
+        if (currentLevelState >= 99 && targetLevelState >= 99) {
+            calculationError = null; // Allow level 99 calculations (for method comparison)
+        } else if (targetXPState <= currentXPState) {
             calculationError = "Target must be greater than current progress.";
         } else {
             calculationError = null;
@@ -125,6 +190,25 @@
     {#if skillInfo}
         <section class="bg-theme-card-bg shadow-card rounded-lg border border-theme-border p-6 space-y-8">
             <h2 class="text-h3 text-theme-text-primary border-b border-theme-border pb-3">Your Progress & Goals</h2>
+            
+            <!-- Player Lookup Section -->
+            <div class="space-y-4">
+                <div class="block text-sm font-semibold text-theme-text-primary mb-3">Player Lookup (Optional)</div>
+                <div>
+                    <PlayerLookup 
+                        bind:username={playerUsername}
+                        bind:loading={playerLookupLoading}
+                        placeholder="Enter OSRS username to auto-fill current level"
+                        buttonText="Load Stats"
+                        on:statsLoaded={handlePlayerStatsLoaded}
+                        on:error={handlePlayerLookupError}
+                    />
+                    <p class="text-theme-text-tertiary text-xs mt-1">
+                        Automatically loads your current {skillInfo?.skillNameDisplay || 'skill'} level from OSRS hiscores
+                    </p>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                 <div class="space-y-3">
                     <p class="text-base font-semibold text-theme-text-primary">Current {skillInfo.skillNameDisplay}</p>

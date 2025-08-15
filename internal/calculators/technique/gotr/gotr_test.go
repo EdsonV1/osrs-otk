@@ -18,24 +18,24 @@ func TestCalculateGOTRData(t *testing.T) {
 			currentLevel: 77,
 			targetLevel:  99,
 			expectError:  false,
-			minXPPerHour: 180000, // Minimum expected XP/hour at level 77
-			maxXPPerHour: 240000, // Maximum expected XP/hour
+			minXPPerHour: 42000, // Realistic XP/hour at level 77 (interpolated)
+			maxXPPerHour: 48000, // Realistic XP/hour at level 99
 		},
 		{
 			name:         "Level 50 to 77",
 			currentLevel: 50,
 			targetLevel:  77,
 			expectError:  false,
-			minXPPerHour: 120000, // Lower rates for pre-77
-			maxXPPerHour: 165000,
+			minXPPerHour: 30000, // Realistic rates for mid-level
+			maxXPPerHour: 40000,
 		},
 		{
 			name:         "Level 27 to 99",
 			currentLevel: 27,
 			targetLevel:  99,
 			expectError:  false,
-			minXPPerHour: 130000, // Lower because average level is 63 (pre-77)
-			maxXPPerHour: 150000,
+			minXPPerHour: 32000, // Average level ~63, realistic rate
+			maxXPPerHour: 38000,
 		},
 		{
 			name:         "Invalid: same level",
@@ -136,9 +136,9 @@ func TestCalculateXPPerGame(t *testing.T) {
 		minXP        float64
 		maxXP        float64
 	}{
-		{77, 80, 30000, 35000}, // Optimal level range
-		{50, 60, 20000, 28000}, // Pre-optimal
-		{90, 99, 38000, 47000}, // High level
+		{77, 80, 7000, 8000}, // Realistic XP per game at level ~78.5 (~47k/hr ÷ 6 games = ~7800)
+		{50, 60, 5000, 6500}, // Pre-optimal (~32k/hr ÷ 6 games = ~5300)
+		{90, 99, 8000, 8500}, // High level (~50k/hr ÷ 6 games = ~8300)
 	}
 
 	for _, tt := range tests {

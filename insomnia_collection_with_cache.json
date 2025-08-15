@@ -1,0 +1,231 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-08-15T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v8.6.1",
+  "resources": [
+    {
+      "_id": "req_001",
+      "parentId": "wrk_001",
+      "modified": 1692057600000,
+      "created": 1692057600000,
+      "url": "http://localhost:8080/api/player-stats/Lynx%20Titan",
+      "name": "Get Player Stats - Lynx Titan",
+      "description": "Fetch player statistics for Lynx Titan (URL encoded)",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1692057600000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_002",
+      "parentId": "wrk_001",
+      "modified": 1692057600000,
+      "created": 1692057600000,
+      "url": "http://localhost:8080/api/player-stats/Zezima",
+      "name": "Get Player Stats - Zezima",
+      "description": "Fetch player statistics for Zezima",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1692057500000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_003",
+      "parentId": "wrk_001",
+      "modified": 1692057600000,
+      "created": 1692057600000,
+      "url": "http://localhost:8080/api/player-stats/Lynx%20Titan?refresh=true",
+      "name": "Get Player Stats - Lynx Titan (Force Refresh)",
+      "description": "Fetch player statistics for Lynx Titan with cache bypass",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "refresh",
+          "value": "true",
+          "description": "Force refresh of cached data"
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1692057400000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_004",
+      "parentId": "wrk_001",
+      "modified": 1692057600000,
+      "created": 1692057600000,
+      "url": "http://localhost:8080/api/player-stats/nonexistentplayer123",
+      "name": "Get Player Stats - Nonexistent Player",
+      "description": "Test error handling for non-existent player",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1692057300000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_005",
+      "parentId": "wrk_001",
+      "modified": 1692057600000,
+      "created": 1692057600000,
+      "url": "http://localhost:8080/api/prices",
+      "name": "Get Current Prices",
+      "description": "Fetch current item prices from cache",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1692057200000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_006",
+      "parentId": "wrk_001",
+      "modified": 1692057600000,
+      "created": 1692057600000,
+      "url": "http://localhost:8080/api/prices/refresh",
+      "name": "Refresh Prices",
+      "description": "Force refresh of price cache",
+      "method": "POST",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1692057100000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_007",
+      "parentId": "wrk_001",
+      "modified": 1692057600000,
+      "created": 1692057600000,
+      "url": "http://localhost:8080/api/cache-status",
+      "name": "Get Cache Status",
+      "description": "Check status of both price and player stats caches",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1692057000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_008",
+      "parentId": "wrk_001",
+      "modified": 1692057600000,
+      "created": 1692057600000,
+      "url": "http://localhost:8080/api/wintertodt/live",
+      "name": "Wintertodt Calculator with Live Prices",
+      "description": "Calculate Wintertodt loot with live prices and player stats",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"player_username\": \"Lynx Titan\",\n  \"use_live_prices\": true,\n  \"games\": 100,\n  \"points_per_game\": 600,\n  \"woodcutting_level\": 99,\n  \"firemaking_level\": 99,\n  \"herblore_level\": 99,\n  \"mining_level\": 99,\n  \"fishing_level\": 99,\n  \"crafting_level\": 99,\n  \"farming_level\": 99\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1692056900000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_009",
+      "parentId": "wrk_001",
+      "modified": 1692057600000,
+      "created": 1692057600000,
+      "url": "http://localhost:8080/api/wintertodt/live",
+      "name": "Wintertodt Calculator - Auto-populate Stats",
+      "description": "Calculate Wintertodt with auto-populated player stats",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"player_username\": \"Zezima\",\n  \"use_live_prices\": true,\n  \"games\": 50,\n  \"points_per_game\": 500\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1692056800000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_010",
+      "parentId": "wrk_001",
+      "modified": 1692057600000,
+      "created": 1692057600000,
+      "url": "http://localhost:8080/health",
+      "name": "Health Check",
+      "description": "Server health check endpoint",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1692056700000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_001",
+      "parentId": null,
+      "modified": 1692057600000,
+      "created": 1692057600000,
+      "name": "OSRS Calculator API with Caching",
+      "description": "API endpoints for OSRS calculators with player stats and price caching",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_001",
+      "parentId": "wrk_001",
+      "modified": 1692057600000,
+      "created": 1692057600000,
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8080"
+      },
+      "dataPropertyOrder": {
+        "&": ["base_url"]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1692057600000,
+      "_type": "environment"
+    }
+  ]
+}

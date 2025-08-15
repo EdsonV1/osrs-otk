@@ -64,14 +64,38 @@
                 </div>
             </div>
             <div class="text-right">
-                <div class="text-xs text-theme-text-tertiary uppercase tracking-wider">Total Rounds</div>
-                <div class="text-xl font-bold text-theme-accent-primary">{apiResult.total_value || 'N/A'}</div>
+                <div class="text-xs text-theme-text-tertiary uppercase tracking-wider">Level Progress</div>
+                <div class="text-xl font-bold text-theme-accent-primary">{apiResult.current_level} → {apiResult.target_level}</div>
             </div>
         </div>
     </div>
 
-    <!-- Key Metrics Dashboard -->
+    <!-- Strategy & Rounds Info -->
     <div class="relative px-6 pb-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            <!-- Strategy -->
+            <div class="bg-theme-bg-tertiary/80 p-4 rounded-card border border-theme-border-accent/20">
+                <div class="text-xs text-theme-text-tertiary uppercase tracking-wider">Strategy</div>
+                <div class="text-lg font-bold text-theme-text-primary capitalize">{apiResult.strategy.replace('_', ' ')}</div>
+                <div class="text-xs text-theme-text-secondary">{apiResult.points_per_round} pts, {apiResult.minutes_per_round}min</div>
+            </div>
+            
+            <!-- Rounds Needed -->
+            <div class="bg-theme-bg-tertiary/80 p-4 rounded-card border border-theme-border-accent/20">
+                <div class="text-xs text-theme-text-tertiary uppercase tracking-wider">Rounds Needed</div>
+                <div class="text-lg font-bold text-theme-accent-primary">{formatNumber(apiResult.rounds_needed)}</div>
+                <div class="text-xs text-theme-text-secondary">{formatNumber(apiResult.total_points_earned)} total points</div>
+            </div>
+            
+            <!-- XP Needed -->
+            <div class="bg-theme-bg-tertiary/80 p-4 rounded-card border border-theme-border-accent/20">
+                <div class="text-xs text-theme-text-tertiary uppercase tracking-wider">XP Needed</div>
+                <div class="text-lg font-bold text-purple-400">{formatNumber(apiResult.xp_needed)}</div>
+                <div class="text-xs text-theme-text-secondary">To reach level {apiResult.target_level}</div>
+            </div>
+        </div>
+
+    <!-- Key Metrics Dashboard -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <!-- XP Card -->
             <div class="group bg-theme-bg-tertiary/80 p-5 rounded-card border border-theme-border-accent/20 hover:border-theme-accent-primary/40 transition-colors duration-200 hover:shadow-card">

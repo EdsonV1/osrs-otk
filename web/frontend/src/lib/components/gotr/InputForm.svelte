@@ -1,6 +1,7 @@
 <script lang="ts">
-    import type { GOTRFormState, GOTRApiInput, GOTRApiResult } from '$lib/types';
+    import type { GOTRFormState, GOTRApiInput, GOTRApiResult, PlayerStats } from '$lib/types';
     import { createEventDispatcher } from 'svelte';
+    import PlayerLookup from '../shared/PlayerLookup.svelte';
 
     const dispatch = createEventDispatcher<{
         calculated: { resultData: GOTRApiResult };
@@ -12,8 +13,34 @@
         targetLevel: 77
     };
 
+    let playerUsername = '';
+    let playerLookupLoading = false;
     let isLoading = false;
     let validationErrors: { [key: string]: string } = {};
+
+    function handlePlayerStatsLoaded(event: CustomEvent<PlayerStats>) {
+        const stats = event.detail;
+        playerUsername = stats.username;
+        
+        // Update form with player's runecrafting level
+        formData.currentLevel = stats.runecrafting;
+        
+        // Handle level 99 case
+        if (stats.runecrafting >= 99) {
+            formData.targetLevel = 99;
+        } else {
+            // Ensure target is higher than current, but cap at 99
+            if (formData.targetLevel <= stats.runecrafting) {
+                formData.targetLevel = Math.min(stats.runecrafting + 1, 99);
+            }
+        }
+        
+        validationErrors = {}; // Clear any validation errors
+    }
+
+    function handlePlayerLookupError(event: CustomEvent<string>) {
+        dispatch('error', { message: `Player lookup failed: ${event.detail}` });
+    }
 
     function validateForm(): boolean {
         validationErrors = {};
@@ -26,7 +53,9 @@
             validationErrors.targetLevel = 'Target level must be between 27 and 126';
         }
         
-        if (formData.targetLevel <= formData.currentLevel) {
+        if (formData.currentLevel >= 99 && formData.targetLevel >= 99) {
+            // Allow calculation when both current and target are 99 (for reward calculations)
+        } else if (formData.targetLevel <= formData.currentLevel) {
             validationErrors.targetLevel = 'Target level must be higher than current level';
         }
 
@@ -85,6 +114,24 @@
 </script>
 
 <form on:submit|preventDefault={handleSubmit} class="space-y-6">
+    <!-- Player Lookup -->
+    <div class="space-y-4">
+        <div class="block text-sm font-semibold text-theme-text-primary mb-3">Player Lookup (Optional)</div>
+        <div>
+            <PlayerLookup 
+                bind:username={playerUsername}
+                bind:loading={playerLookupLoading}
+                placeholder="Enter OSRS username to auto-fill current level"
+                buttonText="Load Stats"
+                on:statsLoaded={handlePlayerStatsLoaded}
+                on:error={handlePlayerLookupError}
+            />
+            <p class="text-theme-text-tertiary text-xs mt-1">
+                Automatically loads your current runecrafting level from OSRS hiscores
+            </p>
+        </div>
+    </div>
+
     <!-- Level Presets -->
     <div class="mb-6">
         <div class="block text-sm font-semibold text-theme-text-primary mb-3">Quick Presets</div>

@@ -106,24 +106,52 @@ export interface SkillCalculationOutput {
 }
 
 export interface WintertodtFormState {
-    firemakingLevel: number;
-    roundsPerHour: number;
-    totalRounds: number;
+    currentLevel: number;
+    targetLevel: number;
+    strategy: string;
+    customPointsPerRound?: number;
+    customMinutesPerRound?: number;
+    skillLevels: {
+        herblore: number;
+        mining: number;
+        fishing: number;
+        crafting: number;
+        farming: number;
+        woodcutting: number;
+    };
 }
 
 export interface WintertodtApiInput {
-    firemaking_level: number;
-    rounds_per_hour: number;
-    total_rounds: number;
+    current_level: number;
+    target_level: number;
+    strategy: string;
+    custom_points_per_round?: number;
+    custom_minutes_per_round?: number;
+    skill_levels: {
+        herblore: number;
+        mining: number;
+        fishing: number;
+        crafting: number;
+        farming: number;
+        woodcutting: number;
+    };
 }
 
 export interface WintertodtApiResult {
+    current_level: number;
+    target_level: number;
+    xp_needed: number;
+    rounds_needed: number;
     total_experience: number;
     average_exp_hour: number;
     pet_chance: number;
     estimated_loot: { [itemName: string]: number };
     total_value: number;
     total_time: number;
+    strategy: string;
+    points_per_round: number;
+    minutes_per_round: number;
+    total_points_earned: number;
 }
 
 // GOTR (Guardians of the Rift) Types
@@ -157,4 +185,32 @@ export interface GOTRApiResult {
     estimated_rewards: GOTRReward[];
     total_reward_value: number;
     gp_per_hour: number;
+}
+
+export interface PlayerStats {
+    username: string;
+    overall: number;
+    attack: number;
+    defence: number;
+    strength: number;
+    hitpoints: number;
+    ranged: number;
+    prayer: number;
+    magic: number;
+    cooking: number;
+    woodcutting: number;
+    fletching: number;
+    fishing: number;
+    firemaking: number;
+    crafting: number;
+    smithing: number;
+    mining: number;
+    herblore: number;
+    agility: number;
+    thieving: number;
+    slayer: number;
+    farming: number;
+    runecrafting: number;
+    hunter: number;
+    construction: number;
 }

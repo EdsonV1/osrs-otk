@@ -1,6 +1,7 @@
 <script lang="ts">
     import { createEventDispatcher, type EventDispatcher } from 'svelte';
-    import type { ArdyKnightInput, ArdyKnightResult } from '$lib/types';
+    import type { ArdyKnightInput, ArdyKnightResult, PlayerStats } from '$lib/types';
+    import PlayerLookup from '../shared/PlayerLookup.svelte';
 
     interface ComponentEvents {
         calculated: { data: ArdyKnightResult };
@@ -21,12 +22,36 @@
         food_cost: 100
     };
 
+    let playerUsername = '';
+    let playerLookupLoading = false;
     let isLoading: boolean = false;
 
     const inputBaseClasses = "block w-full rounded-md border-0 py-2 px-3.5 bg-gray-700/50 text-theme-text-primary shadow-sm ring-1 ring-inset ring-theme-border-input placeholder:text-theme-text-tertiary focus:ring-2 focus:ring-inset focus:ring-theme-accent sm:text-sm sm:leading-6 shadow-inner-border transition-colors duration-150";
     const fieldsetLegendClasses = "text-base font-semibold leading-7 text-theme-text-primary mb-1";
     const labelBaseClasses = "block text-xs font-medium text-theme-text-secondary mb-1";
     const checkboxClasses = "h-4 w-4 text-theme-accent focus:ring-theme-accent focus:ring-offset-theme-card-bg border-theme-border-input rounded";
+
+    function handlePlayerStatsLoaded(event: CustomEvent<PlayerStats>) {
+        const stats = event.detail;
+        playerUsername = stats.username;
+        
+        // Update form state with player thieving level
+        formState.current_thieving_level = stats.thieving;
+
+        // Handle level 99 case
+        if (stats.thieving >= 99) {
+            formState.target_thieving_level = 99;
+        } else {
+            // Ensure target is higher than current, but cap at 99
+            if (formState.target_thieving_level <= stats.thieving) {
+                formState.target_thieving_level = Math.min(stats.thieving + 1, 99);
+            }
+        }
+    }
+
+    function handlePlayerLookupError(event: CustomEvent<string>) {
+        dispatch('error', { error: `Player lookup failed: ${event.detail}` });
+    }
 
     async function handleSubmit() {
         isLoading = true;
@@ -38,7 +63,9 @@
             return;
         }
 
-        if (formState.current_thieving_level >= formState.target_thieving_level) {
+        if (formState.current_thieving_level >= 99 && formState.target_thieving_level >= 99) {
+            // Allow calculation when both current and target are 99 (for profit calculations)
+        } else if (formState.current_thieving_level >= formState.target_thieving_level) {
             dispatch('error', { error: 'Target level must be higher than current level' });
             isLoading = false;
             return;
@@ -68,6 +95,23 @@
 
 <form class="bg-theme-card-bg shadow-card rounded-lg border border-theme-border p-6 space-y-8" on:submit|preventDefault={handleSubmit}>
     <h2 class="text-h3 text-theme-text-primary border-b border-theme-border pb-4">Ardougne Knight Inputs</h2>
+
+    <fieldset class="space-y-4">
+        <legend class={fieldsetLegendClasses}>Player Lookup (Optional)</legend>
+        <div>
+            <PlayerLookup 
+                bind:username={playerUsername}
+                bind:loading={playerLookupLoading}
+                placeholder="Enter OSRS username to auto-fill thieving level"
+                buttonText="Load Stats"
+                on:statsLoaded={handlePlayerStatsLoaded}
+                on:error={handlePlayerLookupError}
+            />
+            <p class="text-theme-text-tertiary text-xs mt-1">
+                Automatically loads your current thieving level from OSRS hiscores
+            </p>
+        </div>
+    </fieldset>
 
     <fieldset class="space-y-4">
         <legend class={fieldsetLegendClasses}>Character Stats</legend>

@@ -112,3 +112,16 @@ func ArdyKnightCalcHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Failed to encode response: "+err.Error(), http.StatusInternalServerError)
 	}
 }
+
+// ArdyKnightProTipsHandler provides detailed calculation methodology and tips
+func ArdyKnightProTipsHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Only GET method allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	tips := ardyknights.GetCalculationProTips()
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(tips)
+}

@@ -1,25 +1,29 @@
 package gotr
 
-// GOTR Constants based on current game mechanics
+// GOTR Constants based on OSRS Wiki mechanics
 const (
-	// XP rates per reward search - updated for realistic rates
-	BaseExpPerSearch = 2000.0 // Base XP at level 77 RC per search
-	ExpMultiplier    = 1.8    // Multiplier for level scaling
-
-	// Pet chance (Abyssal Protector)
-	PetRatePerSearch = 1.0 / 4000.0 // 1/4000 per reward search
-
-	// Game timing - updated for realistic game lengths
+	// Game timing - based on efficient GOTR gameplay
 	AverageGameDuration = 10.0 // minutes per game (experienced players)
 	GamesPerHour        = 6.0  // 60 / 10 = 6 games per hour
 
-	// Reward search rates - updated for better performance
-	AverageSearchesPerGame = 20.0 // searches per game (good performance)
-	MinSearchesPerGame     = 15.0
-	MaxSearchesPerGame     = 25.0
+	// Reward mechanics - based on actual game performance
+	AverageRewardSearches = 18.0 // reward searches per game (good performance)
+	MinRewardSearches     = 12.0
+	MaxRewardSearches     = 24.0
 
-	// Points and reward scaling
-	PointsPerSearch = 12.0 // approximate points per search
+	// Points system - based on wiki mechanics
+	// 1 elemental point per 100 elemental energy (with chance of rounding up)
+	MaxEnergyPerGame = 1200.0 // maximum energy per game
+	PointsPerEnergy  = 0.01   // 1 point per 100 energy
+
+	// Pet mechanics - corrected based on wiki
+	// Note: Wiki states "Rift guardian pet cannot be obtained during the minigame"
+	// But there may be other pets available, so keeping a generic pet rate
+	PetRatePerSearch = 1.0 / 5000.0 // Generic pet rate (if applicable)
+
+	// Guardian stone requirements
+	GuardianStonePerPlayer = 250.0
+	GuardianStoneScaling   = 200.0 // for 20+ players (20% penalty)
 )
 
 // Reward represents a GOTR reward item

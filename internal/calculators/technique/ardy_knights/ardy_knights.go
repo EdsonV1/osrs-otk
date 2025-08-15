@@ -183,3 +183,73 @@ func CalculateArdyKnightStats(
 		PickpocketsToTarget:  pickpocketsToTarget,
 	}, nil
 }
+
+// GetCalculationProTips provides detailed information about how Ardougne Knights calculations work
+func GetCalculationProTips() map[string]any {
+	return map[string]any{
+		"calculation_methodology": map[string]any{
+			"xp_rates_source": "Based on official success rates and community testing",
+			"base_formula":    "Success rate × Base XP (84.3) × Attempts per hour",
+			"data_points": []map[string]any{
+				{"level": 55, "xp_per_hour": 60000, "note": "Minimum access level"},
+				{"level": 70, "xp_per_hour": 90000, "note": "Improved success rate"},
+				{"level": 85, "xp_per_hour": 120000, "note": "High efficiency"},
+				{"level": 99, "xp_per_hour": 150000, "note": "Maximum rates with full setup"},
+			},
+		},
+		"game_mechanics": map[string]any{
+			"pickpocket_speed": "2.4 second intervals (1500 attempts/hour max)",
+			"success_formula":  "Base rate + Equipment bonuses + Level scaling",
+			"xp_sources": []string{
+				"Successful pickpockets (84.3 XP each)",
+				"No bonus XP sources",
+			},
+		},
+		"factors_considered": []string{
+			"Thieving level (affects base success rate)",
+			"Ardougne Medium diary (10% success boost)",
+			"Thieving cape (10% success boost)",
+			"Shadow veil spell (15% success boost)",
+			"Rogue's outfit (doubles coin rewards)",
+			"Player click consistency and timing",
+		},
+		"accuracy_notes": map[string]any{
+			"rates_vary": "Individual XP rates can vary ±20% based on:",
+			"variance_factors": []string{
+				"Click timing and consistency",
+				"Lag and connection stability",
+				"Interruptions from failures",
+				"Food consumption timing",
+			},
+			"calculation_basis": "Rates assume optimal clicking and minimal interruptions",
+		},
+		"pro_tips": []map[string]string{
+			{
+				"tip":         "Equipment Setup",
+				"description": "Ardougne diary, thieving cape, and shadow veil dramatically improve rates",
+			},
+			{
+				"tip":         "Positioning",
+				"description": "Position knight near a bank for easy food access",
+			},
+			{
+				"tip":         "Food Strategy",
+				"description": "Use cheap, stackable food like wines or cakes for efficiency",
+			},
+			{
+				"tip":         "Timing Optimization",
+				"description": "Consistent 2.4s intervals maximize attempts per hour",
+			},
+			{
+				"tip":         "Profit Focus",
+				"description": "Rogue's outfit doubles coin rewards - essential for profitable training",
+			},
+		},
+		"reward_calculation": map[string]any{
+			"base_coins":     "50-100 coins per successful pickpocket",
+			"rogue_bonus":    "Doubles coin rewards when wearing full Rogue's outfit",
+			"profit_factors": "Success rate, coin rewards, food costs",
+			"gp_per_hour":    "Calculated from successful attempts minus food expenses",
+		},
+	}
+}

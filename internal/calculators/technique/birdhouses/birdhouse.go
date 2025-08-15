@@ -92,3 +92,73 @@ func CalculateBirdhouseData(typ string, quantity int) (BirdhouseResult, error) {
 		TotalLoot:      totalLoot + int(totalNestLoot),
 	}, nil
 }
+
+// GetCalculationProTips provides detailed information about how Birdhouse calculations work
+func GetCalculationProTips() map[string]any {
+	return map[string]any{
+		"calculation_methodology": map[string]any{
+			"xp_rates_source": "Based on official birdhouse mechanics and Hunter XP rates",
+			"base_formula":    "XP per birdhouse × Number of houses × Runs completed",
+			"data_points": []map[string]any{
+				{"log_type": "Regular", "hunter_xp": 280, "note": "Basic birdhouse"},
+				{"log_type": "Oak", "hunter_xp": 420, "note": "Early upgrade"},
+				{"log_type": "Yew", "hunter_xp": 1020, "note": "High-level option"},
+				{"log_type": "Redwood", "hunter_xp": 1200, "note": "Maximum XP per house"},
+			},
+		},
+		"game_mechanics": map[string]any{
+			"run_duration": "50 minutes per full cycle (4 birdhouses)",
+			"setup_time":   "2-3 minutes to place and fill all birdhouses",
+			"xp_sources": []string{
+				"Hunter XP from emptying full birdhouses",
+				"Crafting XP from creating birdhouses",
+				"No bonus XP modifiers available",
+			},
+		},
+		"factors_considered": []string{
+			"Log type (determines XP and nest rates)",
+			"Number of birdhouses (max 4 with achievement diary)",
+			"Completion frequency (affects daily XP rates)",
+			"Bird nest drop rates (varies by log type)",
+			"Seed market values for profit calculation",
+		},
+		"accuracy_notes": map[string]any{
+			"rates_vary": "Individual results can vary ±15% based on:",
+			"variance_factors": []string{
+				"RNG in bird nest drops",
+				"Seed types from nests",
+				"Market price fluctuations",
+				"Consistency in run timing",
+			},
+			"calculation_basis": "Rates assume optimal timing and consistent completion",
+		},
+		"pro_tips": []map[string]string{
+			{
+				"tip":         "Log Selection",
+				"description": "Higher-tier logs give more XP and bird nests but cost more upfront",
+			},
+			{
+				"tip":         "Timing Strategy",
+				"description": "Check birdhouses every 50 minutes for maximum efficiency",
+			},
+			{
+				"tip":         "Achievement Diary",
+				"description": "Complete Western Provinces diary for access to all 4 birdhouse locations",
+			},
+			{
+				"tip":         "Profit Optimization",
+				"description": "Bird nests contain valuable tree seeds - check current market prices",
+			},
+			{
+				"tip":         "Low Maintenance",
+				"description": "Excellent passive training method - combine with other activities",
+			},
+		},
+		"reward_calculation": map[string]any{
+			"nest_rates":     "0.5-2.5 bird nests per birdhouse depending on log type",
+			"seed_variety":   "Tree seeds, fruit tree seeds, and regular seeds from nests",
+			"profit_factors": "Nest drop rates, seed values, log costs",
+			"gp_calculation": "Based on average seed values and nest contents",
+		},
+	}
+}

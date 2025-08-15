@@ -53,9 +53,10 @@ func CalculateGOTRData(currentLevel, targetLevel int) (GOTRResult, error) {
 	hoursNeeded := float64(gamesNeeded) / GamesPerHour
 
 	// Calculate reward searches (approximately 18 searches per game on average)
-	totalSearches := int(float64(gamesNeeded) * AverageSearchesPerGame)
+	totalSearches := int(float64(gamesNeeded) * AverageRewardSearches)
 
-	// Calculate pet chance (Abyssal Protector - 1/4000 per search)
+	// Calculate pet chance (Note: Rift guardian cannot be obtained during minigame per wiki)
+	// Using generic pet rate for any other possible pets
 	petChance := 1.0 - math.Pow(1.0-PetRatePerSearch, float64(totalSearches))
 	petChancePercentage := petChance * 100
 
@@ -80,35 +81,37 @@ func CalculateGOTRData(currentLevel, targetLevel int) (GOTRResult, error) {
 }
 
 // calculateXPPerGame calculates the average XP per GOTR game based on RC level
+// Based on real player data: 20k-50k XP/hour depending on level
 func calculateXPPerGame(currentLevel, targetLevel int) float64 {
 	// Use the average level for calculation to account for leveling up during training
 	avgLevel := float64(currentLevel+targetLevel) / 2.0
 
-	// Base XP calculation - GOTR XP scales significantly with RC level
-	// Real GOTR rates: ~180k+ XP/hr at level 77, up to ~220k+ at 99
+	// Calculate XP per hour based on realistic rates from player guides
+	var xpPerHour float64
 
-	var xpPerGame float64
+	// Linear interpolation based on known data points:
+	// Level 27: 20,000 XP/hr
+	// Level 80: 45,000 XP/hr
+	// Level 90: 50,000 XP/hr
 
-	if avgLevel < 77 {
-		// Before level 77, GOTR is less efficient (use ZMI instead)
-		// Scale from ~120k/hr to ~160k/hr
-		xpPerHourBase := 120000 + (avgLevel-50)*1500
-		xpPerGame = xpPerHourBase / GamesPerHour
+	if avgLevel <= 27 {
+		xpPerHour = 20000
+	} else if avgLevel <= 80 {
+		// Linear interpolation between level 27 (20k) and level 80 (45k)
+		// Rate increases by 25k over 53 levels = ~471 XP/hr per level
+		xpPerHour = 20000 + (avgLevel-27)*471.7
+	} else if avgLevel <= 90 {
+		// Linear interpolation between level 80 (45k) and level 90 (48k)
+		// Rate increases by 3k over 10 levels = 300 XP/hr per level
+		xpPerHour = 45000 + (avgLevel-80)*300
 	} else {
-		// At and after level 77, GOTR becomes very efficient
-		// Base rate at 77: ~180k XP/hr, scaling to ~220k+ at 99
-		xpPerHourBase := 180000 + (avgLevel-77)*1800
-		xpPerGame = xpPerHourBase / GamesPerHour
-
-		// Additional scaling for very high levels
-		if avgLevel >= 90 {
-			xpPerGame *= 1.08 // 8% bonus for mastery
-		}
-
-		if avgLevel >= 95 {
-			xpPerGame *= 1.05 // Additional 5% for near-max efficiency
-		}
+		// Cap at level 90+ rates
+		xpPerHour = 48000
 	}
+
+	// Convert XP per hour to XP per game
+	// Using 6 games per hour (10 minute games)
+	xpPerGame := xpPerHour / GamesPerHour
 
 	return xpPerGame
 }
@@ -151,4 +154,75 @@ func EstimateTimeToLevel(currentLevel, targetLevel int) (map[string]any, error) 
 	}
 
 	return breakdown, nil
+}
+
+// GetCalculationProTips provides detailed information about how GOTR calculations work
+func GetCalculationProTips() map[string]any {
+	return map[string]any{
+		"calculation_methodology": map[string]any{
+			"xp_rates_source": "Based on real player data from community guides",
+			"base_formula":    "Linear interpolation between known XP/hour data points",
+			"data_points": []map[string]any{
+				{"level": 27, "xp_per_hour": 20000, "note": "Minimum access level"},
+				{"level": 50, "xp_per_hour": 30000, "note": "Mid-level efficiency"},
+				{"level": 80, "xp_per_hour": 45000, "note": "High efficiency threshold"},
+				{"level": 90, "xp_per_hour": 48000, "note": "Near-maximum rates"},
+			},
+		},
+		"game_mechanics": map[string]any{
+			"game_duration":  "10 minutes per game (experienced players)",
+			"games_per_hour": 6,
+			"xp_sources": []string{
+				"Essence crafting (primary source)",
+				"Barrier repairs",
+				"Guardian creation",
+				"Game completion bonus",
+			},
+		},
+		"factors_considered": []string{
+			"Runecrafting level (major impact on XP rates)",
+			"Player efficiency and experience",
+			"Portal availability and management",
+			"Consistent gameplay over time",
+			"Average performance across multiple games",
+		},
+		"accuracy_notes": map[string]any{
+			"rates_vary": "Individual XP rates can vary ±10% based on:",
+			"variance_factors": []string{
+				"Number of portals available",
+				"Team coordination in mass worlds",
+				"Personal skill and familiarity",
+				"RNG in portal spawns and timing",
+			},
+			"calculation_basis": "Rates assume consistent, moderately efficient gameplay",
+		},
+		"pro_tips": []map[string]string{
+			{
+				"tip":         "Level Progression",
+				"description": "GOTR becomes significantly more efficient after level 77-80",
+			},
+			{
+				"tip":         "Game Strategy",
+				"description": "Focus on portal management and essence mining for maximum XP",
+			},
+			{
+				"tip":         "Time Investment",
+				"description": "GOTR is moderate XP but offers excellent rewards - factor in GP/hour value",
+			},
+			{
+				"tip":         "Realistic Expectations",
+				"description": "These rates assume consistent play - expect some variation in practice",
+			},
+			{
+				"tip":         "Alternative Methods",
+				"description": "Consider ZMI or Lavas for pure XP, GOTR for balanced XP + profit",
+			},
+		},
+		"reward_calculation": map[string]any{
+			"searches_per_game": "18 reward searches on average (good performance)",
+			"search_variation":  "12-24 searches depending on efficiency and RNG",
+			"loot_simulation":   "Based on drop table probabilities and average quantities",
+			"gp_per_hour":       "Calculated from total reward value divided by training time",
+		},
+	}
 }
