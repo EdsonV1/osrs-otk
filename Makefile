@@ -3,7 +3,8 @@
 # Variables
 APP_NAME := osrs-otk
 SERVER_NAME := $(APP_NAME)-server
-FRONTEND_DIR := web/frontend
+FRONTEND_DIR := frontend
+BACKEND_DIR := backend
 DOCKER_IMAGE := $(APP_NAME):latest
 DOCKER_DEV_IMAGE := $(APP_NAME):dev
 
@@ -16,7 +17,7 @@ build: backend frontend
 # Build backend
 backend:
 	@echo "Building backend..."
-	go build -o bin/$(SERVER_NAME) ./cmd/server
+	cd $(BACKEND_DIR) && go build -o ../bin/$(SERVER_NAME) ./cmd/server
 
 # Build frontend
 frontend:
@@ -26,7 +27,7 @@ frontend:
 # Install dependencies
 deps:
 	@echo "Installing backend dependencies..."
-	go mod tidy
+	cd $(BACKEND_DIR) && go mod tidy
 	@echo "Installing frontend dependencies..."
 	cd $(FRONTEND_DIR) && npm install
 
@@ -48,21 +49,21 @@ clean:
 # Run tests
 test:
 	@echo "Running backend tests..."
-	go test -v ./...
+	cd $(BACKEND_DIR) && go test -v ./...
 	@echo "Running frontend tests..."
 	cd $(FRONTEND_DIR) && npm test
 
 # Run tests with coverage
 test-coverage:
 	@echo "Running backend tests with coverage..."
-	go test -v -race -coverprofile=coverage.out ./...
-	go tool cover -html=coverage.out -o coverage.html
-	@echo "Coverage report generated: coverage.html"
+	cd $(BACKEND_DIR) && go test -v -race -coverprofile=coverage.out ./...
+	cd $(BACKEND_DIR) && go tool cover -html=coverage.out -o coverage.html
+	@echo "Coverage report generated: backend/coverage.html"
 
 # Run integration tests
 test-integration:
 	@echo "Running integration tests..."
-	go test -v -tags=integration ./internal/integration/...
+	cd $(BACKEND_DIR) && go test -v -tags=integration ./internal/integration/...
 
 # Run all tests (unit + integration + frontend)
 test-all: test test-integration
@@ -71,12 +72,12 @@ test-all: test test-integration
 # Run benchmarks
 benchmark:
 	@echo "Running benchmarks..."
-	go test -bench=. -benchmem ./...
+	cd $(BACKEND_DIR) && go test -bench=. -benchmem ./...
 
 # Test with race detection
 test-race:
 	@echo "Running tests with race detection..."
-	go test -v -race ./...
+	cd $(BACKEND_DIR) && go test -v -race ./...
 
 # Docker build (production)
 docker-build:
@@ -140,12 +141,12 @@ docker-rebuild: docker-clean docker-dev
 # Format code
 fmt:
 	@echo "Formatting Go code..."
-	go fmt ./...
+	cd $(BACKEND_DIR) && go fmt ./...
 
 # Lint code  
 lint:
 	@echo "Linting Go code..."
-	golangci-lint run
+	cd $(BACKEND_DIR) && golangci-lint run
 	@echo "Linting frontend code..."
 	cd $(FRONTEND_DIR) && npm run lint
 

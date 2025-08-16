@@ -9,9 +9,11 @@ services:
       - "8080:8080"
       - "5173:5173"
     volumes:
-      - .:/app
-      - node_modules:/app/web/frontend/node_modules  # Prevent node_modules overwrite
-      - go_modules:/go/pkg/mod                       # Cache Go modules
+      - ./backend:/app/backend
+      - ./frontend:/app/frontend  
+      - ./shared:/app/shared
+      - node_modules:/app/frontend/node_modules  # Prevent node_modules overwrite
+      - go_modules:/go/pkg/mod                   # Cache Go modules
     environment:
       - APP_ENV=docker
       - CGO_ENABLED=0

@@ -12,8 +12,9 @@ services:
     environment:
       - APP_ENV=production
     volumes:
-      - ./assets:/app/assets:ro
-      - ./internal/config:/app/internal/config:ro
+      - ./backend/assets:/app/assets:ro
+      - ./backend/internal/config:/app/internal/config:ro
+      - ./shared:/app/shared:ro
     networks:
       - osrs-network
     restart: unless-stopped

@@ -8,16 +8,16 @@ RUN apk add --no-cache git ca-certificates tzdata
 # Set working directory
 WORKDIR /app
 
-# Copy go mod files
-COPY go.mod go.sum ./
+# Copy backend go mod files
+COPY backend/go.mod backend/go.sum ./
 
 # Download dependencies
 RUN go mod download
 
-# Copy source code
-COPY cmd/ cmd/
-COPY internal/ internal/
-COPY pkg/ pkg/
+# Copy backend source code
+COPY backend/cmd/ cmd/
+COPY backend/internal/ internal/
+COPY backend/pkg/ pkg/
 
 # Build the application
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o bin/server ./cmd/server
@@ -28,13 +28,13 @@ FROM node:18-alpine AS frontend-builder
 WORKDIR /app/frontend
 
 # Copy package files
-COPY web/frontend/package*.json ./
+COPY frontend/package*.json ./
 
 # Install dependencies (use install instead of ci for flexibility)
 RUN npm install
 
 # Copy frontend source
-COPY web/frontend/ ./
+COPY frontend/ ./
 
 # Build frontend
 RUN npm run build
@@ -57,8 +57,9 @@ COPY --from=backend-builder /app/bin/server /app/server
 COPY --from=frontend-builder /app/frontend/.svelte-kit/output /app/web/frontend/build
 
 # Copy configuration and assets
-COPY internal/config /app/internal/config
-COPY assets/ /app/assets/
+COPY backend/internal/config /app/internal/config
+COPY backend/assets/ /app/assets/
+COPY shared/ /app/shared/
 
 # Create directories and set permissions
 RUN mkdir -p /app/logs && \
@@ -96,22 +97,25 @@ ENV GOSUMDB=sum.golang.org
 # Install air for hot reloading with explicit version
 RUN go install github.com/cosmtrek/air@v1.49.0
 
-# Copy go mod files
-COPY go.mod go.sum ./
-RUN go mod download
+# Copy source code first
+COPY backend/ ./backend/
+COPY frontend/ ./frontend/
+COPY shared/ ./shared/
 
-# Copy source code
-COPY . .
+# Download Go dependencies from backend directory
+WORKDIR /app/backend
+RUN go mod download
+WORKDIR /app
 
 # Install frontend dependencies
-WORKDIR /app/web/frontend
+WORKDIR /app/frontend
 RUN npm install
 
 WORKDIR /app
 
 # Create scripts directory and copy the development start script
 RUN mkdir -p /app/scripts
-COPY scripts/docker-start-dev.sh /app/scripts/docker-start-dev.sh
+COPY backend/scripts/docker-start-dev.sh /app/scripts/docker-start-dev.sh
 RUN chmod +x /app/scripts/docker-start-dev.sh
 
 # Expose ports
