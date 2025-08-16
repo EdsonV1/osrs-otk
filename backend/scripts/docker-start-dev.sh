@@ -5,9 +5,13 @@
 
 echo "Starting OSRS OTK Development Environment..."
 
+# Save the original directory
+ORIGINAL_DIR="$(pwd)"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
 # Start frontend development server in background
 echo "Starting frontend development server..."
-cd /app/frontend
+cd "$SCRIPT_DIR/../../frontend"
 npm run dev -- --host 0.0.0.0 --port 5173 &
 FRONTEND_PID=$!
 
@@ -16,14 +20,14 @@ sleep 3
 
 # Start backend with air for hot reloading
 echo "Starting backend with hot reloading..."
-cd /app/backend
+cd "$SCRIPT_DIR/.."
 export APP_ENV=docker
 export PATH="/go/bin:$PATH"
 
 # Use air for hot reloading if available, otherwise run directly
 if command -v air >/dev/null 2>&1; then
     echo "Using air for hot reloading..."
-    air -c /app/backend/.air.toml
+    air -c .air.toml
 else
     echo "Air not found, running go run directly..."
     go run ./cmd/server

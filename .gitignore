@@ -14,7 +14,7 @@ coverage.out
 tmp/
 
 # Frontend build artifacts and dependencies
-frontend/node_modules/
+**/node_modules/
 frontend/build/
 frontend/.svelte-kit/
 frontend/package-lock.json
