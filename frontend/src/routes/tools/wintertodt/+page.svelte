@@ -34,7 +34,7 @@
     const toolConfig = {
         name: 'Wintertodt Calculator',
         description: 'Calculate experience, loot, and Phoenix pet chances from Wintertodt based on your Firemaking level and planned rounds.',
-        iconSrc: '/images/skills/firemaking.png'
+        iconSrc: '/skills/firemaking.png'
     };
 
     let currentApiResult: WintertodtApiResult | null = null;

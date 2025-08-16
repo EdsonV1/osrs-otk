@@ -2,12 +2,12 @@
     import type { GOTRApiResult } from '$lib/types';
 
     export let apiResult: GOTRApiResult;
-    export let iconSrc: string = '/images/skills/runecraft.png';
+    export let iconSrc: string = '/skills/runecraft.png';
     
     // Metric icons configuration
-    export let timeIconSrc: string = '/images/icons/clock.png';
-    export let experienceIconSrc: string = '/images/icons/experience.png';
-    export let lootIconSrc: string = '/images/icons/coins.png';
+    export let timeIconSrc: string = '/icons/clock.png';
+    export let experienceIconSrc: string = '/icons/experience.png';
+    export let lootIconSrc: string = '/icons/coins.png';
 
     function formatNumber(num: number): string {
         return new Intl.NumberFormat().format(Math.round(num));

@@ -34,7 +34,7 @@
     const toolConfig = {
         name: 'Ardougne Knight Calculator',
         description: 'Calculate your Thieving XP, GP, and more.',
-        iconSrc: '/images/tools/knight_of_ardougne.png'
+        iconSrc: '/tools/knight_of_ardougne.png'
     };
 
     let results: ArdyKnightResult | null = null;

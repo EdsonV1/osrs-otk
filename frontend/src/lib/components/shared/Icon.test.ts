@@ -9,13 +9,13 @@ describe('Icon Component', () => {
 
 	it('renders with correct src and alt attributes', () => {
 		render(Icon, {
-			src: '/images/skills/firemaking.png',
+			src: '/skills/firemaking.png',
 			alt: 'Firemaking skill icon'
 		});
 
 		const img = screen.getByRole('img', { name: 'Firemaking skill icon' });
 		expect(img).toBeInTheDocument();
-		expect(img).toHaveAttribute('src', '/images/skills/firemaking.png');
+		expect(img).toHaveAttribute('src', '/skills/firemaking.png');
 	});
 
 	it('applies correct size classes', () => {

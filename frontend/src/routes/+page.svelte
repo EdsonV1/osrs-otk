@@ -4,7 +4,7 @@
             name: 'Wintertodt Calculator',
             description: 'Optimize your Firemaking training and rewards from the Wintertodt boss.',
             href: '/tools/wintertodt',
-            iconSrc: '/images/skills/firemaking.png',
+            iconSrc: '/skills/firemaking.png',
             gradient: 'from-orange-500 to-red-600',
             stats: ['XP/Hour', 'Loot Value', 'Pet Chance']
         },
@@ -12,7 +12,7 @@
             name: 'Ardougne Knights',
             description: 'Master Thieving with optimized Ardougne Knight calculations.',
             href: '/tools/ardy-knights',
-            iconSrc: '/images/tools/knight_of_ardougne.png',
+            iconSrc: '/tools/knight_of_ardougne.png',
             gradient: 'from-purple-500 to-indigo-600',
             stats: ['GP/Hour', 'XP Rates', 'Success Rate']
         },
@@ -20,7 +20,7 @@
             name: 'Birdhouse Runs',
             description: 'Plan efficient Hunter training with birdhouse run optimization.',
             href: '/tools/birdhouses',
-            iconSrc: '/images/birdhouse/redwood_bird_house.png',
+            iconSrc: '/birdhouse/redwood_bird_house.png',
             gradient: 'from-green-500 to-teal-600',
             stats: ['XP/Run', 'Profit', 'Time Efficiency']
         },
@@ -28,19 +28,19 @@
             name: 'Guardians of the Rift',
             description: 'Calculate Runecrafting XP rates, training time, and valuable rewards.',
             href: '/tools/gotr',
-            iconSrc: '/images/skills/runecraft.png',
+            iconSrc: '/skills/runecraft.png',
             gradient: 'from-purple-500 to-blue-600',
             stats: ['XP/Hour', 'Rewards', 'Pet Chance']
         }
     ];
 
     const skills = [
-        { name: 'Attack', iconSrc: '/images/skills/attack.png', href: '/skills/attack' },
-        { name: 'Hunter', iconSrc: '/images/skills/hunter.png', href: '/skills/hunter' },
-        { name: 'Firemaking', iconSrc: '/images/skills/firemaking.png', href: '/skills/firemaking' },
-        { name: 'Thieving', iconSrc: '/images/skills/thieving.png', href: '/skills/thieving' },
-        { name: 'Agility', iconSrc: '/images/skills/agility.png', href: '/skills/agility' },
-        { name: 'Mining', iconSrc: '/images/skills/mining.png', href: '/skills/mining' }
+        { name: 'Attack', iconSrc: '/skills/attack.png', href: '/skills/attack' },
+        { name: 'Hunter', iconSrc: '/skills/hunter.png', href: '/skills/hunter' },
+        { name: 'Firemaking', iconSrc: '/skills/firemaking.png', href: '/skills/firemaking' },
+        { name: 'Thieving', iconSrc: '/skills/thieving.png', href: '/skills/thieving' },
+        { name: 'Agility', iconSrc: '/skills/agility.png', href: '/skills/agility' },
+        { name: 'Mining', iconSrc: '/skills/mining.png', href: '/skills/mining' }
     ];
 
     const stats = [

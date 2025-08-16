@@ -11,15 +11,15 @@
     const dispatch: EventDispatcher<ComponentEvents> = createEventDispatcher();
 
     const birdhouseTypes = [
-        { value: "regular", label: "Regular", hunterLevel: 5, iconSrc: "/images/birdhouse/bird_house.png" },
-        { value: "oak", label: "Oak", hunterLevel: 14, iconSrc: "/images/birdhouse/oak_bird_house.png" },            
-        { value: "willow", label: "Willow", hunterLevel: 24, iconSrc: "/images/birdhouse/willow_bird_house.png" },      
-        { value: "teak", label: "Teak", hunterLevel: 34, iconSrc: "/images/birdhouse/teak_bird_house.png" },        
-        { value: "maple", label: "Maple", hunterLevel: 44, iconSrc: "/images/birdhouse/maple_bird_house.png" },       
-        { value: "mahogany", label: "Mahogany", hunterLevel: 49, iconSrc: "/images/birdhouse/mahogany_bird_house.png" }, 
-        { value: "yew", label: "Yew", hunterLevel: 59, iconSrc: "/images/birdhouse/yew_bird_house.png" },           
-        { value: "magic", label: "Magic", hunterLevel: 74, iconSrc: "/images/birdhouse/magic_bird_house.png" },       
-        { value: "redwood", label: "Redwood", hunterLevel: 89, iconSrc: "/images/birdhouse/redwood_bird_house.png" },   
+        { value: "regular", label: "Regular", hunterLevel: 5, iconSrc: "/birdhouse/bird_house.png" },
+        { value: "oak", label: "Oak", hunterLevel: 14, iconSrc: "/birdhouse/oak_bird_house.png" },            
+        { value: "willow", label: "Willow", hunterLevel: 24, iconSrc: "/birdhouse/willow_bird_house.png" },      
+        { value: "teak", label: "Teak", hunterLevel: 34, iconSrc: "/birdhouse/teak_bird_house.png" },        
+        { value: "maple", label: "Maple", hunterLevel: 44, iconSrc: "/birdhouse/maple_bird_house.png" },       
+        { value: "mahogany", label: "Mahogany", hunterLevel: 49, iconSrc: "/birdhouse/mahogany_bird_house.png" }, 
+        { value: "yew", label: "Yew", hunterLevel: 59, iconSrc: "/birdhouse/yew_bird_house.png" },           
+        { value: "magic", label: "Magic", hunterLevel: 74, iconSrc: "/birdhouse/magic_bird_house.png" },       
+        { value: "redwood", label: "Redwood", hunterLevel: 89, iconSrc: "/birdhouse/redwood_bird_house.png" },   
     ];
 
     let formState: BirdhouseFormState = {

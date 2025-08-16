@@ -34,7 +34,7 @@
     const toolConfig = {
         name: 'Birdhouse Run Calculator',
         description: 'Estimate XP, nests, and valuable loot from your birdhouse runs based on log type and total houses.',
-        iconSrc: '/images/birdhouse/redwood_bird_house.png'
+        iconSrc: '/birdhouse/redwood_bird_house.png'
     };
 
     let currentApiResult: BirdhouseApiResult | null = null;

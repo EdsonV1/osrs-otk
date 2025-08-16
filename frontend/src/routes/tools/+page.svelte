@@ -4,25 +4,25 @@
             name: 'Ardougne Knight Calculator',
             description: 'Optimize your Thieving training with Ardougne Knights: XP, GP, and efficiency.',
             href: '/tools/ardy-knights',
-            iconSrc: "/images/tools/knight_of_ardougne.png"
+            iconSrc: "/tools/knight_of_ardougne.png"
         },
         {
             name: 'Birdhouse Run Calculator',
             description: 'Plan your birdhouse runs for maximum Hunter XP and valuable bird nests.',
             href: '/tools/birdhouses',
-            iconSrc: "/images/birdhouse/redwood_bird_house.png"
+            iconSrc: "/birdhouse/redwood_bird_house.png"
         },
         {
             name: 'Wintertodt Calculator',
             description: 'Calculate Firemaking XP, Phoenix pet chances, and loot from Wintertodt rounds.',
             href: '/tools/wintertodt',
-            iconSrc: "/images/skills/firemaking.png"
+            iconSrc: "/skills/firemaking.png"
         },
         {
             name: 'Guardians of the Rift Calculator',
             description: 'Calculate Runecrafting XP rates, training time, rewards, and Abyssal Protector pet chances.',
             href: '/tools/gotr',
-            iconSrc: "/images/skills/runecraft.png"
+            iconSrc: "/skills/runecraft.png"
         }
     ];
 </script>

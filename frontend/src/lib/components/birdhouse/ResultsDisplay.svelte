@@ -2,12 +2,12 @@
     import type { BirdhouseApiResult } from '$lib/types'; 
     
     export let apiResult: BirdhouseApiResult | null;
-    export let iconSrc: string = '/images/birdhouse/redwood_bird_house.png';
+    export let iconSrc: string = '/birdhouse/redwood_bird_house.png';
     
     // Metric icons configuration
-    export let experienceIconSrc: string = '/images/icons/experience.png';
-    export let lootIconSrc: string = '/images/icons/coins.png';
-    export let timeIconSrc: string = '/images/icons/clock.png';
+    export let experienceIconSrc: string = '/icons/experience.png';
+    export let lootIconSrc: string = '/icons/coins.png';
+    export let timeIconSrc: string = '/icons/clock.png';
 
     function formatNum(num: number | null | undefined, decimals: number = 0): string {
         if (num === null || num === undefined || typeof num !== 'number' || isNaN(num)) return 'N/A';

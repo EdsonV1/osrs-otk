@@ -34,7 +34,7 @@
     const toolConfig = {
         name: 'Guardians of the Rift Calculator',
         description: 'Calculate XP rates, training time, reward rolls, and pet chances for GOTR based on your current and target levels.',
-        iconSrc: '/images/skills/runecraft.png'
+        iconSrc: '/skills/runecraft.png'
     };
 
     let currentApiResult: GOTRApiResult | null = null;

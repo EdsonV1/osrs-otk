@@ -2,11 +2,11 @@
     import type { ArdyKnightResult } from '$lib/types';
 
     export let results: ArdyKnightResult;
-    export let iconSrc: string = '/images/tools/knight_of_ardougne.png';
+    export let iconSrc: string = '/tools/knight_of_ardougne.png';
     
     // Metric icons configuration
-    export let lootIconSrc: string = '/images/icons/coins.png';
-    export let experienceIconSrc: string = '/images/icons/experience.png';
+    export let lootIconSrc: string = '/icons/coins.png';
+    export let experienceIconSrc: string = '/icons/experience.png';
 
     function formatNumber(num: number): string {
         return new Intl.NumberFormat().format(Math.round(num));
