@@ -4,7 +4,7 @@ server:
 
 assets:
   skill_data_path: "assets/data/skills"
-  images_path: "shared/images"
+  images_path: "frontend/static"
 
 cors:
   allowed_origins:

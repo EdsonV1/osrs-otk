@@ -11,6 +11,18 @@ import (
 	"time"
 )
 
+// Custom type that wraps time.Time
+type UnixTime time.Time
+
+func (ut *UnixTime) UnmarshalJSON(b []byte) error {
+	var ts int64
+	if err := json.Unmarshal(b, &ts); err != nil {
+		return err
+	}
+	*ut = UnixTime(time.Unix(ts, 0))
+	return nil
+}
+
 // OSRSAPIService handles interactions with OSRS external APIs
 type OSRSAPIService struct {
 	httpClient       *http.Client
@@ -36,10 +48,10 @@ type WikiPriceResponse struct {
 }
 
 type WikiPriceData struct {
-	High     *int       `json:"high"`
-	HighTime *time.Time `json:"highTime"`
-	Low      *int       `json:"low"`
-	LowTime  *time.Time `json:"lowTime"`
+	High     *int     `json:"high"`
+	HighTime UnixTime `json:"highTime"`
+	Low      *int     `json:"low"`
+	LowTime  UnixTime `json:"lowTime"`
 }
 
 // PlayerStats represents a player's skill levels from hiscores
@@ -73,6 +85,7 @@ type PlayerStats struct {
 
 // Item ID mappings for OSRS Wiki API
 var itemIDMap = map[string]int{
+	// Wintertodt items
 	"Grimy ranarr weed": 207,
 	"Grimy snapdragon":  3051,
 	"Grimy torstol":     219,
@@ -88,6 +101,24 @@ var itemIDMap = map[string]int{
 	"Burnt page":        20718,
 	"Magic seeds":       5316,
 	"Torstol seeds":     5304,
+	// Birdhouse nest loot items
+	"Acorn":               5312,
+	"Apple tree seed":     5283,
+	"Willow seed":         5313,
+	"Banana tree seed":    5284,
+	"Orange tree seed":    5285,
+	"Curry tree seed":     5286,
+	"Maple seed":          5314,
+	"Pineapple seed":      5287,
+	"Papaya tree seed":    5288,
+	"Yew seed":            5315,
+	"Palm tree seed":      5289,
+	"Calquat tree seed":   5290,
+	"Dragonfruit tree seed": 22931,
+	"Teak seed":           21480,
+	"Mahogany seed":       21481,
+	"Celastrus seed":      22869,
+	"Redwood tree seed":   19669,
 }
 
 // NewOSRSAPIService creates a new OSRS API service
@@ -113,13 +144,8 @@ func (s *OSRSAPIService) GetCurrentPrices() (map[string]int, error) {
 		return s.priceCache.Prices, nil
 	}
 
-	// Build item ID list for API request
-	var itemIDs []string
-	for _, id := range itemIDMap {
-		itemIDs = append(itemIDs, strconv.Itoa(id))
-	}
-
-	url := fmt.Sprintf("https://prices.runescape.wiki/api/v1/osrs/latest?id=%s", strings.Join(itemIDs, ","))
+	// Use the /latest endpoint to get all latest prices, then filter locally
+	url := "https://prices.runescape.wiki/api/v1/osrs/latest"
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -138,6 +164,8 @@ func (s *OSRSAPIService) GetCurrentPrices() (map[string]int, error) {
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("API returned status %d", resp.StatusCode)
 	}
+
+	fmt.Print(resp)
 
 	var priceResponse WikiPriceResponse
 	if err := json.NewDecoder(resp.Body).Decode(&priceResponse); err != nil {

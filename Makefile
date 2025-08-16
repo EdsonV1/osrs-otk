@@ -79,30 +79,10 @@ test-race:
 	@echo "Running tests with race detection..."
 	cd $(BACKEND_DIR) && go test -v -race ./...
 
-# Docker build (production)
-docker-build:
-	@echo "Building production Docker image..."
-	docker build --target production -t $(DOCKER_IMAGE) .
-
-# Docker build (development)
-docker-build-dev:
-	@echo "Building development Docker image..."
-	docker build --target development -t $(DOCKER_DEV_IMAGE) .
-
-# Docker run (single container)
-docker-run:
-	@echo "Running Docker container..."
-	docker run --rm -p 8080:8080 -e APP_ENV=docker $(DOCKER_IMAGE)
-
 # Docker development environment
 docker-dev:
 	@echo "Starting Docker development environment..."
 	docker-compose -f docker-compose.dev.yml up --build
-
-# Docker production environment
-docker-prod:
-	@echo "Starting Docker production environment..."
-	docker-compose -f docker-compose.prod.yml up -d --build
 
 # Docker development (detached)
 docker-dev-detached:
@@ -114,11 +94,6 @@ docker-dev-down:
 	@echo "Stopping Docker development environment..."
 	docker-compose -f docker-compose.dev.yml down
 
-# Stop Docker production
-docker-prod-down:
-	@echo "Stopping Docker production environment..."
-	docker-compose -f docker-compose.prod.yml down
-
 # Docker logs
 docker-logs:
 	docker-compose -f docker-compose.dev.yml logs -f
@@ -127,13 +102,12 @@ docker-logs:
 docker-clean:
 	@echo "Cleaning Docker resources..."
 	docker-compose -f docker-compose.dev.yml down -v --remove-orphans
-	docker-compose -f docker-compose.prod.yml down -v --remove-orphans
 	docker system prune -f
 	docker volume prune -f
 
-# Docker shell (development)
+# Docker shell (access running container)
 docker-shell:
-	docker-compose -f docker-compose.dev.yml exec backend sh
+	docker-compose -f docker-compose.dev.yml exec app sh
 
 # Docker rebuild
 docker-rebuild: docker-clean docker-dev
@@ -169,14 +143,6 @@ help:
 	@echo "  docker-dev-down - Stop Docker development"
 	@echo "  docker-logs - Show Docker development logs"
 	@echo "  docker-shell - Access development container shell"
-	@echo ""
-	@echo "Docker Production:"
-	@echo "  docker-prod - Start Docker production environment"
-	@echo "  docker-prod-down - Stop Docker production"
-	@echo "  docker-build - Build production Docker image"
-	@echo "  docker-run  - Run single production container"
-	@echo ""
-	@echo "Docker Utilities:"
 	@echo "  docker-clean - Clean Docker resources"
 	@echo "  docker-rebuild - Rebuild development environment"
 	@echo ""

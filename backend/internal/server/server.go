@@ -61,8 +61,9 @@ func (s *Server) setupRoutes() {
 	osrsAPI := services.NewOSRSAPIService()
 	apiHandlers := handlers.NewAPIHandlers(osrsAPI, s.cacheManager)
 
-	// Create enhanced Wintertodt handler with live price support
+	// Create enhanced handlers with live price support
 	wintertodtLiveHandler := handlers.NewWintertodtLiveHandler(s.cacheManager)
+	birdhouseLiveHandler := handlers.NewBirdhouseLiveHandler(s.cacheManager)
 
 	// Health check endpoint
 	s.mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
@@ -73,6 +74,7 @@ func (s *Server) setupRoutes() {
 
 	// Legacy calculator handlers (keep existing functionality)
 	s.mux.HandleFunc("/api/birdhouse", handlers.BirdhouseCalcHandler)
+	s.mux.HandleFunc("/api/birdhouse/live", birdhouseLiveHandler.Calculate)
 	s.mux.HandleFunc("/api/ardyknights", handlers.ArdyKnightCalcHandler)
 	s.mux.HandleFunc("/api/wintertodt", handlers.WintertodtCalcHandler)
 	s.mux.HandleFunc("/api/wintertodt/live", wintertodtLiveHandler.Calculate)

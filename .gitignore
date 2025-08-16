@@ -49,3 +49,7 @@ temp/
 
 # Docker volumes and data
 docker-data/
+
+# Cache files (auto-generated)
+backend/cache/
+cache/

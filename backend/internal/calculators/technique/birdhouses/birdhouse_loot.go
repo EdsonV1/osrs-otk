@@ -28,11 +28,27 @@ var NestTable = tools.DropTable{
 }
 
 func SimulateNestLoot(nests int) (map[string]map[string]int, int, error) {
+	return SimulateNestLootWithPrices(nests, nil)
+}
+
+func SimulateNestLootWithPrices(nests int, livePrices map[string]int) (map[string]map[string]int, int, error) {
 	if nests < 0 {
 		return nil, 0, fmt.Errorf("nests cannot be negative")
 	}
 
-	results, totalValue, err := tools.SimulateMultipleDrops(NestTable, nests)
+	// Create a copy of NestTable with updated prices if live prices are provided
+	dropTable := make(tools.DropTable, len(NestTable))
+	copy(dropTable, NestTable)
+
+	if livePrices != nil {
+		for i, item := range dropTable {
+			if livePrice, exists := livePrices[item.Name]; exists {
+				dropTable[i].Price = livePrice
+			}
+		}
+	}
+
+	results, totalValue, err := tools.SimulateMultipleDrops(dropTable, nests)
 	if err != nil {
 		fmt.Printf("Error during simulation: %v\n", err)
 		return nil, 0, err

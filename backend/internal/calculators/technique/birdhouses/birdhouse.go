@@ -48,6 +48,10 @@ var craftingXPPerBirdhouse = map[string]int{
 }
 
 func CalculateBirdhouseData(typ string, quantity int) (BirdhouseResult, error) {
+	return CalculateBirdhouseDataWithPrices(typ, quantity, nil)
+}
+
+func CalculateBirdhouseDataWithPrices(typ string, quantity int, livePrices map[string]int) (BirdhouseResult, error) {
 	if quantity <= 0 {
 		return BirdhouseResult{}, fmt.Errorf("quantity must be positive, got %d", quantity)
 	}
@@ -74,7 +78,7 @@ func CalculateBirdhouseData(typ string, quantity int) (BirdhouseResult, error) {
 	runsFloat := math.Ceil(float64(quantity) / 4.0)
 	//runs := int(runsFloat)
 
-	seedDrops, totalLoot, err := SimulateNestLoot(int(math.Round(nests)))
+	seedDrops, totalLoot, err := SimulateNestLootWithPrices(int(math.Round(nests)), livePrices)
 	if err != nil {
 		log.Fatalf("Simulation error: %v", err)
 	}
