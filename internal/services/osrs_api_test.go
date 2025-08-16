@@ -110,7 +110,7 @@ func TestPriceCache_Initialization(t *testing.T) {
 	status := service.GetCacheStatus()
 
 	pricesCache := status["prices"].(map[string]interface{})
-	
+
 	itemsCached, ok := pricesCache["items_cached"].(int)
 	if !ok || itemsCached != 0 {
 		t.Errorf("Expected 0 items cached initially, got %v", itemsCached)

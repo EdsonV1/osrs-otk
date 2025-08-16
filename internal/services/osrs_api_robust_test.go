@@ -59,30 +59,30 @@ malformed line with wrong fields
 
 	// Test the parsing logic (we'll extract this to a separate function if needed)
 	// For now, let's test with a mock implementation
-	
+
 	stats, err := parseHiscoresCSV("TestPlayer", resp.Body)
-	
+
 	if err != nil {
 		t.Errorf("Expected no error with malformed CSV, got: %v", err)
 	}
-	
+
 	if stats == nil {
 		t.Fatal("Expected stats to be returned")
 	}
-	
+
 	if stats.Username != "TestPlayer" {
 		t.Errorf("Expected username 'TestPlayer', got: %s", stats.Username)
 	}
-	
+
 	// Check that all skills have reasonable values (>=1)
 	if stats.Attack < 1 {
 		t.Errorf("Expected Attack >= 1, got: %d", stats.Attack)
 	}
-	
+
 	if stats.Defence < 1 {
 		t.Errorf("Expected Defence >= 1, got: %d", stats.Defence)
 	}
-	
+
 	// Check that some skills parsed correctly from the good lines
 	if stats.Attack != 75 {
 		t.Errorf("Expected Attack = 75 (from first line), got: %d", stats.Attack)
@@ -95,7 +95,7 @@ func parseHiscoresCSV(username string, body io.Reader) (*PlayerStats, error) {
 	reader := newCSVReader(body)
 	reader.FieldsPerRecord = -1 // Allow variable number of fields
 	reader.TrimLeadingSpace = true
-	
+
 	var records [][]string
 	lineNum := 0
 	for {
@@ -141,13 +141,13 @@ func parseHiscoresCSV(username string, body io.Reader) (*PlayerStats, error) {
 		}
 
 		record := records[i]
-		
+
 		// Skip records that don't have at least 2 fields (rank, level)
 		if len(record) < 2 {
 			*skill = 1 // Default to level 1
 			continue
 		}
-		
+
 		// Handle cases where level field might be "-1" or empty
 		levelStr := strings.TrimSpace(record[1])
 		if levelStr == "" || levelStr == "-1" {

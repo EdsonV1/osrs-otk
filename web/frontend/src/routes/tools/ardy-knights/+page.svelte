@@ -84,8 +84,8 @@
             }
             proTipsData = await response.json();
             showProTips = true;
-        } catch (error) {
-            console.error('Error loading pro tips:', error);
+        } catch (err) {
+            console.error('Error loading pro tips:', err);
             error = 'Failed to load calculation methodology';
         }
     }

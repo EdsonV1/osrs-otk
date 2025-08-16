@@ -34,7 +34,7 @@
 			}
 
 			dispatch('statsLoaded', data.data);
-		} catch (err) {
+		} catch {
 			error = 'Network error - please try again';
 			dispatch('error', error);
 		} finally {

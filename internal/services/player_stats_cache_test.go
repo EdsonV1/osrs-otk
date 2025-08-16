@@ -36,12 +36,12 @@ func TestPlayerStatsCache_CacheStatus(t *testing.T) {
 	// Add some mock data to cache
 	testUsername := "testuser"
 	testStats := &PlayerStats{
-		Username:   testUsername,
+		Username:    testUsername,
 		Woodcutting: 85,
 		Firemaking:  75,
 		Herblore:    60,
 	}
-	
+
 	service.playerStatsCache.Stats[testUsername] = testStats
 	service.playerStatsCache.LastUpdated[testUsername] = time.Now()
 
@@ -65,10 +65,10 @@ func TestRefreshPlayerStats_ForcesRefresh(t *testing.T) {
 	// Add existing cache entry with recent timestamp
 	testUsername := "testuser"
 	testStats := &PlayerStats{
-		Username:   testUsername,
+		Username:    testUsername,
 		Woodcutting: 85,
 	}
-	
+
 	service.playerStatsCache.Stats[testUsername] = testStats
 	service.playerStatsCache.LastUpdated[testUsername] = time.Now().Add(-1 * time.Hour) // 1 hour ago
 
@@ -79,7 +79,7 @@ func TestRefreshPlayerStats_ForcesRefresh(t *testing.T) {
 
 	// Try to refresh (this will likely fail in test environment due to network/API)
 	err := service.RefreshPlayerStats(testUsername)
-	
+
 	// The important thing is that cache was cleared (even if refresh failed)
 	if _, exists := service.playerStatsCache.Stats[testUsername]; exists {
 		// If refresh succeeded, cache should be repopulated, if it failed, cache should be empty
@@ -96,7 +96,7 @@ func TestPlayerStatsCache_CacheExpiry(t *testing.T) {
 	service := NewOSRSAPIService()
 
 	testUsername := "testuser"
-	
+
 	// Test case 1: Fresh cache (should return cached data)
 	service.playerStatsCache.Stats[testUsername] = &PlayerStats{Username: testUsername}
 	service.playerStatsCache.LastUpdated[testUsername] = time.Now().Add(-1 * time.Hour) // 1 hour ago (fresh)
