@@ -14,10 +14,10 @@ coverage.out
 tmp/
 
 # Frontend build artifacts and dependencies
-web/frontend/node_modules/
-web/frontend/build/
-web/frontend/.svelte-kit/
-web/frontend/package-lock.json
+frontend/node_modules/
+frontend/build/
+frontend/.svelte-kit/
+frontend/package-lock.json
 
 # Environment and configuration files
 .env

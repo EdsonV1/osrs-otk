@@ -3,7 +3,7 @@ server:
   host: "0.0.0.0"  # Bind to all interfaces for Docker
 
 assets:
-  skill_data_path: "backend/assets/data/skills"
+  skill_data_path: "assets/data/skills"
   images_path: "shared/images"
 
 cors:
