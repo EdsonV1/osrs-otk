@@ -64,6 +64,7 @@ func (s *Server) setupRoutes() {
 	// Create enhanced handlers with live price support
 	wintertodtLiveHandler := handlers.NewWintertodtLiveHandler(s.cacheManager)
 	birdhouseLiveHandler := handlers.NewBirdhouseLiveHandler(s.cacheManager)
+	herbiboarLiveHandler := handlers.NewHerbiboarLiveHandler(s.cacheManager)
 
 	// Health check endpoint
 	s.mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
@@ -75,6 +76,8 @@ func (s *Server) setupRoutes() {
 	// Legacy calculator handlers (keep existing functionality)
 	s.mux.HandleFunc("/api/birdhouse", handlers.BirdhouseCalcHandler)
 	s.mux.HandleFunc("/api/birdhouse/live", birdhouseLiveHandler.Calculate)
+	s.mux.HandleFunc("/api/herbiboar", handlers.HerbiboarCalcHandler)
+	s.mux.HandleFunc("/api/herbiboar/live", herbiboarLiveHandler.Calculate)
 	s.mux.HandleFunc("/api/ardyknights", handlers.ArdyKnightCalcHandler)
 	s.mux.HandleFunc("/api/wintertodt", handlers.WintertodtCalcHandler)
 	s.mux.HandleFunc("/api/wintertodt/live", wintertodtLiveHandler.Calculate)
@@ -86,6 +89,7 @@ func (s *Server) setupRoutes() {
 	s.mux.HandleFunc("/api/tools/wintertodt/tips", handlers.WintertodtProTipsHandler)
 	s.mux.HandleFunc("/api/tools/ardyknights/tips", handlers.ArdyKnightProTipsHandler)
 	s.mux.HandleFunc("/api/tools/birdhouse/tips", handlers.BirdhouseProTipsHandler)
+	s.mux.HandleFunc("/api/tools/herbiboar/tips", handlers.HerbiboarProTipsHandler)
 
 	// New skill data handler
 	s.mux.HandleFunc("/api/skill-data/", handlers.NewSkillHandler(skillService))

@@ -23,6 +23,12 @@
             description: 'Calculate Runecrafting XP rates, training time, rewards, and Abyssal Protector pet chances.',
             href: '/tools/gotr',
             iconSrc: "/skills/runecraft.png"
+        },
+        {
+            name: 'Herbiboar Calculator',
+            description: 'Calculate Hunter and Herblore XP, herb profits, and Herbi pet chances from herbiboar hunting.',
+            href: '/tools/herbiboar',
+            iconSrc: "/herbiboar/herbiboar.png"
         }
     ];
 </script>

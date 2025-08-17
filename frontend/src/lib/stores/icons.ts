@@ -37,6 +37,7 @@ export const SKILL_ICONS = {
     runecraft: '/skills/runecraft.png',
     thieving: '/skills/thieving.png',
     hunter: '/skills/hunter.png',
+    herblore: '/skills/herblore.png',
     attack: '/skills/attack.png',
     agility: '/skills/agility.png',
     mining: '/skills/mining.png'
@@ -45,13 +46,15 @@ export const SKILL_ICONS = {
 // Tool icons - lazy loaded  
 export const TOOL_ICONS = {
     knight: '/tools/knight_of_ardougne.png',
-    birdhouse: '/birdhouse/redwood_bird_house.png'
+    birdhouse: '/birdhouse/redwood_bird_house.png',
+    herbiboar: '/herbiboar/herbiboar.png'
 } as const;
 
 // Pet icons - using skill icons as placeholders
 export const PET_ICONS = {
     phoenix: '/skills/firemaking.png', // Phoenix relates to firemaking
-    abyssal_protector: '/skills/runecraft.png' // Abyssal protector relates to runecraft
+    abyssal_protector: '/skills/runecraft.png', // Abyssal protector relates to runecraft
+    herbi: '/herbiboar/herbiboar.png' // Herbi pet relates to herbiboar hunting
 } as const;
 
 // Preload critical icons for better performance

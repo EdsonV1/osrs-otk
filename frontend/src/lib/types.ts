@@ -214,3 +214,52 @@ export interface PlayerStats {
     hunter: number;
     construction: number;
 }
+
+export interface HerbiboarFormState {
+    hunterLevel: number;
+    herbloreLevel: number;
+    magicSecateurs: boolean;
+    calculationType: 'target' | 'number';
+    targetLevel: number | null;
+    numberToCatch: number | null;
+    useLivePrices: boolean;
+    username: string;
+}
+
+export interface HerbiboarApiInput {
+    hunter_level: number;
+    herblore_level: number;
+    magic_secateurs: boolean;
+    calculation_type: 'target' | 'number';
+    target_level?: number;
+    number_to_catch?: number;
+    use_live_prices?: boolean;
+    username?: string;
+}
+
+export interface HerbiboarApiResult {
+    herbiboars_per_hour: number;
+    herbiboars_caught: number;
+    time_required_hours: number;
+    hunter_xp: number;
+    herblore_xp: number;
+    total_xp: number;
+    herbs_obtained: { [herbName: string]: number };
+    total_profit_gp: number;
+    profit_per_hour_gp: number;
+    pet_chance_percent: number;
+    cumulative_pet_odds: number;
+    magic_secateurs_used: boolean;
+    gear_effects: {
+        magic_secateurs: {
+            used: boolean;
+            herbs_per_boar: number;
+            extra_herbs_gained: number;
+        };
+    };
+    price_info?: {
+        source: string;
+        last_updated?: string;
+        prices_used?: { [itemName: string]: number };
+    };
+}
